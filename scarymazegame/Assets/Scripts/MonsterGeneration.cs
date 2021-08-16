@@ -4,43 +4,71 @@ using UnityEngine;
 
 public class MonsterGeneration : MonoBehaviour
 {
+    [Header("Unsorted")]
     public GameObject arm;
-
     public int armCount;
+
+    [Header("Body Points")]
+    public GameObject armPoints;
+    
+    [Header("Body Parts")]
+    public GameObject arms;
 
     float RandomRange(float min, float max)
     {
         return Random.Range(min, max);
     }
 
-    int FindArmPoints()
+    int FindPoints(GameObject objToFindPoints)
     {
-        return (gameObject.transform.Find("ArmPoints").transform.childCount);
+        return (objToFindPoints.transform.childCount);
     }
 
-    void SpawnArms()
+    public IEnumerator SpawnArms()
     {
+        //how many arms spawn
+        armCount = (int) RandomRange(1f, FindPoints(armPoints));
+
         for (int i = 0; i < armCount; i++)
         {
+            
             //spawn arm
             GameObject newArm = Instantiate(arm);
-            newArm.transform.SetParent(gameObject.transform.Find("Arms"));
-            print("arm " + i + " spawned");
+
+            //randomly allocate arm to a spot
+            int armPointIndex;
+            Transform armPointSelected;
+
+            while (true)
+            {
+                //initialize
+                armPointIndex = (int) RandomRange(0f, FindPoints(armPoints));
+                armPointSelected = armPoints.transform.GetChild(armPointIndex);
+
+                if (!armPointSelected.GetComponent<BodyPointScript>().occupied)
+                {
+                    //set arm point to occupied
+                    armPointSelected.GetComponent<BodyPointScript>().occupied = true;
+                    break;
+                }
+
+                yield return null;
+            }
+
+            //set new arm parent to monster
+            newArm.transform.SetParent(arms.transform);
 
             //pos and rot arm arm
-            newArm.transform.localPosition = gameObject.transform.Find("ArmPoints").transform.GetChild(i).transform.localPosition;
-            newArm.transform.eulerAngles = gameObject.transform.Find("ArmPoints").transform.GetChild(i).transform.eulerAngles;
+            newArm.transform.localPosition = armPointSelected.transform.localPosition;
+            newArm.transform.eulerAngles = armPointSelected.transform.eulerAngles;
         }
     }
 
     // Start is called before the first frame update
-    void Update()
+    void Start()
     {        
-        //how many arms spawn
-        armCount = 5;//(int) RandomRange(1f, FindArmPoints());
-
         //spawn arms
-        SpawnArms();
+        StartCoroutine(SpawnArms());
 
     }
 }
