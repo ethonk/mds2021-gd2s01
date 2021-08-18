@@ -7,14 +7,17 @@ public class MonsterGeneration : MonoBehaviour
     [Header("Prefabs - Core Body Parts")]
     public GameObject[] torsoPrefabs;
     public GameObject[] pelvisPrefabs;
+    public GameObject[] neckPrefabs;
 
     [Header("Prefabs - Limbs and Extra Parts")]
     public GameObject[] armPrefabs;
     public GameObject[] legPrefabs;
+    public GameObject[] headPrefabs;
     
     [Header("Body Parts")]
     public GameObject torso;
     public GameObject pelvis;
+    public GameObject neck;
 
     float RandomRange(float min, float max)
     {
@@ -97,6 +100,29 @@ public class MonsterGeneration : MonoBehaviour
         pelvis.transform.eulerAngles = pelvisPointSelected.transform.eulerAngles;
     }
 
+    public void GenerateNeck(Transform neckPoints)
+    {
+        int randomNeckIndex = (int) RandomRange(0,neckPrefabs.Length);
+        neck = Instantiate(neckPrefabs[randomNeckIndex]);
+        neck.transform.SetParent(gameObject.transform);
+
+        //set position to random point of torso
+        //randomly allocate neck to a spot
+        int neckPointIndex;
+        Transform neckPointSelected;
+
+        //initialize
+        neckPointIndex = (int) RandomRange(0f, FindPoints(neckPoints));
+        neckPointSelected = neckPoints.GetChild(neckPointIndex);
+
+        //set new neck parent to monster
+        pelvis.transform.SetParent(torso.transform.parent);
+
+        //pos and rot limb
+        neck.transform.position = neckPointSelected.transform.position;
+        neck.transform.eulerAngles = neckPointSelected.transform.eulerAngles;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -105,11 +131,14 @@ public class MonsterGeneration : MonoBehaviour
         GenerateTorso();
         //generate pelvis
         GeneratePelvis(torso.transform.Find("PelvisPoints"));
+        GenerateNeck(torso.transform.Find("NeckPoints"));
 
         //spawn arms
         StartCoroutine(SpawnLimbs(torso.transform.Find("ArmPoints"), armPrefabs, torso.transform.Find("Arms").transform));
         //spawn legs
         StartCoroutine(SpawnLimbs(pelvis.transform.Find("LegPoints"), legPrefabs, pelvis.transform.Find("Legs").transform));
+        //spawn heads
+        StartCoroutine(SpawnLimbs(neck.transform.Find("HeadPoints"), headPrefabs, neck.transform.Find("Heads").transform));
 
     }
 }
