@@ -74,6 +74,7 @@ public class MonsterGeneration : MonoBehaviour
     {
         int randomTorsoIndex = (int) RandomRange(0,torsoPrefabs.Length);
         torso = Instantiate(torsoPrefabs[randomTorsoIndex]);
+        torso.transform.position = gameObject.transform.position;
         torso.transform.SetParent(gameObject.transform);
     }
 
