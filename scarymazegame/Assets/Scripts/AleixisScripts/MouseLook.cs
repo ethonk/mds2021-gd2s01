@@ -44,7 +44,7 @@ public bool m_CursorLocked = true;
 
         m_Tilt = Mathf.Clamp(m_Tilt, m_TiltExtents.x, m_TiltExtents.y);
 
-        transform.localEulerAngles = new Vector3(m_Tilt, 0.0f, 0.0f);
+        transform.localEulerAngles = new Vector3(m_Tilt, m_Spin, m_Lean);
         #endregion
 
 
