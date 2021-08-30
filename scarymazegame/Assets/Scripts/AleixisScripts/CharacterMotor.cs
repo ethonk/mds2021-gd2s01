@@ -13,18 +13,12 @@ public class CharacterMotor : MonoBehaviour
     public float m_Gravity = 32.0f;
     public float m_JumpSpeed = 10.0f;
     public float m_SprintSpeed = 2.0f;
-    public float m_DJumpMultiplier = 0.5f;
-
-    public int m_JumpCount = 0;
-
 
     [Header("Current State")]
     public Vector3 m_Velocity = new Vector3(0.0f, 0.0f, 0.0f);
     public Vector3 inputMove;
     public bool m_Grounded = false;
     public bool isSprinting = false;
-    public bool DJump = false;
-    public bool WallJump = false;
 
 
     void Update()
@@ -47,24 +41,13 @@ public class CharacterMotor : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             z += 1.0f;
-        }
+        }   
         
         if (m_Grounded)
         {
-            WallJump = false;
-            DJump = true; 
-
             if (Input.GetButtonDown("Jump"))
             {
                 m_Velocity.y = m_JumpSpeed;
-            }
-        }
-        else
-        {
-            if (Input.GetButtonDown("Jump") && DJump)
-            {
-                m_Velocity.y = m_JumpSpeed * m_DJumpMultiplier;
-                DJump = false;
             }
         }
         
@@ -111,18 +94,4 @@ public class CharacterMotor : MonoBehaviour
 
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit wall)
-    {
-        WallJump = true;
-        if(!m_Controller.isGrounded && wall.normal.y < 0.1f && WallJump)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                m_Velocity.y = m_JumpSpeed;
-                WallJump = false;
-                DJump = true;
-            }
-            
-        }
-    }
 }

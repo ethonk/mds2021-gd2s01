@@ -133,6 +133,8 @@ GameObject:
   - component: {fileID: 55930531}
   - component: {fileID: 55930530}
   - component: {fileID: 55930529}
+  - component: {fileID: 55930533}
+  - component: {fileID: 55930528}
   m_Layer: 0
   m_Name: Merchant
   m_TagString: Untagged
@@ -140,6 +142,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &55930528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55930527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e627c7808e6d5154c9f692c2ab4d8458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Merchant: {fileID: 0}
 --- !u!136 &55930529
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -215,6 +230,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &55930533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55930527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2581978, y: 2.3271878, z: 3.5118854}
+  m_Center: {x: -0.056238174, y: 0.055340014, z: -0.043460146}
 --- !u!1 &304557722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,14 +1102,10 @@ MonoBehaviour:
   m_Gravity: 32
   m_JumpSpeed: 10
   m_SprintSpeed: 2
-  m_DJumpMultiplier: 0.5
-  m_JumpCount: 0
   m_Velocity: {x: 0, y: 0, z: 0}
   inputMove: {x: 0, y: 0, z: 0}
   m_Grounded: 0
   isSprinting: 0
-  DJump: 0
-  WallJump: 0
 --- !u!143 &1013707567
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1129,7 +1153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Merchant: {fileID: 55930532}
-  SpawnPoint: {fileID: 423835048}
   DefaultSpawn: {fileID: 402067094}
 --- !u!1 &1161082619
 GameObject:

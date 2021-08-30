@@ -40,8 +40,7 @@ public class RandomSpawning : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(ElapsedTime);
-        Debug.Log(ResetStart);
+        
     }
 
     private IEnumerator ElapsedTimer()
