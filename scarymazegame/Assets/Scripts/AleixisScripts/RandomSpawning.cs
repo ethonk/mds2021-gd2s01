@@ -11,7 +11,6 @@ public class RandomSpawning : MonoBehaviour
 
     [Header("Serialized Fields")] //serializes the fields
     [SerializeField] private Transform Merchant;
-    [SerializeField] private Transform SpawnPoint;
     [SerializeField] private Transform DefaultSpawn;
 
     private void OnTriggerEnter(Collider other) // On trigger enter means when the script attached object hits the box collider of a trigger object.
@@ -20,7 +19,7 @@ public class RandomSpawning : MonoBehaviour
         {
             ResetStart = false;
             ElapsedTime = 0.0f;
-            Merchant.transform.position = SpawnPoint.transform.position; //Takes the position of the merchant then transforms it (changes it) to the transform of the selected position
+            Merchant.transform.position = other.transform.position; //Takes the position of the merchant then transforms it (changes it) to the transform of the selected position
             Physics.SyncTransforms(); //Syncs transforms so that nothing breaks, unity does a lot of the damage control
         }
     }
