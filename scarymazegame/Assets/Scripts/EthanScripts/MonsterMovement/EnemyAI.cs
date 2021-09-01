@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange = 50f;
 
     // Attacking
-    public float timeBetweenAttacks;
+    public float timeBetweenAttacks = 2f;
     bool alreadyAttacked;
 
     // States
@@ -106,6 +106,7 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             //attacking code goes here.
+            print("damage player");
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
