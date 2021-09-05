@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
     public void Settings()
     {
         Panel.SetActive(true);
-        Canvas.SetActive(false);
+        //Canvas.SetActive(false);
     }
 
     public void Credits()
