@@ -20,6 +20,8 @@ public class CharacterMotor : MonoBehaviour
     public bool m_Grounded = false;
     public bool isSprinting = false;
 
+    [Header("Interactive Variables")]
+    public float Range = 100f;
 
     void Update()
     {
@@ -92,6 +94,6 @@ public class CharacterMotor : MonoBehaviour
             m_Velocity.z = 0.0f;
         }
 
+        // Interactive controls
     }
-
 }
