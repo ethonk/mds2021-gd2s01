@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class MonsterGeneration : MonoBehaviour
 {
+    [Header("Path - Body part models")]
+    string bodyPartsPath = "MonsterParts/";
+
     [Header("Prefabs - Core Body Parts")]
-    public GameObject[] torsoPrefabs;
-    public GameObject[] pelvisPrefabs;
-    public GameObject[] neckPrefabs;
+    public List<GameObject> torsoPrefabs;
 
     [Header("Prefabs - Limbs and Extra Parts")]
-    public GameObject[] armPrefabs;
-    public GameObject[] legPrefabs;
-    public GameObject[] headPrefabs;
+    public List<GameObject> armPrefabs;
+    public List<GameObject> legPrefabs;
+    public List<GameObject> headPrefabs;
+    public List<GameObject> extraPrefabs;
     
     [Header("Body Parts")]
     public GameObject torso;
-    public GameObject pelvis;
-    public GameObject neck;
 
-    float RandomRange(float min, float max)
+    int RandomRange(int min, int max)
     {
         return Random.Range(min, max);
     }
@@ -29,26 +29,28 @@ public class MonsterGeneration : MonoBehaviour
         return (objToFindPoints.childCount);
     }
 
-    public IEnumerator SpawnLimbs(Transform limbPoints, GameObject[] limbPrefab, Transform limbs)
+
+    public IEnumerator SpawnLimbs(Transform limbPoints, List<GameObject> limbPrefab, Transform limbs)
     {
         //how many limbs spawn
-        int limbCount = (int) RandomRange(1f, FindPoints(limbPoints));
+        int limbCount = RandomRange(1, FindPoints(limbPoints) + 1);
+        print(limbPoints.gameObject.name + ". Random (1 - " + FindPoints(limbPoints) + "): "  + limbCount + " limbs.");
 
         for (int i = 0; i < limbCount; i++)
         {
             
             //Spawn random limb from array "prefabs".
-            int randomIndex = (int) RandomRange(0,limbPrefab.Length);
+            int randomIndex = RandomRange(0,limbPrefab.Count);
             GameObject newLimb = Instantiate(limbPrefab[randomIndex]);
 
             //randomly allocate limb to a spot
             int limbPointIndex;
             Transform limbPointSelected;
-
+            
             while (true)
             {
                 //initialize
-                limbPointIndex = (int) RandomRange(0f, FindPoints(limbPoints));
+                limbPointIndex = RandomRange(0, FindPoints(limbPoints));
                 limbPointSelected = limbPoints.GetChild(limbPointIndex);
 
                 if (!limbPointSelected.GetComponent<BodyPointScript>().occupied)
@@ -72,74 +74,36 @@ public class MonsterGeneration : MonoBehaviour
 
     public void GenerateTorso()
     {
-        int randomTorsoIndex = (int) RandomRange(0,torsoPrefabs.Length);
+        int randomTorsoIndex = RandomRange(0,torsoPrefabs.Count);
         torso = Instantiate(torsoPrefabs[randomTorsoIndex]);
         torso.transform.position = gameObject.transform.position;
         torso.transform.SetParent(gameObject.transform);
     }
 
-    public void GeneratePelvis(Transform pelvisPoints)
-    {
-        int randomPelvisIndex = (int) RandomRange(0,pelvisPrefabs.Length);
-        pelvis = Instantiate(pelvisPrefabs[randomPelvisIndex]);
-        pelvis.transform.SetParent(gameObject.transform);
 
-        //set position to random point of torso
-        //randomly allocate pelvis to a spot
-        int pelvisPointIndex;
-        Transform pelvisPointSelected;
-
-        //initialize
-        pelvisPointIndex = (int) RandomRange(0f, FindPoints(pelvisPoints));
-        pelvisPointSelected = pelvisPoints.GetChild(pelvisPointIndex);
-
-        //set new pelvis parent to monster
-        pelvis.transform.SetParent(torso.transform.parent);
-
-        //pos and rot limb
-        pelvis.transform.position = pelvisPointSelected.transform.position;
-        pelvis.transform.eulerAngles = pelvisPointSelected.transform.eulerAngles;
-    }
-
-    public void GenerateNeck(Transform neckPoints)
-    {
-        int randomNeckIndex = (int) RandomRange(0,neckPrefabs.Length);
-        neck = Instantiate(neckPrefabs[randomNeckIndex]);
-        neck.transform.SetParent(gameObject.transform);
-
-        //set position to random point of torso
-        //randomly allocate neck to a spot
-        int neckPointIndex;
-        Transform neckPointSelected;
-
-        //initialize
-        neckPointIndex = (int) RandomRange(0f, FindPoints(neckPoints));
-        neckPointSelected = neckPoints.GetChild(neckPointIndex);
-
-        //set new neck parent to monster
-        pelvis.transform.SetParent(torso.transform.parent);
-
-        //pos and rot limb
-        neck.transform.position = neckPointSelected.transform.position;
-        neck.transform.eulerAngles = neckPointSelected.transform.eulerAngles;
-    }
-
-
-    // Start is called before the first frame update
     void Start()
-    {        
-        //generate torso
-        GenerateTorso();
-        //generate pelvis
-        GeneratePelvis(torso.transform.Find("PelvisPoints"));
-        GenerateNeck(torso.transform.Find("NeckPoints"));
+    {     
+        // STAGE 1) Load ALL Body parts up into the array
+        torsoPrefabs = new List<GameObject>(Resources.LoadAll<GameObject>(bodyPartsPath + "Torso"));
+        armPrefabs = new List<GameObject>(Resources.LoadAll<GameObject>(bodyPartsPath + "Arms"));
+        legPrefabs = new List<GameObject>(Resources.LoadAll<GameObject>(bodyPartsPath + "Legs"));
+        headPrefabs = new List<GameObject>(Resources.LoadAll<GameObject>(bodyPartsPath + "Heads"));
+        extraPrefabs = new List<GameObject>(Resources.LoadAll<GameObject>(bodyPartsPath + "Extras"));
 
+        // STAGE 2) Generate core parts
+        GenerateTorso();    // Generate torso
+
+        // STAGE 3) Generate derived parts
+        Transform torsoBodyParts = torso.transform.Find("BodyParts");   // Define body parts
+        Transform torsoBodypoints = torso.transform.Find("BodyPoints"); // Define body points
         //spawn arms
-        StartCoroutine(SpawnLimbs(torso.transform.Find("ArmPoints"), armPrefabs, torso.transform.Find("Arms").transform));
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("ArmPoints"), armPrefabs, torsoBodyParts.Find("Arms").transform));
         //spawn legs
-        StartCoroutine(SpawnLimbs(pelvis.transform.Find("LegPoints"), legPrefabs, pelvis.transform.Find("Legs").transform));
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("LegPoints"), legPrefabs, torsoBodyParts.Find("Legs").transform));
         //spawn heads
-        StartCoroutine(SpawnLimbs(neck.transform.Find("HeadPoints"), headPrefabs, neck.transform.Find("Heads").transform));
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("HeadPoints"), headPrefabs, torsoBodyParts.Find("Heads").transform));
+        //spawn extra parts
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("ExtraPoints"), extraPrefabs, torsoBodyParts.Find("Extras").transform));
 
     }
 }
