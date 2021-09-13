@@ -192,6 +192,7 @@ MonoBehaviour:
   inputMove: {x: 0, y: 0, z: 0}
   m_Grounded: 0
   isSprinting: 0
+  Range: 100
 --- !u!143 &305777598
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1838,7 +1839,7 @@ PrefabInstance:
     - target: {fileID: 8914431702676956527, guid: 038230923932c2f48a1b8ff2d7125f4c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 8914431702676956527, guid: 038230923932c2f48a1b8ff2d7125f4c,
         type: 3}
