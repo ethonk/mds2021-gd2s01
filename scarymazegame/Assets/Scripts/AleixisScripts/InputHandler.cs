@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Interact
 {
@@ -30,7 +30,7 @@ namespace Interact
             interactionInputData.InteractClicked = Input.GetKeyDown(KeyCode.E); // calls function when E is pressed
             interactionInputData.InteractReleased = Input.GetKeyUp(KeyCode.E);  // effect can only be seen right now using Debug log
         }
-
+        
         #endregion
     }
 }
