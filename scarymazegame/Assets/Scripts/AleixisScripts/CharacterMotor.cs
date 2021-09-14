@@ -22,78 +22,82 @@ public class CharacterMotor : MonoBehaviour
 
     [Header("Interactive Variables")]
     public float Range = 100f;
+    public bool playerLock = false;
 
     void Update()
     {
-        float x = 0.0f;
-        if (Input.GetKey(KeyCode.A))
+        if (!playerLock)
         {
-            x -= 1.0f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            x += 1.0f;
-        }
-
-        float z = 0.0f;
-        if (Input.GetKey(KeyCode.S))
-        {
-            z -= 1.0f;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            z += 1.0f;
-        }   
-        
-        if (m_Grounded)
-        {
-            if (Input.GetButtonDown("Jump"))
+            float x = 0.0f;
+            if (Input.GetKey(KeyCode.A))
             {
-                m_Velocity.y = m_JumpSpeed;
+                x -= 1.0f;
             }
-        }
-        
-        Vector3 inputMove = new Vector3(x,0.0f, z);
-        inputMove = Quaternion.Euler(0.0f,m_Look.m_Spin,0.0f) * inputMove;
+            if (Input.GetKey(KeyCode.D))
+            {
+                x += 1.0f;
+            }
 
-        m_Velocity.x = inputMove.x * m_MoveSpeed;
-        m_Velocity.y -= m_Gravity * Time.deltaTime;
-        m_Velocity.z = inputMove.z * m_MoveSpeed;
+            float z = 0.0f;
+            if (Input.GetKey(KeyCode.S))
+            {
+                z -= 1.0f;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                z += 1.0f;
+            }   
+            
+            if (m_Grounded)
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    m_Velocity.y = m_JumpSpeed;
+                }
+            }
+            
+            Vector3 inputMove = new Vector3(x,0.0f, z);
+            inputMove = Quaternion.Euler(0.0f,m_Look.m_Spin,0.0f) * inputMove;
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            m_Velocity.x = inputMove.x * m_MoveSpeed * m_SprintSpeed;
-            m_Velocity.z = inputMove.z * m_MoveSpeed * m_SprintSpeed;
-            isSprinting = true;
-        }
-        else
-        {
-            isSprinting = false;
-        }
-        
-        m_Controller.Move(m_Velocity * Time.deltaTime);
+            m_Velocity.x = inputMove.x * m_MoveSpeed;
+            m_Velocity.y -= m_Gravity * Time.deltaTime;
+            m_Velocity.z = inputMove.z * m_MoveSpeed;
 
-        if ((m_Controller.collisionFlags & CollisionFlags.Below) != 0)
-        {
-            m_Velocity.y = -1.0f;
-            m_Grounded = true;
-        }
-        else
-        {
-            m_Grounded = false;
-        }
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                m_Velocity.x = inputMove.x * m_MoveSpeed * m_SprintSpeed;
+                m_Velocity.z = inputMove.z * m_MoveSpeed * m_SprintSpeed;
+                isSprinting = true;
+            }
+            else
+            {
+                isSprinting = false;
+            }
+            
+            m_Controller.Move(m_Velocity * Time.deltaTime);
 
-        if((m_Controller.collisionFlags & CollisionFlags.Above) != 0)
-        {
-            m_Velocity.y = -1.0f;
-        }
+            if ((m_Controller.collisionFlags & CollisionFlags.Below) != 0)
+            {
+                m_Velocity.y = -1.0f;
+                m_Grounded = true;
+            }
+            else
+            {
+                m_Grounded = false;
+            }
 
-        if((m_Controller.collisionFlags & CollisionFlags.Sides) != 0)
-        {
-            m_Velocity.x = 0.0f;
-            m_Velocity.z = 0.0f;
-        }
+            if((m_Controller.collisionFlags & CollisionFlags.Above) != 0)
+            {
+                m_Velocity.y = -1.0f;
+            }
 
-        // Interactive controls
+            if((m_Controller.collisionFlags & CollisionFlags.Sides) != 0)
+            {
+                m_Velocity.x = 0.0f;
+                m_Velocity.z = 0.0f;
+            }
+
+            // Interactive controls
+        }
     }
 }
