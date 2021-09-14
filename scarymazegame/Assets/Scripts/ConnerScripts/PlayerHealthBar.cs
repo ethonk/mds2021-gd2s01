@@ -8,15 +8,14 @@ public class PlayerHealthBar : MonoBehaviour
     private Image PHealthBar;
     private Image Hurt;
     
-    public float m_PCurrentHealth;
-    private const float m_PMaxHealth = 100.0f;
-    PlayerControl Player;
+    public PlayerScript player;
+
     // Start is called before the first frame update
     void Start()
     {
         PHealthBar = GetComponent<Image>();
         Hurt = GetComponent<Image>();
-        Player = FindObjectOfType < PlayerControl>();
+        player = FindObjectOfType <PlayerScript>();
         var tempColor = Hurt.color;
         tempColor.a = 0.0f;
         Hurt.color = tempColor;
@@ -27,13 +26,9 @@ public class PlayerHealthBar : MonoBehaviour
     void Update()
     {
         var tempColor = Hurt.color;
-        tempColor.a = 1 - (m_PCurrentHealth / 100);
+        tempColor.a = 1 - (player.health / 100);
+        print("health alpha: " + (1 - (player.health / 100)));
         Hurt.color = tempColor;
-        m_PCurrentHealth = Player.m_Health;
-        PHealthBar.fillAmount = m_PCurrentHealth / m_PMaxHealth;
-
-
+        PHealthBar.fillAmount = player.health / player.maxHealth;
     }
-
-
 }

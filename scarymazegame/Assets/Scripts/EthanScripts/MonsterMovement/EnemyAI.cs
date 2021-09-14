@@ -38,15 +38,15 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
-        if (!playerInSightRange && !playerInAttackRange)    // Player is NOT in sight range and NOT attack range, Patrol.
+        if (!playerInSightRange && !playerInAttackRange)                                                        // Player is NOT in sight range and NOT attack range, Patrol.
         {
             Patroling();
         }
-        if (playerInSightRange && !playerInAttackRange)     // Player IS in sight range and NOT in attack range, Chase.
+        if (playerInSightRange && !playerInAttackRange && !player.GetComponent<CharacterMotor>().playerLock)     // Player IS in sight range and NOT in attack range, Chase.
         {
             ChasePlayer();
         }
-        if (playerInAttackRange && playerInSightRange)      // Player IS in sight range and IS in attack range, Attack.
+        if (playerInAttackRange && playerInSightRange && !player.GetComponent<CharacterMotor>().playerLock)      // Player IS in sight range and IS in attack range, Attack.
         {
             AttackPlayer();
         }
@@ -105,7 +105,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            //attacking code goes here.
+            GetComponent<Attacks>().EatAttack(player.transform, transform.Find("Torso").Find("BodyParts").Find("Head").Find("EatPart"));
             print("damage player");
 
             alreadyAttacked = true;

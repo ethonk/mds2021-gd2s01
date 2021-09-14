@@ -30,11 +30,10 @@ public class MonsterGeneration : MonoBehaviour
     }
 
 
-    public IEnumerator SpawnLimbs(Transform limbPoints, List<GameObject> limbPrefab, Transform limbs)
+    public IEnumerator SpawnLimbs(Transform limbPoints, List<GameObject> limbPrefab, Transform limbs, string partName)
     {
         //how many limbs spawn
         int limbCount = RandomRange(1, FindPoints(limbPoints) + 1);
-        print(limbPoints.gameObject.name + ". Random (1 - " + FindPoints(limbPoints) + "): "  + limbCount + " limbs.");
 
         for (int i = 0; i < limbCount; i++)
         {
@@ -42,6 +41,7 @@ public class MonsterGeneration : MonoBehaviour
             //Spawn random limb from array "prefabs".
             int randomIndex = RandomRange(0,limbPrefab.Count);
             GameObject newLimb = Instantiate(limbPrefab[randomIndex]);
+            newLimb.gameObject.name = partName;
 
             //randomly allocate limb to a spot
             int limbPointIndex;
@@ -76,10 +76,30 @@ public class MonsterGeneration : MonoBehaviour
     {
         int randomTorsoIndex = RandomRange(0,torsoPrefabs.Count);
         torso = Instantiate(torsoPrefabs[randomTorsoIndex]);
+        torso.gameObject.name = "Torso";
         torso.transform.position = gameObject.transform.position;
         torso.transform.SetParent(gameObject.transform);
     }
 
+    public void CombineBodypartMesh(GameObject torsoBodyParts)
+    {
+        MeshFilter[] meshFilters = torsoBodyParts.GetComponentsInChildren<MeshFilter>();    // Get all body parts inside the torso.
+        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+
+        int i = 0;
+        while (i < meshFilters.Length)
+        {
+            combine[i].mesh = meshFilters[i].sharedMesh;
+            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            //meshFilters[i].gameObject.SetActive(false);
+
+            i++;
+        }
+
+        this.transform.GetChild(0).GetComponent<MeshFilter>().mesh = new Mesh();
+        this.transform.GetChild(0).GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        this.transform.GetChild(0).gameObject.SetActive(true);
+    }
 
     void Start()
     {     
@@ -97,13 +117,15 @@ public class MonsterGeneration : MonoBehaviour
         Transform torsoBodyParts = torso.transform.Find("BodyParts");   // Define body parts
         Transform torsoBodypoints = torso.transform.Find("BodyPoints"); // Define body points
         //spawn arms
-        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("ArmPoints"), armPrefabs, torsoBodyParts.Find("Arms").transform));
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("ArmPoints"), armPrefabs, torsoBodyParts, "Arm"));
         //spawn legs
-        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("LegPoints"), legPrefabs, torsoBodyParts.Find("Legs").transform));
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("LegPoints"), legPrefabs, torsoBodyParts, "Leg"));
         //spawn heads
-        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("HeadPoints"), headPrefabs, torsoBodyParts.Find("Heads").transform));
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("HeadPoints"), headPrefabs, torsoBodyParts, "Head"));
         //spawn extra parts
-        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("ExtraPoints"), extraPrefabs, torsoBodyParts.Find("Extras").transform));
+        StartCoroutine(SpawnLimbs(torsoBodypoints.Find("ExtraPoints"), extraPrefabs, torsoBodyParts, "Extra"));
 
+        // Combine meshes
+        CombineBodypartMesh(torsoBodyParts.gameObject);
     }
 }
