@@ -67,6 +67,9 @@ public class Pickup : MonoBehaviour
 
         // Enable weapon script
         weaponScript.enabled = true;
+
+        // Run weaponscript pickup function
+        weaponScript.PickedUp();
     }
 
     private void Drop()

@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    //audio
+    AudioSource audioData;
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -93,6 +96,11 @@ public class EnemyAI : MonoBehaviour
     
     private void ChasePlayer()
     {
+        audioData = GetComponent<AudioSource>();
+        if (!audioData.isPlaying)
+        {
+            audioData.Play();
+        }
         agent.SetDestination(player.position);
     }
 

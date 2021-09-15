@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    AudioSource audioData;
 
-    // Update is called once per frame
-    void Update()
+    public void PickedUp()
     {
-        
+        audioData = GetComponent<AudioSource>();
+        audioData.Play(0);
     }
 }
