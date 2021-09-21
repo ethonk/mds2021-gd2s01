@@ -1,81 +1,143 @@
 fileFormatVersion: 2
-guid: 0769f0433483d5d4e9686ec4afd8a26e
+guid: ed9ec036e5afbd34dae4f1602a3d77b8
+timeCreated: 1490432159
+licenseType: Store
 ModelImporter:
-  serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects: {}
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Object032
+    100004: Object060
+    100006: Object061
+    100008: Object062
+    100010: Concrete_fence_v2_L
+    100012: Concrete_fence_v2_lattice_L
+    100014: Concrete_fence_v2_lattice_S
+    100016: Concrete_fence_v2_S
+    100018: Concrete_fence_v2_Gate
+    100020: Object001
+    100022: Concrete_fence_v2_lattice_S001
+    100024: Concrete_fence_v2_S001
+    100026: Object002
+    100028: Concrete_fence_v2_end
+    100030: Concrete_fence_v2_Gate_lattice
+    100032: Concrete_fence_v2_lattice_S_half
+    100034: Concrete_fence_v2_S_half
+    400000: //RootNode
+    400002: Object032
+    400004: Object060
+    400006: Object061
+    400008: Object062
+    400010: Concrete_fence_v2_L
+    400012: Concrete_fence_v2_lattice_L
+    400014: Concrete_fence_v2_lattice_S
+    400016: Concrete_fence_v2_S
+    400018: Concrete_fence_v2_Gate
+    400020: Object001
+    400022: Concrete_fence_v2_lattice_S001
+    400024: Concrete_fence_v2_S001
+    400026: Object002
+    400028: Concrete_fence_v2_end
+    400030: Concrete_fence_v2_Gate_lattice
+    400032: Concrete_fence_v2_lattice_S_half
+    400034: Concrete_fence_v2_S_half
+    2300000: Object032
+    2300002: Object060
+    2300004: Object061
+    2300006: Object062
+    2300008: Concrete_fence_v2_L
+    2300010: Concrete_fence_v2_lattice_L
+    2300012: Concrete_fence_v2_lattice_S
+    2300014: Concrete_fence_v2_S
+    2300016: Concrete_fence_v2_Gate
+    2300018: Object001
+    2300020: Concrete_fence_v2_lattice_S001
+    2300022: Concrete_fence_v2_S001
+    2300024: Object002
+    2300026: Concrete_fence_v2_end
+    2300028: Concrete_fence_v2_Gate_lattice
+    2300030: Concrete_fence_v2_lattice_S_half
+    2300032: Concrete_fence_v2_S_half
+    3300000: Object032
+    3300002: Object060
+    3300004: Object061
+    3300006: Object062
+    3300008: Concrete_fence_v2_L
+    3300010: Concrete_fence_v2_lattice_L
+    3300012: Concrete_fence_v2_lattice_S
+    3300014: Concrete_fence_v2_S
+    3300016: Concrete_fence_v2_Gate
+    3300018: Object001
+    3300020: Concrete_fence_v2_lattice_S001
+    3300022: Concrete_fence_v2_S001
+    3300024: Object002
+    3300026: Concrete_fence_v2_end
+    3300028: Concrete_fence_v2_Gate_lattice
+    3300030: Concrete_fence_v2_lattice_S_half
+    3300032: Concrete_fence_v2_S_half
+    4300000: Object032
+    4300002: Object060
+    4300004: Object061
+    4300006: Object062
+    4300008: Concrete_fence_v2_S
+    4300010: Concrete_fence_v2_L
+    4300012: Concrete_fence_v2_lattice_S
+    4300014: Concrete_fence_v2_lattice_L
+    4300016: Concrete_fence_v2_Gate
+    4300018: Object001
+    4300020: Concrete_fence_v2_S001
+    4300022: Concrete_fence_v2_lattice_S001
+    4300024: Object002
+    4300026: Concrete_fence_v2_Gate_lattice
+    4300028: Concrete_fence_v2_S_half
+    4300030: Concrete_fence_v2_lattice_S_half
+    4300032: Concrete_fence_v2_end
   materials:
-    materialImportMode: 2
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
-    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
-    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
-    fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
-    preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
-    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 1
-    normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -85,17 +147,11 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
-    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
-  avatarSetup: 0
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
