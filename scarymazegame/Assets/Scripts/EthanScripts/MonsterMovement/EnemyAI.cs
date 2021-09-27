@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
 
     public LayerMask groundLayer, playerLayer;
+
+
+    // UI
+    public GameObject monsterNameLayout;
+
 
     // Patroling
     public Vector3 walkPoint;
@@ -35,6 +41,12 @@ public class EnemyAI : MonoBehaviour
 
     #region == FUNCTIONS ==
 
+    void ShowMonsterNameUI()
+    {
+        monsterNameLayout.SetActive(true);
+        monsterNameLayout.transform.Find("MonsterName").GetComponent<TextMeshProUGUI>().text = GetComponent<MonsterDetails>().monsterName;
+    }
+
     private void Update()
     {
         //Check for sigyht and attack range
@@ -47,6 +59,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (playerInSightRange && !playerInAttackRange && !player.GetComponent<CharacterMotor>().playerLock)     // Player IS in sight range and NOT in attack range, Chase.
         {
+            ShowMonsterNameUI();
             ChasePlayer();
         }
         if (playerInAttackRange && playerInSightRange && !player.GetComponent<CharacterMotor>().playerLock)      // Player IS in sight range and IS in attack range, Attack.
