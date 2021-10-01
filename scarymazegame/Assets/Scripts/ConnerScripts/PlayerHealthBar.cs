@@ -27,7 +27,6 @@ public class PlayerHealthBar : MonoBehaviour
     {
         var tempColor = Hurt.color;
         tempColor.a = 1 - (player.health / 100);
-        print("health alpha: " + (1 - (player.health / 100)));
         Hurt.color = tempColor;
         PHealthBar.fillAmount = player.health / player.maxHealth;
     }
