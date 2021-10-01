@@ -19,7 +19,7 @@ public class MonsterGeneration : MonoBehaviour
     [Header("Body Parts")]
     public GameObject torso;
 
-    int RandomRange(int min, int max)
+    public int RandomRange(int min, int max)
     {
         return Random.Range(min, max);
     }
@@ -101,19 +101,9 @@ public class MonsterGeneration : MonoBehaviour
         this.transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    string GenerateName(List<string> nameSyllables)
-    {
-        string name1 = nameSyllables[RandomRange(0, nameSyllables.Count)];
-        string name2 = nameSyllables[RandomRange(0, nameSyllables.Count)];
-        string name3 = nameSyllables[RandomRange(0, nameSyllables.Count)];
-
-        return name1 + name2 + name3;
-    }
-
     void Start()
-    {    
-        // STAGE 0) Create monster name
-        GetComponent<MonsterDetails>().monsterName = GenerateName(GetComponent<MonsterDetails>().nameSyllables);
+    {   
+        // STAGE 0) Assign monster name
         gameObject.name = GetComponent<MonsterDetails>().monsterName;
 
         // STAGE 1) Load ALL Body parts up into the array
