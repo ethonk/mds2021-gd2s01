@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     // Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange = 50f;
+    public float walkPointRange;
 
     // Attacking
     public float timeBetweenAttacks = 2f;
@@ -79,6 +79,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Physics.Raycast(-walkPoint, -transform.up, 2f, groundLayer))
         {
+            print("found walkpoint!");
             walkPointSet = true;
         }
     }
