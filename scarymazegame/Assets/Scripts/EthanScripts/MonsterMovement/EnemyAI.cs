@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,11 +7,12 @@ using TMPro;
 public class EnemyAI : MonoBehaviour
 {
     //audio
-    AudioSource audioData;
+    public AudioClip monsterCry;
 
     public NavMeshAgent agent;
 
     public Transform player;
+    public Transform playerBait;
 
     public LayerMask groundLayer, playerLayer;
 
@@ -48,7 +49,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
         //Check for sigyht and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
@@ -109,11 +110,12 @@ public class EnemyAI : MonoBehaviour
     
     private void ChasePlayer()
     {
-        audioData = GetComponent<AudioSource>();
-        if (!audioData.isPlaying)
+        // Play monster cry
+        if (!GetComponent<AudioSource>().isPlaying)
         {
-            audioData.Play();
+            GetComponent<AudioSource>().PlayOneShot(monsterCry);
         }
+
         agent.SetDestination(player.position);
     }
 
