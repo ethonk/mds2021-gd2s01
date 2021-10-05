@@ -83,8 +83,6 @@ public class Pickup : MonoBehaviour
         rb.isKinematic = false;
         col.isTrigger = false;
 
-        // Weapon carries momentum of player
-        rb.velocity = player.GetComponent<Rigidbody>().velocity;
         // Add force
         rb.AddForce(cam.forward * dropForwardForce, ForceMode.Impulse);
         rb.AddForce(cam.up * dropUpwardForce, ForceMode.Impulse);

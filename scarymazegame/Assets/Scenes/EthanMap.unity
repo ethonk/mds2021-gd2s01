@@ -239,110 +239,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1619192418}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &822768078 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4813890733977364009, guid: 038230923932c2f48a1b8ff2d7125f4c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1633298573}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &822768083
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822768078}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: a19da91dc47476e498bf5d1b359fd6a9,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 33565e56bbdf8494f8f307f72e8d0a3b, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!1 &917078733
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -689,8 +585,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca262627e413944dac02b1325acd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterCry: {fileID: 0}
   agent: {fileID: 1474880525}
   player: {fileID: 305777599}
+  playerBait: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -1384,10 +1282,9 @@ MonoBehaviour:
   weaponContainer: {fileID: 2103504184}
   cam: {fileID: 83728364}
   pickupRange: 4
-  dropForwardForce: 60
-  dropUpwardForce: 21
+  dropForwardForce: 5
+  dropUpwardForce: 5
   equipped: 1
---- !u!114 &1981386617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1399,6 +1296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb559816a33e2c146af4154cad1baf1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 1
+  hitCooldown: 1.5
+  equipSound: {fileID: 8300000, guid: 38900769f44f7034599d04553a408a0d, type: 3}
+  attackSound: {fileID: 8300000, guid: a1ce69d11412a78408cee7b000e90bae, type: 3}
 --- !u!82 &1981386619
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1410,8 +1311,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: a19da91dc47476e498bf5d1b359fd6a9,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 38900769f44f7034599d04553a408a0d, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1540,6 +1441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb559816a33e2c146af4154cad1baf1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUse: 1
+  hitCooldown: 0
+  equipSound: {fileID: 0}
+  attackSound: {fileID: 0}
 --- !u!1 &2121325009
 GameObject:
   m_ObjectHideFlags: 0
