@@ -27,11 +27,13 @@ namespace Interact
         #endregion 
 
         #region Classes
-            public void OnInteract()
+            public virtual void OnInteract()
             {
                 Debug.Log("INTERACTED: " + gameObject.name);
             }
         #endregion
     }
 }
+
+
 
