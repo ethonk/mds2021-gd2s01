@@ -114,8 +114,8 @@ namespace Interact
                         m_interacting = false;
                     }
                 }
-                
             }
+
         #endregion
     }
 }
