@@ -13,8 +13,7 @@ namespace Interact
             public bool holdInteract;
             public bool multipleUse;
             public bool isInteractible;
-
-        public Item item;
+            public Item item;
 
 
 
