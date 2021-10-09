@@ -60,7 +60,6 @@ namespace Interact
                     {
                         if(interactionData.IsEmpty()) // if the interactible data is empty / if there is a slot for an interactible
                         {
-
                             interactionData.Interactible = _interactible; // interaction data is set to this new interactible
                             uiPanel.SetTooltip(_hitInfo.transform.gameObject.name); // sets UI to whatever the name of the gameObject the raycast gets is
                         }
