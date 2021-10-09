@@ -1,11 +1,23 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-
-[CreateAssetMenu]                       //Allows us to create an item asset under the create tab -Needed for when you use ScriptableObject
-public class Item : ScriptableObject    //^^^
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+public class Item : MonoBehaviour
 {
-    public string ItemName;
-    public Sprite Icon; 
+    public Category ItemType;
+    new public string name = "New Item";
+    public Sprite icon = null;
+    public bool isDefaultItem = false;
 
 }
+
+public enum Category
+{
+    Weapon,
+    Craftable,
+    Tools,
+    Resource
+
+};
 

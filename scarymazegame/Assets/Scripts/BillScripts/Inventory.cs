@@ -1,72 +1,58 @@
-﻿using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] List<Item> items;
-    [SerializeField] Transform itemsParent;
-    [SerializeField] ItemSlot[] itemSlots;
+    #region Singleton
+    public static Inventory instance;                                       //static inventory called instance -variable shared by all instances of a class
 
-    public event Action<Item> OnItemRightClickEvent;
-
-    private void Awake()
+    void Awake()                                                    // Upon start we making the instance = this (Means that every instance can access this inv)
     {
-        for (int i = 0; i < itemSlots.Length; i++)
+        if (instance != null)
         {
-            itemSlots[i].OnRightClickEvent += OnItemRightClickEvent;
+            Debug.LogWarning("More than one instance of inv found!");
+            return;
         }
+        instance = this;
     }
+    #endregion                                                                                                                  
 
-    private void OnValidate()
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallBack;
+
+    public int invSlotSpace = 10;
+
+    //ItemDefinition is under a scriptable object under ItemDefinition.cs and is an ingame item 
+    public List<Item> items = new List<Item>();
+
+    public bool Add (Item item)
     {
-        if (itemsParent != null)
-            itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
-        RefreshUI();
-    }
-
-    private void RefreshUI()
-    {
-        int i = 0;
-        for (; i < items.Count && i < itemSlots.Length; i++)        //Every item we have this will assign it to an item slot
+        if (!item.isDefaultItem)
         {
-            itemSlots[i].Item = items[i];
-        }
-
-        for (; i < itemSlots.Length; i++)                           //For every item slot that is empty this will set the item to null
-        {
-            itemSlots[i].Item = null;
-        }
-    }
-
-    public bool AddItem(Item item)                                  //Adding item check full or not
-    {
-        if (IsFull())
-        {
-            return false;
-        }
-        else 
-        {
+            if (items.Count >= invSlotSpace)
+            {
+                Debug.Log("Not enough space in inventory");
+                return false;
+            }
             items.Add(item);
-            RefreshUI();
-            return true;
+
+            if (onItemChangedCallBack != null)
+            {
+                onItemChangedCallBack.Invoke();                                   //triggering the onItemChagnedCallBack
+            }
+
         }
+        return true;
     }
 
-    public bool RemoveItem(Item item)                               //Removing items
+    public void Remove (Item item)
     {
-        if (items.Remove(item))
+        items.Remove(item);
+
+        if (onItemChangedCallBack != null)
         {
-            RefreshUI();
-            return true;
+            onItemChangedCallBack.Invoke();                                   //triggering the onItemChagnedCallBack
         }
-        return false;
     }
-
-    public bool IsFull()                                        //Checks if inv is full by counting if there are more or equal amounts items than the itemSlots
-    {
-        return items.Count >= itemSlots.Length;
-
-    }
-
 }
