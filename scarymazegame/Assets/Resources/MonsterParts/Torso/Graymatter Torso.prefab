@@ -1078,7 +1078,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7732528485240643598}
-  - component: {fileID: 4681124596791383803}
+  - component: {fileID: -2642739783818619851}
+  - component: {fileID: -5337657138920012261}
   m_Layer: 0
   m_Name: Graymatter Torso
   m_TagString: Untagged
@@ -1103,7 +1104,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4681124596791383803
+--- !u!64 &-2642739783818619851
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732528485240643599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!33 &-5337657138920012261
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
