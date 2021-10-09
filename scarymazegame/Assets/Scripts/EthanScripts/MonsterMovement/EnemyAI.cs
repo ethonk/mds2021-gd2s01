@@ -6,38 +6,45 @@ using TMPro;
 
 public class EnemyAI : MonoBehaviour
 {
-    //audio
+    [Header("Sounds")]
     public AudioClip monsterCry;
 
+    [Header("Player and Agent")]
     public NavMeshAgent agent;
-
     public Transform player;
-    public Transform playerBait;
 
+    [Header("Layer Masks")]
     public LayerMask groundLayer, playerLayer;
 
 
-    // UI
+    [Header("UI Related")]
     public GameObject monsterNameLayout;
 
-
-    // Patroling
+    [Header("Patrol Variables")]
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    // Attacking
+    [Header("Attack Variables")]
     public float timeBetweenAttacks = 2f;
     bool alreadyAttacked;
 
-    // States
+    [Header("AI States")]
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange, playerInCoverageRange;
+
+    [Header("AI Variables")]
+    public Vector3 startPosition;
+    public float areaCoverage;
 
     private void Awake()
     {
+        // Initialize player and navmesh agent.
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        // Initialize starting position of monster.
+        startPosition = transform.position;
     }
 
     #region == FUNCTIONS ==
@@ -50,24 +57,28 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {   
-        //Check for sigyht and attack range
+        //Check for sight, attack and coverage range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        playerInCoverageRange = Physics.CheckSphere(startPosition, areaCoverage, playerLayer);
 
         if (!playerInSightRange && !playerInAttackRange)                                                        // Player is NOT in sight range and NOT attack range, Patrol.
         {
-            print("No player detected...");
-            Patroling();
+            MoveToStart();
+            //Patroling();
         }
         if (playerInSightRange && !playerInAttackRange && !player.GetComponent<CharacterMotor>().playerLock)     // Player IS in sight range and NOT in attack range, Chase.
         {
-            print("Player detected!");
             ShowMonsterNameUI();
             ChasePlayer();
         }
         if (playerInAttackRange && playerInSightRange && !player.GetComponent<CharacterMotor>().playerLock)      // Player IS in sight range and IS in attack range, Attack.
         {
             AttackPlayer();
+        }
+        if (!playerInCoverageRange)                                                                              // Player IS NOT in monster's coverage.
+        {
+            MoveToStart();
         }
     }
 
@@ -82,9 +93,14 @@ public class EnemyAI : MonoBehaviour
 
         if (Physics.Raycast(-walkPoint, -transform.up, 2f, groundLayer))
         {
-            print("found walkpoint!");
             walkPointSet = true;
         }
+    }
+
+    private void MoveToStart()
+    {
+        print("Left coverage range of " + GetComponent<MonsterDetails>().name + "!");
+        agent.SetDestination(startPosition);
     }
 
     private void Patroling()
@@ -92,13 +108,11 @@ public class EnemyAI : MonoBehaviour
         // Find a walk point if walk point is not set.
         if (!walkPointSet)
         {
-            print("search walk point");
             SearchWalkPoint();
         }
         // If set, set the AI's next destination to walk point.
         if (walkPointSet)
         {
-            print("walking to point");
             agent.SetDestination(walkPoint);
         }
 
@@ -132,7 +146,6 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             GetComponent<Attacks>().EatAttack(player.transform, transform.Find("Torso").Find("BodyParts").Find("Head").Find("EatPart"));
-            print("damage player");
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -146,11 +159,16 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        // Visualize Attack and Sightrange.
+        // == DRAWING GIZMOS FOR SCENE VIEW ==
+        // Attack range
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+        // Sight range
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        // Area coverage
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, areaCoverage);
     }
     #endregion
 }
