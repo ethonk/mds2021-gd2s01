@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Interact
 {
     public class InteractionController : MonoBehaviour
@@ -10,6 +11,10 @@ namespace Interact
             [Header ("Data")]
             public InteractionInputData interactionInputData;
             public InteractionData interactionData;
+            
+            [Space]
+            [Header ("UI")]
+            [SerializeField] private InteractionUI uiPanel;
 
             [Space]
             [Header ("Ray Settings")]
@@ -55,19 +60,24 @@ namespace Interact
                     {
                         if(interactionData.IsEmpty()) // if the interactible data is empty / if there is a slot for an interactible
                         {
+
                             interactionData.Interactible = _interactible; // interaction data is set to this new interactible
+                            uiPanel.SetTooltip(_hitInfo.transform.gameObject.name); // sets UI to whatever the name of the gameObject the raycast gets is
                         }
                         else // if there is an interactible in the interactible slot
                         {
                             if(!interactionData.isSameInteractible(_interactible)) // check if its not the same
                             {
                                 interactionData.Interactible = _interactible; // override the current interactible data
+                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.name); // same thing
                             }
                         }
                     }
                 }
                 else // if we don't hit anything
                 {
+                    uiPanel.HideBar();  // hides UI
+                    uiPanel.ResetUI();  // Resets UI
                     interactionData.ResetData();
                 }
 
@@ -90,6 +100,7 @@ namespace Interact
                 {
                     m_interacting = false;
                     m_holdTimer = 0f;
+                    uiPanel.HideBar();  // hides when interact key is released
                 }
 
                 if(m_interacting)
@@ -100,9 +111,13 @@ namespace Interact
 
                     if(interactionData.Interactible.HoldInteract)
                     {
+                        uiPanel.ShowBar();  // only shows bar in HoldInteract
                         m_holdTimer += Time.deltaTime;
 
-                        if(m_holdTimer >= interactionData.Interactible.HoldDuration)
+                        float heldPercentage = m_holdTimer / interactionData.Interactible.HoldDuration;
+                        uiPanel.UpdateProgressBar(heldPercentage);
+
+                        if(heldPercentage > 1f)
                         {
                             interactionData.Interact();
                             m_interacting = false;
