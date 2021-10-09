@@ -80,8 +80,9 @@ MonoBehaviour:
   attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
+  playerInCoverageRange: 0
   startPosition: {x: 0, y: 0, z: 0}
-  areaCoverage: 0
+  areaCoverage: 150
 --- !u!114 &1546211797743886681
 MonoBehaviour:
   m_ObjectHideFlags: 0
