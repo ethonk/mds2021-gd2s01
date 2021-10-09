@@ -1434,6 +1434,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 0
   isInteractible: 1
+  item: {fileID: 0}
 --- !u!1 &497123435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2107,6 @@ MonoBehaviour:
     type: 2}
   interactionData: {fileID: 11400000, guid: debab3b342ca15e469d53e7dbb5f1452, type: 2}
   uiPanel: {fileID: 1982490922}
-  progressBar: {fileID: 1549028655}
   rayDistance: 5
   raySphereRadius: 0.3
   interactibleLayer:
@@ -2878,6 +2878,7 @@ GameObject:
   - component: {fileID: 1655001123}
   - component: {fileID: 1655001122}
   - component: {fileID: 1655001121}
+  - component: {fileID: 1655001126}
   m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
@@ -2901,6 +2902,7 @@ MonoBehaviour:
   holdInteract: 1
   multipleUse: 0
   isInteractible: 1
+  item: {fileID: 1655001126}
 --- !u!135 &1655001122
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2977,6 +2979,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1655001126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655001120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77b98b8fd83a32418aae60fd7a98ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemType: 0
+  name: New Item
+  icon: {fileID: 0}
+  isDefaultItem: 0
 --- !u!1 &1862628236
 GameObject:
   m_ObjectHideFlags: 0
