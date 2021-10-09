@@ -5,13 +5,12 @@ using UnityEngine;
 public class TorchControl : MonoBehaviour
 {
 
-    public Light m_Torch;
+    public GameObject m_Torch;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Torch = GetComponent<Light>();
-        m_Torch.enabled = false;
+        m_Torch.SetActive(true);
     }
 
     // Update is called once per frame
@@ -19,7 +18,7 @@ public class TorchControl : MonoBehaviour
     {
        if (Input.GetKeyDown(KeyCode.F))
         {
-            m_Torch.enabled = !m_Torch.enabled;
+            m_Torch.SetActive(!m_Torch.activeInHierarchy);
         }
     }
 }

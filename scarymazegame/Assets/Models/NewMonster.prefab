@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8914431702676956527}
   - component: {fileID: 3409242580963582278}
-  - component: {fileID: 1546211797743886681}
   - component: {fileID: 1111963009}
+  - component: {fileID: 1546211797743886681}
   - component: {fileID: 3116224401119409415}
   - component: {fileID: 1111963012}
   - component: {fileID: 822768083}
@@ -51,6 +51,37 @@ MonoBehaviour:
   monsterName: unknown
   monsterType: unknown
   nameSyllables: []
+--- !u!114 &1111963009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813890733977364009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca262627e413944dac02b1325acd155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterCry: {fileID: 8300000, guid: 33565e56bbdf8494f8f307f72e8d0a3b, type: 3}
+  agent: {fileID: 1111963012}
+  player: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  monsterNameLayout: {fileID: 0}
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  timeBetweenAttacks: 0
+  sightRange: 50
+  attackRange: 10
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  startPosition: {x: 0, y: 0, z: 0}
+  areaCoverage: 0
 --- !u!114 &1546211797743886681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,36 +100,6 @@ MonoBehaviour:
   headPrefabs: []
   extraPrefabs: []
   torso: {fileID: 0}
---- !u!114 &1111963009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4813890733977364009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca262627e413944dac02b1325acd155, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterCry: {fileID: 8300000, guid: 33565e56bbdf8494f8f307f72e8d0a3b, type: 3}
-  agent: {fileID: 1111963012}
-  player: {fileID: 0}
-  playerBait: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  monsterNameLayout: {fileID: 0}
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0
-  sightRange: 50
-  attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
 --- !u!114 &3116224401119409415
 MonoBehaviour:
   m_ObjectHideFlags: 0
