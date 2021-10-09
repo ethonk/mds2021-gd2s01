@@ -200,7 +200,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8114227558395309737}
   - component: {fileID: -6793608133714222441}
-  - component: {fileID: 6889855357119580221}
   m_Layer: 0
   m_Name: Graymatter Arm
   m_TagString: Untagged
@@ -224,20 +223,6 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &-6793608133714222441
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6888343534290075241}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
---- !u!64 &6889855357119580221
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

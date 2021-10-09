@@ -56,10 +56,12 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerInSightRange && !playerInAttackRange)                                                        // Player is NOT in sight range and NOT attack range, Patrol.
         {
+            print("No player detected...");
             Patroling();
         }
         if (playerInSightRange && !playerInAttackRange && !player.GetComponent<CharacterMotor>().playerLock)     // Player IS in sight range and NOT in attack range, Chase.
         {
+            print("Player detected!");
             ShowMonsterNameUI();
             ChasePlayer();
         }
