@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange;
 
     [Header("Attack Variables")]
-    public float timeBetweenAttacks = 2f;
+    public float timeBetweenAttacks;
     bool alreadyAttacked;
 
     [Header("AI States")]
@@ -55,6 +55,11 @@ public class EnemyAI : MonoBehaviour
         monsterNameLayout.transform.Find("MonsterName").GetComponent<TextMeshProUGUI>().text = GetComponent<MonsterDetails>().monsterName;
     }
 
+    void HideMonsterNameUI()
+    {
+        monsterNameLayout.SetActive(false);
+    }
+
     private void Update()
     {   
         //Check for sight, attack and coverage range
@@ -79,6 +84,7 @@ public class EnemyAI : MonoBehaviour
         if (!playerInCoverageRange)                                                                              // Player IS NOT in monster's coverage.
         {
             MoveToStart();
+            HideMonsterNameUI();
         }
     }
 
@@ -99,7 +105,6 @@ public class EnemyAI : MonoBehaviour
 
     private void MoveToStart()
     {
-        print("Left coverage range of " + GetComponent<MonsterDetails>().name + "!");
         agent.SetDestination(startPosition);
     }
 

@@ -65,9 +65,12 @@ public class CharacterMotor : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                m_Velocity.x = inputMove.x * m_MoveSpeed * m_SprintSpeed;
-                m_Velocity.z = inputMove.z * m_MoveSpeed * m_SprintSpeed;
-                isSprinting = true;
+                if (GetComponent<PlayerScript>().stamina > 0.0f)
+                {
+                    m_Velocity.x = inputMove.x * m_MoveSpeed * m_SprintSpeed;
+                    m_Velocity.z = inputMove.z * m_MoveSpeed * m_SprintSpeed;
+                    isSprinting = true;
+                }
             }
             else
             {
@@ -95,6 +98,25 @@ public class CharacterMotor : MonoBehaviour
             {
                 m_Velocity.x = 0.0f;
                 m_Velocity.z = 0.0f;
+            }
+
+            // Sprint handler
+            if (isSprinting)
+            {
+                // Loop sprint sound
+                if (!GetComponent<AudioSource>().isPlaying)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(GetComponent<PlayerScript>().sprintSound);
+                }
+
+                GetComponent<PlayerScript>().stamina -= 0.1f;
+            }
+            else
+            {
+                if (GetComponent<PlayerScript>().stamina <GetComponent<PlayerScript>().stamina_max)
+                {
+                    GetComponent<PlayerScript>().stamina += 0.2f;
+                }
             }
 
             // Interactive controls

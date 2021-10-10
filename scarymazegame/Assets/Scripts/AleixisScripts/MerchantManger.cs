@@ -13,6 +13,9 @@ public class MerchantManger : MonoBehaviour
     [Header ("Variables")]
     public float DetectRadius = 5f;
 
+    [Header("Audio")]
+    public AudioClip teleportIn;
+
 
     void OnDrawGizmosSelected()
     {

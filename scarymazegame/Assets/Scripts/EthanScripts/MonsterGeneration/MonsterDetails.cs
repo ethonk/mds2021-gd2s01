@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class MonsterDetails : MonoBehaviour
 {
+    [Header("Monster Details")]
     public string monsterName = "unknown";
     public string monsterType = "unknown";
-
-
     public List<string> nameSyllables; // Monster name syllables
 
+    [Header("Audio")]
+    public AudioClip eatSound;
+    public AudioClip spitSound;
     
     public void LoadNames()
     { 

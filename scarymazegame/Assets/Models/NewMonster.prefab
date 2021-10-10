@@ -51,6 +51,8 @@ MonoBehaviour:
   monsterName: unknown
   monsterType: unknown
   nameSyllables: []
+  eatSound: {fileID: 8300000, guid: dff0c48c15088d1409c40c1da1131663, type: 3}
+  spitSound: {fileID: 8300000, guid: e9ed8b84ba75f3d4db2d2b063bb84041, type: 3}
 --- !u!114 &1111963009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca262627e413944dac02b1325acd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterCry: {fileID: 8300000, guid: 33565e56bbdf8494f8f307f72e8d0a3b, type: 3}
+  monsterCry: {fileID: 8300000, guid: c88c160b4a3295946ac6e1f740009359, type: 3}
   agent: {fileID: 1111963012}
   player: {fileID: 0}
   groundLayer:
@@ -75,8 +77,8 @@ MonoBehaviour:
   monsterNameLayout: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
-  timeBetweenAttacks: 0
-  sightRange: 50
+  timeBetweenAttacks: 10
+  sightRange: 70
   attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
