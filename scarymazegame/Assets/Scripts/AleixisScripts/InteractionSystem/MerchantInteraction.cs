@@ -12,7 +12,7 @@ namespace Interact
         {
             base.OnInteract();
 
-           FindObjectOfType<DialogueSystem>().StartDialogue(dialogue);
+            FindObjectOfType<DialogueSystem>().StartDialogue(dialogue);
         }
     }
 }

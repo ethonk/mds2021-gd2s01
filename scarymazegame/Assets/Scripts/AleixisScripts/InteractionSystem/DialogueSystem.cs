@@ -8,9 +8,14 @@ namespace Interact
 {
     public class DialogueSystem : MonoBehaviour
     {
+        [Header("Audio")]
+        public AudioClip BeginTalk;
 
+        public GameObject dialogueObject;
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI dialogueText;
+
+        public bool playAudio;
 
         private Queue<string> sentences;
 
@@ -21,6 +26,17 @@ namespace Interact
 
         public void StartDialogue(Dialogue dialogue)
         {
+            if (playAudio)
+            {
+                GetComponent<AudioSource>().PlayOneShot(BeginTalk);
+            }
+            
+            // Unlock cursor
+            Cursor.lockState = CursorLockMode.None;
+
+            // Show dialogue box
+            dialogueObject.SetActive(true);
+
             nameText.text = dialogue.name;
 
             sentences.Clear();
@@ -48,8 +64,13 @@ namespace Interact
 
         void EndDialogue()
         {
+            // hide dialogue box
+            dialogueObject.SetActive(false);
 
             Debug.Log("End of conversation");
+
+            // Lock cursor
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

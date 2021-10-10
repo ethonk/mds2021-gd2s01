@@ -21,6 +21,9 @@ public class RandomSpawning : MonoBehaviour
             ElapsedTime = 0.0f;
             Merchant.transform.position = other.transform.position; //Takes the position of the merchant then transforms it (changes it) to the transform of the selected position
             Physics.SyncTransforms(); //Syncs transforms so that nothing breaks, unity does a lot of the damage control
+
+            // Play monster cry
+            GetComponent<AudioSource>().PlayOneShot(Merchant.GetComponent<MerchantManger>().teleportIn);
         }
     }
 

@@ -1,11 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
     public float health = 100;
     public float maxHealth = 100;
+    public float stamina = 100;
+    public float stamina_max = 100;
+
+    [Header("UI")]
+    public Slider staminaSlider;
+
+    [Header("Audio")]
+    public AudioClip waterEnter;
+    public AudioClip waterExit;
+    public AudioClip sprintSound;
+    public AudioClip pain_light;
+    public AudioClip pain_heavy;
 
     public void TakeDamage(float _damage)
     {
@@ -14,9 +28,18 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        // Update stamina bar
+        staminaSlider.value = stamina/stamina_max;
+
+        // Death check
+        if (health <= 0)
         {
-            health -= 1;
+            SceneManager.LoadScene("GameOver");
         }
+    }
+
+    public void PlayAudio(AudioClip audio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(audio);
     }
 }
