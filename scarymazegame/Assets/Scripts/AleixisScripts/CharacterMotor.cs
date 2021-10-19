@@ -24,8 +24,36 @@ public class CharacterMotor : MonoBehaviour
     public float Range = 100f;
     public bool playerLock = false;
 
+
+    public void SwitchToInventory()
+    {
+        GetComponent<PlayerScript>().mainCamera.gameObject.SetActive(!GetComponent<PlayerScript>().mainCamera.gameObject.activeInHierarchy);
+        GetComponent<PlayerScript>().inventoryCamera.gameObject.SetActive(!GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy);
+
+        // Determine MouseLock.
+        Cursor.visible = GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy;
+        Cursor.lockState = GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
+
+        // Load Inventory
+        if (GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy)
+        {
+            GetComponent<PlayerInventory>().LoadBackpack();
+            playerLock = true;
+        }
+        else
+        {
+            playerLock = false;
+        }
+    }
+
     void Update()
     {
+        // Switch to inventory
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SwitchToInventory();
+        }
+
         if (!playerLock)
         {
             float x = 0.0f;

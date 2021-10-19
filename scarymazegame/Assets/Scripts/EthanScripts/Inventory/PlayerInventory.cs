@@ -5,20 +5,12 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [Header("Backpack")]
+    public GameObject backpackModel;
     public List<GameObject> backpack;
     public List<int> backpackItemCount;
 
     [Header("Backpack values")]
     public int maxSpace = 6;
-
-    public void Start()
-    {
-        for (int i = 0; i < maxSpace; i++)
-        {
-            backpack.Add(null);
-            backpackItemCount.Add(0);
-        }
-    }
 
     public bool AddItem(GameObject item)
     {
@@ -46,5 +38,48 @@ public class PlayerInventory : MonoBehaviour
 
         print("Item failed to add to inventory.");
         return false;
+    }
+
+    public void LoadInSlot(GameObject item, Transform slot)      // Add a child inside slot
+    {
+        var newItem = Instantiate(item);                // Create item
+        newItem.transform.position = slot.position;     // Set position
+        newItem.transform.SetParent(slot);              // Set parent
+    }
+
+    public void DestroyInSlot(Transform slot)   // Destroy all children in a slot.
+    {
+        if (slot.GetComponentsInChildren<Transform>().Length > 0)   // If slot isn't empty.
+        {
+            foreach (Transform child in slot)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+    }
+
+    public void LoadBackpack()
+    {
+        for (int i = 0; i < maxSpace; i++)
+        {
+            if (backpack[i] != null)
+            {
+                DestroyInSlot(backpackModel.transform.Find("Slot " + i));                                       // Destroy item inside
+                LoadInSlot(backpack[i], backpackModel.transform.Find("Slot " + i));         // Load item in slot
+            }
+            else
+            {
+                DestroyInSlot(backpackModel.transform.Find("Slot " + i));  // Destroy item inside
+            }
+        }
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < maxSpace; i++)
+        {
+            backpack.Add(null);
+            backpackItemCount.Add(0);
+        }
     }
 }
