@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Header("Player Values")]
     public float health = 100;
     public float maxHealth = 100;
     public float stamina = 100;
@@ -14,12 +15,17 @@ public class PlayerScript : MonoBehaviour
     [Header("UI")]
     public Slider staminaSlider;
 
+    [Header("Cameras")]
+    public Camera mainCamera;
+    public Camera inventoryCamera;
+
     [Header("Audio")]
     public AudioClip waterEnter;
     public AudioClip waterExit;
     public AudioClip sprintSound;
     public AudioClip pain_light;
     public AudioClip pain_heavy;
+    
 
     public void TakeDamage(float _damage)
     {
