@@ -385,9 +385,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4216341558583236968}
-  - component: {fileID: 4216341558583236969}
   - component: {fileID: 7566085283718489273}
   - component: {fileID: 2479046402444362385}
+  - component: {fileID: 4216341558583236969}
   - component: {fileID: 4216341558583236970}
   - component: {fileID: 4216341558583236971}
   - component: {fileID: 1195001850}
@@ -417,6 +417,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7566085283718489273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216341558583236973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b62f05cc6aec234fa5a38ad3a559e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  stamina: 100
+  stamina_max: 100
+  staminaSlider: {fileID: 0}
+  mainCamera: {fileID: 4216341556742346033}
+  inventoryCamera: {fileID: 0}
+  waterEnter: {fileID: 8300000, guid: e361317325e565f40a3e88d5047e694f, type: 3}
+  waterExit: {fileID: 8300000, guid: 59e02742eb4baf547a0b808d512e5912, type: 3}
+  sprintSound: {fileID: 8300000, guid: a990a6658a745f2478595667b8c5d95c, type: 3}
+  pain_light: {fileID: 0}
+  pain_heavy: {fileID: 0}
+--- !u!114 &2479046402444362385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216341558583236973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e0c9d73911a049bdd2821a4ff8a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backpackModel: {fileID: 0}
+  backpack: []
+  backpackItemCount: 
+  maxSpace: 6
 --- !u!143 &4216341558583236969
 CharacterController:
   m_ObjectHideFlags: 0
@@ -435,43 +475,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7566085283718489273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4216341558583236973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b62f05cc6aec234fa5a38ad3a559e32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  stamina: 100
-  stamina_max: 100
-  staminaSlider: {fileID: 0}
-  waterEnter: {fileID: 8300000, guid: e361317325e565f40a3e88d5047e694f, type: 3}
-  waterExit: {fileID: 8300000, guid: 59e02742eb4baf547a0b808d512e5912, type: 3}
-  sprintSound: {fileID: 8300000, guid: a990a6658a745f2478595667b8c5d95c, type: 3}
-  pain_light: {fileID: 0}
-  pain_heavy: {fileID: 0}
---- !u!114 &2479046402444362385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4216341558583236973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503e0c9d73911a049bdd2821a4ff8a9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backpack: []
-  backpackItemCount: 
-  maxSpace: 6
 --- !u!114 &4216341558583236970
 MonoBehaviour:
   m_ObjectHideFlags: 0
