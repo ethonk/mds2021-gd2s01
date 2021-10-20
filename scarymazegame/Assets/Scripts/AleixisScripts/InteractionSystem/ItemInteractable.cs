@@ -14,10 +14,7 @@ namespace Interact
             base.OnInteract();
 
             // Add to inventory
-            if (player.AddItem(gameObject))
-            {
-                // Destroy on interact.
-            }
+            player.AddItem(gameObject);
         }
     }
 }

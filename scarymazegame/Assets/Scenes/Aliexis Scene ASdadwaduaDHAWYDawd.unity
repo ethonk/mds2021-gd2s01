@@ -417,7 +417,6 @@ GameObject:
   - component: {fileID: 139525271}
   - component: {fileID: 139525270}
   - component: {fileID: 139525269}
-  - component: {fileID: 139525268}
   m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
@@ -425,22 +424,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &139525268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139525267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f77b98b8fd83a32418aae60fd7a98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemType: 0
-  name: SwordBlaster
-  icon: {fileID: 0}
-  isDefaultItem: 0
 --- !u!114 &139525269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +440,8 @@ MonoBehaviour:
   holdInteract: 1
   multipleUse: 0
   isInteractible: 1
-  item: {fileID: 139525268}
+  destroyObj: 1
+  player: {fileID: 0}
 --- !u!136 &139525270
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1455,6 +1439,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 0
   isInteractible: 1
+  destroyObj: 1
 --- !u!1 &497123435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2060,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 0
   isInteractible: 1
+  destroyObj: 0
   dialogue:
     name: Merchant
     sentences:
@@ -2617,8 +2603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7816ddcef21aff4ebec5f2d539c3b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeginTalk: {fileID: 0}
+  dialogueObject: {fileID: 0}
   nameText: {fileID: 1207868914}
   dialogueText: {fileID: 519410884}
+  playAudio: 0
 --- !u!1 &1039484068
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,6 +3120,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 0
   isInteractible: 1
+  destroyObj: 0
   dialogue:
     name: Merchant
     sentences:
@@ -3151,6 +3141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Merchant: {fileID: 1512308280}
   DetectRadius: 5
+  teleportIn: {fileID: 0}
 --- !u!136 &1512308277
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3709,13 +3700,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1655001120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f812353d28459eb47ada9415ca7c9fed, type: 3}
+  m_Script: {fileID: 11500000, guid: ded01875c27fb874884e057856cec41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   holdDuration: 5
   holdInteract: 1
   multipleUse: 0
   isInteractible: 1
+  destroyObj: 1
 --- !u!135 &1655001122
 SphereCollider:
   m_ObjectHideFlags: 0
