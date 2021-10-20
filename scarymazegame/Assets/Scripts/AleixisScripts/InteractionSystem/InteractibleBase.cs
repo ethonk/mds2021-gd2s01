@@ -13,6 +13,7 @@ namespace Interact
             public bool holdInteract;
             public bool multipleUse;
             public bool isInteractible;
+            public bool destroyObj;
 
 
 
@@ -26,6 +27,8 @@ namespace Interact
             public bool MultipleUse => multipleUse;
 
             public bool IsInteractible => isInteractible;
+
+            public bool DestroyObj => destroyObj;
         #endregion 
 
         #region Classes

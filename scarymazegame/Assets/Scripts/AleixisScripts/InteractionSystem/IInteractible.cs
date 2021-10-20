@@ -14,6 +14,8 @@ namespace Interact
 
         bool IsInteractible { get; }
 
+        bool DestroyObj { get; }
+
         void OnInteract(); // function for what happens when you interact
                            // empty method
     }

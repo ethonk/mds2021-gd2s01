@@ -28,7 +28,7 @@ namespace Interact
         void getInteractionInputData()
         {
             interactionInputData.InteractClicked = Input.GetKeyDown(KeyCode.E); // calls function when E is pressed
-            interactionInputData.InteractReleased = Input.GetKeyUp(KeyCode.E);  // effect can only be seen right now using Debug log
+            interactionInputData.InteractReleased = Input.GetKeyUp(KeyCode.E);  
         }
         
         #endregion

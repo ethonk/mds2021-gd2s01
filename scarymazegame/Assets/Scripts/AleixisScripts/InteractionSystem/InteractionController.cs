@@ -24,9 +24,9 @@ namespace Interact
 
             #region Private
                 private Camera m_Camera;
-
                 private bool m_interacting;
                 private float m_holdTimer = 0f;
+                RaycastHit _hit;
             #endregion
 
         #endregion
@@ -54,7 +54,8 @@ namespace Interact
 
                 if (_hitSomething) // self explanatory, if the ray hits something
                 {
-                    InteractibleBase _interactible = _hitInfo.transform.GetComponent<InteractibleBase>(); // checks if interacble has the component interactible base on it
+                    InteractibleBase _interactible = _hitInfo.transform.GetComponent<InteractibleBase>(); // checks if interactable has the component interactible base on it
+                    _hit = _hitInfo;
 
                     if(_interactible != null) // if the interactible is not null
                     {
@@ -81,6 +82,20 @@ namespace Interact
                 }
 
                 Debug.DrawRay(_ray.origin, _ray.direction * rayDistance, _hitSomething ? Color.green : Color.red);
+            }
+
+            bool CheckForDestroyObj()
+            {
+                if (interactionData.Interactible.DestroyObj)
+                {
+                    print("Bruh:");
+                    return true;
+                }
+                else
+                {
+                    print("Bruh2");
+                    return false;
+                }
             }
 
             void CheckForInteractibleInput()
@@ -118,14 +133,33 @@ namespace Interact
 
                         if(heldPercentage > 1f)
                         {
-                            interactionData.Interact();
-                            m_interacting = false;
+ 
+                            if (CheckForDestroyObj())
+                            {
+                                interactionData.Interact();
+                                Destroy(_hit.transform.gameObject);
+                                m_interacting = false;
+                            }
+                            else
+                            {
+                                interactionData.Interact();
+                                m_interacting = false;
+                            }
                         }
                     }
                     else
                     {
-                        interactionData.Interact();
-                        m_interacting = false;
+                        if (CheckForDestroyObj())
+                        {
+                            interactionData.Interact();
+                            Destroy(_hit.transform.gameObject);
+                            m_interacting = false;
+                        }
+                        else
+                        {
+                            interactionData.Interact();
+                            m_interacting = false;
+                        }
                     }
                 }
             }
