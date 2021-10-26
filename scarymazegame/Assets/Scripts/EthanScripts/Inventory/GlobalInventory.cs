@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+public class GlobalInventory : MonoBehaviour
 {
     [Header("Backpack")]
-    public GameObject backpackModel;
+    public GameObject backpackSlotContainer;
     public List<GameObject> backpack;
     public List<int> backpackItemCount;
 
     [Header("Backpack values")]
-    public int maxSpace = 6;
+    public int maxSpace;
 
     public bool AddItem(GameObject item)
     {
@@ -64,18 +64,21 @@ public class PlayerInventory : MonoBehaviour
         {
             if (backpack[i] != null)
             {
-                DestroyInSlot(backpackModel.transform.Find("Slot " + i));                                       // Destroy item inside
-                LoadInSlot(backpack[i], backpackModel.transform.Find("Slot " + i));         // Load item in slot
+                DestroyInSlot(backpackSlotContainer.transform.Find("Slot " + i));                   // Destroy item inside
+                LoadInSlot(backpack[i], backpackSlotContainer.transform.Find("Slot " + i));         // Load item in slot
             }
             else
             {
-                DestroyInSlot(backpackModel.transform.Find("Slot " + i));  // Destroy item inside
+                DestroyInSlot(backpackSlotContainer.transform.Find("Slot " + i));  // Destroy item inside
             }
         }
     }
 
     private void Start()
     {
+        // Allocate max space.
+        maxSpace = backpackSlotContainer.transform.childCount;
+
         for (int i = 0; i < maxSpace; i++)
         {
             backpack.Add(null);
