@@ -6,7 +6,7 @@ namespace Interact
 {
     public class ItemInteractable : InteractibleBase
     {
-        public PlayerInventory player;
+        public GlobalInventory player;
 
         public override void OnInteract()
         {
