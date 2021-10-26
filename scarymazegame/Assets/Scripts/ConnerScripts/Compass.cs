@@ -5,33 +5,81 @@ using UnityEngine;
 public class Compass : MonoBehaviour
 {
 
-    public Transform playertransform;
+    public GameObject playertransform;
     public GameObject[] Spawnpoints;
-    public float closestDistance;
-    public float Distance;
-    public float[] distance;
-    
+
+
+    public Vector3 NorthDir;
+    public Vector3[] distance;
+    public Vector3[] direction;
+
+    public GameObject Arrow;
+
+    public Quaternion SpawnerQ;
+
     void Start()
     {
         
-        playertransform = GameObject.FindWithTag("Player").transform;
+        playertransform = GameObject.FindWithTag("Player");
         Spawnpoints = GameObject.FindGameObjectsWithTag("Spawner");
-        closestDistance = 100.0f;
-        distance = new float[Spawnpoints.Length];
+        
+        
+        distance = new Vector3[Spawnpoints.Length];
+        direction = new Vector3[Spawnpoints.Length];
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        ChangeNorth();
         if (Spawnpoints.Length > 0)
         {
             for (int i = 0; i< Spawnpoints.Length; i++)
             {
-                distance[i] = Vector3.Distance(playertransform.position, Spawnpoints[i].transform.position);
-            }
-            
+                distance[i].x = Mathf.Abs(playertransform.transform.position.x - Spawnpoints[i].transform.position.x);
 
-           
+            }
+            if (distance[0].x < distance[1].x && distance[0].x < distance[2].x)
+            {
+                
+                //Point to distance 0
+                Vector3 Direction = Arrow.transform.position - Spawnpoints[0].transform.position;
+                SpawnerQ = Quaternion.LookRotation(Direction);
+                SpawnerQ.z = -SpawnerQ.y;
+                SpawnerQ.x = 0;
+                SpawnerQ.y = 0;
+
+                Arrow.transform.localRotation = SpawnerQ * Quaternion.Euler(NorthDir);
+
+
+            }
+            if (distance[1].x < distance[0].x && distance[1].x < distance[2].x)
+            {
+                //Point to distance 1
+                Vector3 Direction = Arrow.transform.position - Spawnpoints[0].transform.position;
+                SpawnerQ = Quaternion.LookRotation(Direction);
+                SpawnerQ.z = -SpawnerQ.y;
+                SpawnerQ.x = 0;
+                SpawnerQ.y = 0;
+
+                Arrow.transform.localRotation = SpawnerQ * Quaternion.Euler(NorthDir);
+
+            }
+            if (distance[2].x < distance[0].x && distance[2].x < distance[1].x)
+            {
+                //Point to distance 2
+                Vector3 Direction = Arrow.transform.position - Spawnpoints[0].transform.position;
+                SpawnerQ = Quaternion.LookRotation(Direction);
+                SpawnerQ.z = -SpawnerQ.y;
+                SpawnerQ.x = 0;
+                SpawnerQ.y = 0;
+
+                Arrow.transform.localRotation = SpawnerQ * Quaternion.Euler(NorthDir);
+
+            }
+
+
 
 
         }
@@ -41,10 +89,25 @@ public class Compass : MonoBehaviour
         }
         
     }
+    void ChangeNorth()
+    {
+        NorthDir.z = (playertransform.transform.eulerAngles.y) - 90;
+       
 
+    }
+    void ChangeCompassDirection()
+    {
+        //Vector3 Direction = Arrow.transform.position - direction[/*i*/].position;
+        //SpawnerQ = Quaternion.LookRotation(Direction);
+        //SpawnerQ.z = -SpawnerQ.y;
+        //SpawnerQ.x = 0;
+        //SpawnerQ.y = 0;
+
+        //Arrow.localRotation = SpawnerQ * Quaternion.Euler(NorthDir);
+    }
 
     void PointToClosest()
     {
-        Debug.Log(closestDistance);
+        
     }
 }
