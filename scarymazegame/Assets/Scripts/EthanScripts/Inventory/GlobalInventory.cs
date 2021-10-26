@@ -84,5 +84,8 @@ public class GlobalInventory : MonoBehaviour
             backpack.Add(null);
             backpackItemCount.Add(0);
         }
+        
+        AddItem(GetComponent<MerchantShop>().Item); 
+        LoadBackpack();
     }
 }

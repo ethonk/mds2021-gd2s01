@@ -7,12 +7,15 @@ namespace Interact
     public class MerchantInteraction : InteractibleBase
     {
         public Dialogue dialogue; 
+        public GameObject playerCam;
+        public GameObject merchantCam;
 
         public override void OnInteract()
         {
             base.OnInteract();
 
-            FindObjectOfType<DialogueSystem>().StartDialogue(dialogue);
+            playerCam.SetActive(!playerCam.activeInHierarchy);
+            merchantCam.SetActive(!merchantCam.activeInHierarchy);
         }
     }
 }
