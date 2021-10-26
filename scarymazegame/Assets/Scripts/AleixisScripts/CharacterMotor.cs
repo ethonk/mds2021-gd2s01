@@ -37,7 +37,7 @@ public class CharacterMotor : MonoBehaviour
         // Load Inventory
         if (GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy)
         {
-            GetComponent<PlayerInventory>().LoadBackpack();
+            GetComponent<GlobalInventory>().LoadBackpack();
             playerLock = true;
         }
         else
