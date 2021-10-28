@@ -31,7 +31,11 @@ public class EnemyAI : MonoBehaviour
 
     [Header("AI States")]
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange, playerInCoverageRange;
+    public bool playerInSightRange, playerInAttackRange, playerInCoverageRange; // Attacking based
+    public bool debuffed;
+
+    [Header("Monster Values")]
+    public float debuffCooldown;
 
     [Header("AI Variables")]
     public Vector3 startPosition;
@@ -49,6 +53,47 @@ public class EnemyAI : MonoBehaviour
 
     #region == FUNCTIONS ==
 
+    #region Trap Effects
+    public void Debuff_Damage(float damage)
+    {
+        if (!debuffed)
+        {
+            // Start cooldown
+            StartCoroutine(DebuffCooldown(debuffCooldown));
+
+            // Apply Damage
+            GetComponent<MonsterDetails>().health -= damage;
+        }
+    }
+
+    public IEnumerator Debuff_Slow(float damage, float slowPercentage, float slowTime)
+    {
+        // Apply debuff cooldown
+        if (!debuffed)
+        {
+            // Start cooldown
+            StartCoroutine(DebuffCooldown(debuffCooldown));
+
+            // Apply Damage
+            GetComponent<MonsterDetails>().health -= damage;
+
+            // Apply Slow
+            GetComponent<MonsterDetails>().currentSpeed *= slowPercentage;
+            yield return new WaitForSeconds(slowTime);
+            GetComponent<MonsterDetails>().currentSpeed = GetComponent<MonsterDetails>().speed;
+        }
+
+
+    }
+    #endregion
+
+    public IEnumerator DebuffCooldown(float cooldown)
+    {
+        debuffed = true;
+        yield return new WaitForSeconds(cooldown);
+        debuffed = false;
+    }
+
     void ShowMonsterNameUI()
     {
         monsterNameLayout.SetActive(true);
@@ -62,6 +107,9 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {   
+        // Adapt speed
+        GetComponent<NavMeshAgent>().speed = GetComponent<MonsterDetails>().currentSpeed;
+
         //Check for sight, attack and coverage range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);

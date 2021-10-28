@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class TrapInteraction : MonoBehaviour
 {
-    
+    public enum TrapType {Normal, Slow, Infatuation, Elemental};
+    public enum TrapElement{None};
+
+    [Header("Trap Type")]
+    public TrapType trapType;
+    public TrapElement trapElement;
+
+    [Header("Trap Stats")]
+    public float damage;
+    public float slowMod;
+    public float slowDuration;
+
+    [Header("Attributes")]
     public Rigidbody rb;
     public BoxCollider col;
     public Transform player, TrapContainer, cam;
@@ -18,7 +30,7 @@ public class TrapInteraction : MonoBehaviour
 
 
     private void Start()
-    {
+    {   
         Activated = false;
         // Setup
         if (!equipped)
@@ -35,6 +47,23 @@ public class TrapInteraction : MonoBehaviour
             slotFullT = true;
         }
     }
+
+    public void OnTriggerEnter(Collider col)    // Trap and Monster interaction.
+    {
+        print(col.name);
+
+        switch(trapType)
+        {
+            case TrapType.Normal:
+                col.GetComponent<EnemyAI>().Debuff_Damage(damage);
+                break;
+
+            case TrapType.Slow:
+                StartCoroutine(col.GetComponent<EnemyAI>().Debuff_Slow(damage, slowMod, slowDuration));
+                break;
+        }
+    }
+
     private void Update()
     {
         Vector3 distanceToPlayer = player.position - transform.position;    // Get distance of weapon from player
