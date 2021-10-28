@@ -11,6 +11,11 @@ public class MonsterDetails : MonoBehaviour
     public string monsterType = "unknown";
     public List<string> nameSyllables; // Monster name syllables
 
+    [Header("Monster Stats")]
+    public float health;
+    public float speed;
+    public float currentSpeed;
+
     [Header("Audio")]
     public AudioClip eatSound;
     public AudioClip spitSound;
@@ -41,5 +46,7 @@ public class MonsterDetails : MonoBehaviour
     {
         LoadNames();    // Load index of name syllables.
         monsterName = GenerateName();   // Generate monster name
+
+        currentSpeed = speed;   // Initialize speed
     }
 }

@@ -51,6 +51,9 @@ MonoBehaviour:
   monsterName: unknown
   monsterType: unknown
   nameSyllables: []
+  health: 100
+  speed: 15
+  currentSpeed: 0
   eatSound: {fileID: 8300000, guid: dff0c48c15088d1409c40c1da1131663, type: 3}
   spitSound: {fileID: 8300000, guid: e9ed8b84ba75f3d4db2d2b063bb84041, type: 3}
 --- !u!114 &1111963009
@@ -83,6 +86,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   playerInCoverageRange: 0
+  debuffed: 0
   startPosition: {x: 0, y: 0, z: 0}
   areaCoverage: 150
 --- !u!114 &1546211797743886681
