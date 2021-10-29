@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -33,8 +33,9 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange, playerInCoverageRange; // Attacking based
     public bool debuffed;
+    public bool infatuated;
 
-    [Header("Monster Values")]
+    [Header("Trap Interaction Values")]
     public float debuffCooldown;
 
     [Header("AI Variables")]
@@ -54,7 +55,7 @@ public class EnemyAI : MonoBehaviour
     #region == FUNCTIONS ==
 
     #region Trap Effects
-    public void Debuff_Damage(float damage)
+    public void Debuff_Damage(float normalDamage)
     {
         if (!debuffed)
         {
@@ -62,11 +63,11 @@ public class EnemyAI : MonoBehaviour
             StartCoroutine(DebuffCooldown(debuffCooldown));
 
             // Apply Damage
-            GetComponent<MonsterDetails>().health -= damage;
+            GetComponent<MonsterDetails>().health -= normalDamage;
         }
     }
 
-    public IEnumerator Debuff_Slow(float damage, float slowPercentage, float slowTime)
+    public IEnumerator Debuff_Slow(float slowDamage, float slowPercentage, float slowTime)
     {
         // Apply debuff cooldown
         if (!debuffed)
@@ -75,16 +76,33 @@ public class EnemyAI : MonoBehaviour
             StartCoroutine(DebuffCooldown(debuffCooldown));
 
             // Apply Damage
-            GetComponent<MonsterDetails>().health -= damage;
+            GetComponent<MonsterDetails>().health -= slowDamage;
 
             // Apply Slow
             GetComponent<MonsterDetails>().currentSpeed *= slowPercentage;
             yield return new WaitForSeconds(slowTime);
             GetComponent<MonsterDetails>().currentSpeed = GetComponent<MonsterDetails>().speed;
         }
-
-
     }
+
+    public IEnumerator Debuff_Infatuation(float infatuationDamage, float infatuationTime)
+    {
+        // Apply debuff cooldown
+        if (!debuffed)
+        {
+            // Start cooldown
+            StartCoroutine(DebuffCooldown(debuffCooldown));
+
+            // Apply Damage
+            GetComponent<MonsterDetails>().health -= infatuationDamage;
+            
+            // Apply infatuation
+            infatuated = true;
+            yield return new WaitForSeconds(infatuationTime);
+            infatuated = false;
+        }
+    }
+
     #endregion
 
     public IEnumerator DebuffCooldown(float cooldown)
@@ -189,8 +207,9 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    private bool AttackPlayer()
     {
+        if (infatuated) return false;               // Fail attack if monster is infatuated
         // Make enemy not move while attacking.
         agent.SetDestination(transform.position);
         // Face enemy to the player.
@@ -203,6 +222,7 @@ public class EnemyAI : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+        return true;
     }
 
     private void ResetAttack()
