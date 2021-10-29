@@ -12,9 +12,15 @@ public class TrapInteraction : MonoBehaviour
     public TrapElement trapElement;
 
     [Header("Trap Stats")]
-    public float damage;
-    public float slowMod;
-    public float slowDuration;
+    
+    public float normalDamage;
+
+    public float slowDamage;
+    public float slowPercentage;
+    public float slowTime;
+    
+    public float infatuationDamage;
+    public float infatuationTime;
 
     [Header("Attributes")]
     public Rigidbody rb;
@@ -55,11 +61,15 @@ public class TrapInteraction : MonoBehaviour
         switch(trapType)
         {
             case TrapType.Normal:
-                col.GetComponent<EnemyAI>().Debuff_Damage(damage);
+                col.GetComponent<EnemyAI>().Debuff_Damage(normalDamage);
                 break;
 
             case TrapType.Slow:
-                StartCoroutine(col.GetComponent<EnemyAI>().Debuff_Slow(damage, slowMod, slowDuration));
+                StartCoroutine(col.GetComponent<EnemyAI>().Debuff_Slow(slowDamage, slowPercentage, slowTime));
+                break;
+
+            case TrapType.Infatuation:
+                StartCoroutine(col.GetComponent<EnemyAI>().Debuff_Infatuation(infatuationDamage, infatuationTime));
                 break;
         }
     }

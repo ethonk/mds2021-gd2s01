@@ -87,6 +87,14 @@ MonoBehaviour:
   playerInAttackRange: 0
   playerInCoverageRange: 0
   debuffed: 0
+  infatuated: 0
+  debuffCooldown: 10
+  normalDamage: 50
+  slowDamage: 10
+  slowPercentage: 0.5
+  slowTime: 5
+  infatuationDamage: 10
+  infatuationCooldown: 5
   startPosition: {x: 0, y: 0, z: 0}
   areaCoverage: 150
 --- !u!114 &1546211797743886681
