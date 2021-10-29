@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     public float maxHealth = 100;
     public float stamina = 100;
     public float stamina_max = 100;
+    public float MonsterCount = 0;
 
     [Header("UI")]
     public Slider staminaSlider;
