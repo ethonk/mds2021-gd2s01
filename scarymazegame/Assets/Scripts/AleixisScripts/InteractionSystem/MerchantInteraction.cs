@@ -16,6 +16,8 @@ namespace Interact
 
             playerCam.SetActive(!playerCam.activeInHierarchy);
             merchantCam.SetActive(!merchantCam.activeInHierarchy);
+
+            GetComponent<CharacterMotor>().SwitchToShop();
         }
     }
 }

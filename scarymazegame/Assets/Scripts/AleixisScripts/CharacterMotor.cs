@@ -49,6 +49,23 @@ public class CharacterMotor : MonoBehaviour
         GetComponent<PlayerScript>().SwitchCameraState();
     }
 
+    public void SwitchToShop()
+    {
+        // Determine MouseLock.
+        Cursor.visible = GetComponent<Interact.MerchantInteraction>().merchantCam.activeInHierarchy;
+        Cursor.lockState = GetComponent<Interact.MerchantInteraction>().merchantCam.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
+
+        // Freeze player on shop
+        if (GetComponent<Interact.MerchantInteraction>().merchantCam.activeInHierarchy)
+        {
+            playerLock = true;
+        }
+        else
+        {
+            playerLock = false;
+        }
+    }
+
     void Update()
     {
         // Switch to inventory
