@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
 
         int i = 0;
         
-        // Algorithm for item
+        #region Algorithm for item
         if(item.canBe_equipped)
         {
             bind_equip.SetActive(true);
@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
         {
             bind_drop.SetActive(false);
         }
+        #endregion
     }
 
     // Update is called once per frame
@@ -84,7 +85,7 @@ public class UIManager : MonoBehaviour
     {
         CursorToMouse();    // Update cursor pos
         
-        // Raycasting items
+        #region Raycasting items
         if(player.cameraState == PlayerScript.CameraState.inventory)
         {
             RaycastHit hit;
@@ -96,6 +97,12 @@ public class UIManager : MonoBehaviour
                 {
                     itemDetails.gameObject.SetActive(true);
                     InspectItem(hit.transform.gameObject.GetComponent<ItemScript>());
+                    
+                    // Key press - Drop
+                    if (Input.GetKeyDown(KeyCode.Q) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_equipped) //drop
+                    {
+                        print("drop");
+                    }
                 }
                 else
                 {
@@ -105,5 +112,10 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            itemDetails.gameObject.SetActive(false);
+        }
+        #endregion
     }
 }
