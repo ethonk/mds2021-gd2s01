@@ -20,6 +20,10 @@ public class PlayerScript : MonoBehaviour
     public Camera mainCamera;
     public Camera inventoryCamera;
 
+    public enum CameraState {normal, inventory};
+    [Header("States")]
+    public CameraState cameraState;
+
     [Header("Audio")]
     public AudioClip waterEnter;
     public AudioClip waterExit;
@@ -27,11 +31,6 @@ public class PlayerScript : MonoBehaviour
     public AudioClip pain_light;
     public AudioClip pain_heavy;
     
-
-    public void TakeDamage(float _damage)
-    {
-        health -= _damage;
-    }
 
     void Update()
     {
@@ -45,8 +44,25 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float _damage)
+    {
+        health -= _damage;
+    }
+
     public void PlayAudio(AudioClip audio)
     {
         GetComponent<AudioSource>().PlayOneShot(audio);
+    }
+
+    public void SwitchCameraState()
+    {
+        if (cameraState == CameraState.normal)
+        {
+            cameraState = CameraState.inventory;
+        }
+        else
+        {
+            cameraState = CameraState.normal;
+        }
     }
 }

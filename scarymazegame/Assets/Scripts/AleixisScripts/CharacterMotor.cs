@@ -31,19 +31,22 @@ public class CharacterMotor : MonoBehaviour
         GetComponent<PlayerScript>().inventoryCamera.gameObject.SetActive(!GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy);
 
         // Determine MouseLock.
-        Cursor.visible = GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy;
         Cursor.lockState = GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
 
         // Load Inventory
         if (GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy)
         {
             GetComponent<GlobalInventory>().LoadBackpack();
+            
             playerLock = true;
         }
         else
         {
             playerLock = false;
         }
+
+        // Switch camera state
+        GetComponent<PlayerScript>().SwitchCameraState();
     }
 
     void Update()
