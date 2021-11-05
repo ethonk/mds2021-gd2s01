@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject itemDetails;
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
+    public TextMeshProUGUI itemCount;
     public GameObject bind_equip;
     public GameObject bind_consume;
     public GameObject bind_drop;
@@ -41,6 +42,11 @@ public class UIManager : MonoBehaviour
         // Set name and description
         itemName.text = item.itemName;
         itemDescription.text = item.itemDescription;
+
+        // Set get slot of item
+        int itemSlot = (int)char.GetNumericValue(item.transform.parent.name[item.transform.parent.name.Length-1]);
+        // Set item count with slot
+        itemCount.text = player.GetComponent<GlobalInventory>().backpackItemCount[itemSlot].ToString();
 
         int i = 0;
         
@@ -99,9 +105,9 @@ public class UIManager : MonoBehaviour
                     InspectItem(hit.transform.gameObject.GetComponent<ItemScript>());
                     
                     // Key press - Drop
-                    if (Input.GetKeyDown(KeyCode.Q) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_equipped) //drop
+                    if (Input.GetKeyDown(KeyCode.Q) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_dropped) //drop
                     {
-                        print("drop");
+                        player.GetComponent<GlobalInventory>().DropItem(hit.transform.parent.name);
                     }
                 }
                 else
