@@ -26,15 +26,6 @@ public bool m_CursorLocked = true;
     // Update is called once per frame
     void Update()
     {
-
-        #region lock cursor bind
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            m_CursorLocked = !m_CursorLocked;
-            LockCursor();
-        }
-        #endregion
-
         #region view control
         float x = Input.GetAxisRaw("Mouse X");
         float y = Input.GetAxisRaw("Mouse Y");

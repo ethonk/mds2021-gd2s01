@@ -16,10 +16,6 @@ public class EnemyAI : MonoBehaviour
     [Header("Layer Masks")]
     public LayerMask groundLayer, playerLayer;
 
-
-    [Header("UI Related")]
-    public GameObject monsterNameLayout;
-
     [Header("Patrol Variables")]
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -112,17 +108,6 @@ public class EnemyAI : MonoBehaviour
         debuffed = false;
     }
 
-    void ShowMonsterNameUI()
-    {
-        monsterNameLayout.SetActive(true);
-        monsterNameLayout.transform.Find("MonsterName").GetComponent<TextMeshProUGUI>().text = GetComponent<MonsterDetails>().monsterName;
-    }
-
-    void HideMonsterNameUI()
-    {
-        monsterNameLayout.SetActive(false);
-    }
-
     private void Update()
     {   
         // Adapt speed
@@ -140,7 +125,6 @@ public class EnemyAI : MonoBehaviour
         }
         if (playerInSightRange && !playerInAttackRange && !player.GetComponent<CharacterMotor>().playerLock)     // Player IS in sight range and NOT in attack range, Chase.
         {
-            ShowMonsterNameUI();
             ChasePlayer();
         }
         if (playerInAttackRange && playerInSightRange && !player.GetComponent<CharacterMotor>().playerLock)      // Player IS in sight range and IS in attack range, Attack.
@@ -150,7 +134,6 @@ public class EnemyAI : MonoBehaviour
         if (!playerInCoverageRange)                                                                              // Player IS NOT in monster's coverage.
         {
             MoveToStart();
-            HideMonsterNameUI();
         }
     }
 
