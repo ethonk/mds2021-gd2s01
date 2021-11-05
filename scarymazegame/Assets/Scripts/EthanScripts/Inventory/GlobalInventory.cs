@@ -40,6 +40,24 @@ public class GlobalInventory : MonoBehaviour
         return false;
     }
 
+    public void DropItem(string slotName)
+    {
+        // Get slot from name
+        int slot = (int)char.GetNumericValue(slotName[slotName.Length-1]);
+
+        if (backpackItemCount[slot] > 0)        // If the slot contains at least one item.
+        {
+            backpackItemCount[slot] -= 1;       // Reduce item by 1.
+            
+            if (backpackItemCount[slot] == 0)   // If the deletion caused the slot to be empty...
+            {
+                backpack[slot] = null;          // Slot is now empty, then proceed to delete item in slot.
+                Destroy(backpackSlotContainer.transform.Find("Slot " + slot).GetChild(0).gameObject);
+            }
+        }
+        LoadBackpack();                         // Update changes to backpack
+    }
+
     public void LoadInSlot(GameObject item, Transform slot)      // Add a child inside slot
     {
         var newItem = Instantiate(item);                // Create item
