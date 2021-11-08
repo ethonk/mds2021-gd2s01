@@ -10,7 +10,6 @@ namespace Interact
     {
         [Header("Audio")]
         public AudioClip BeginTalk;
-
         public GameObject dialogueObject;
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI dialogueText;
