@@ -6,9 +6,11 @@ namespace Interact
 {
     public class MerchantInteraction : InteractibleBase
     {
+        [Header("References")]
         public Dialogue dialogue; 
         public GameObject playerCam;
         public GameObject merchantCam;
+        public CharacterMotor m_PlayerMotor;
 
         public override void OnInteract()
         {
@@ -17,7 +19,7 @@ namespace Interact
             playerCam.SetActive(!playerCam.activeInHierarchy);
             merchantCam.SetActive(!merchantCam.activeInHierarchy);
 
-            GetComponent<CharacterMotor>().SwitchToShop();
+            m_PlayerMotor.playerLock = true;
         }
     }
 }
