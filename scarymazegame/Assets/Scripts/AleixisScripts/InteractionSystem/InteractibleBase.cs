@@ -37,6 +37,13 @@ namespace Interact
                 Debug.Log("INTERACTED: " + gameObject.name);
             }
         #endregion
+
+        public GameObject player;
+
+        void Start()
+        {
+            player = GameObject.Find("Player");
+        }
     }
 }
 

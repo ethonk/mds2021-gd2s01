@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public WeaponScript weaponScript;
-    public Rigidbody rb;
-    public BoxCollider col;
-    public Transform player, weaponContainer, cam;
-
     public float pickupRange;
     public float dropForwardForce, dropUpwardForce;
 
@@ -19,38 +14,34 @@ public class Pickup : MonoBehaviour
 
     private void Start()
     {
-        // Initialize vars
-        player = GameObject.Find("Player").transform;
-        weaponScript = GetComponent<WeaponScript>();
-        rb = GetComponent<Rigidbody>();
-        col = GetComponent<BoxCollider>();
-        cam = player.Find("Main Camera");
-        weaponContainer = cam.Find("GunContainer");
-        defaultSize = transform.localScale;
+        if (GetComponent<ItemScript>().itemType == ItemScript.ItemType.Trap)
+        {
+            defaultSize = new Vector3(1, 0.5f, 1);
+        }
 
         // Setup
         if (!equipped)
         {
-            weaponScript.enabled = false;
-            rb.isKinematic = false;
-            col.isTrigger = false;
+            GetComponent<WeaponScript>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<BoxCollider>().isTrigger = false;
         }
         if (equipped)
         {
-            weaponScript.enabled = true;
-            rb.isKinematic = true;
-            col.isTrigger = true;
+            GetComponent<WeaponScript>().enabled = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<BoxCollider>().isTrigger = true;
             slotFull = true;
         }
     }
     private void Update()
     {
-        Vector3 distanceToPlayer = player.position - transform.position;    // Get distance of weapon from player
+        Vector3 distanceToPlayer = GameObject.Find("Player").transform.position - transform.position;    // Get distance of weapon from player
 
         // If player is in range and E is pressed.
         if (!equipped && distanceToPlayer.magnitude <= pickupRange && Input.GetKeyDown(KeyCode.E) && !slotFull)
         {
-            PickUp();
+            //PickUp();
         }
 
         // If player presses Q with an item equipped.
@@ -60,25 +51,29 @@ public class Pickup : MonoBehaviour
         }
     }
 
-    private void PickUp()
+    public void PickUp()
     {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
         equipped = true;
         slotFull = true;
 
         // Make weapon child of the camera and move it to default position.
-        transform.SetParent(weaponContainer);
+        transform.SetParent(GameObject.Find("Player").transform.Find("Main Camera").transform.Find("GunContainer"));
+
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
 
         // Make rigidbody kinematic and boxcollider a trigger.
-        rb.isKinematic = true;
-        col.isTrigger = true;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<BoxCollider>().isTrigger = true;
 
         // Enable weapon script
-        weaponScript.enabled = true;
+        GetComponent<WeaponScript>().enabled = true;
 
         // Run weaponscript pickup function
-        weaponScript.PickedUp();
+        GetComponent<WeaponScript>().PickedUp();
 
         // Change scale
         transform.localScale = new Vector3(1, 1, 1);
@@ -92,14 +87,14 @@ public class Pickup : MonoBehaviour
         // Set parent to null
         transform.SetParent(null);
 
-        rb.isKinematic = false;
-        col.isTrigger = false;
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<BoxCollider>().isTrigger = false;
 
         // Add force
-        rb.AddForce(cam.forward * dropForwardForce, ForceMode.Impulse);
-        rb.AddForce(cam.up * dropUpwardForce, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(GameObject.Find("Player").transform.Find("Main Camera").forward * dropForwardForce, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(GameObject.Find("Player").transform.Find("Main Camera").up * dropUpwardForce, ForceMode.Impulse);
 
-        weaponScript.enabled = false;
+        GetComponent<WeaponScript>().enabled = false;
 
         // Reset scale
         StartCoroutine(ResetScale(0.5f));

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7349376027551664041}
   - component: {fileID: 7349376027551664038}
+  - component: {fileID: 6670493614351941577}
+  - component: {fileID: 4658423750259889269}
   - component: {fileID: 1614861431}
   - component: {fileID: 1614861434}
   - component: {fileID: 1614861432}
@@ -60,6 +62,44 @@ MonoBehaviour:
   dropUpwardForce: 3
   equipped: 0
   defaultSize: {x: 0, y: 0, z: 0}
+--- !u!114 &6670493614351941577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349376027551664040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d85f1aa16ce0f4faf9e2ab51db0f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemDescription: 
+  itemType: 0
+  maxStack: 0
+  m_CraftingItems: []
+  canBe_equipped: 0
+  canBe_consumed: 0
+  canBe_dropped: 0
+--- !u!114 &4658423750259889269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349376027551664040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6f66e208bf4f04f89a822ba057c13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdDuration: 0
+  holdInteract: 0
+  multipleUse: 0
+  isInteractible: 0
+  destroyObj: 0
+  player: {fileID: 0}
 --- !u!54 &1614861431
 Rigidbody:
   m_ObjectHideFlags: 0

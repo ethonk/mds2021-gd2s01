@@ -104,6 +104,14 @@ public class UIManager : MonoBehaviour
                     itemDetails.gameObject.SetActive(true);
                     InspectItem(hit.transform.gameObject.GetComponent<ItemScript>());
                     
+                    // Key press - Equip
+                    if (Input.GetKeyDown(KeyCode.E) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_equipped)  // equip
+                    {
+                        GameObject newItem = Instantiate(hit.transform.gameObject);
+                        newItem.GetComponent<Pickup>().PickUp();
+                        player.GetComponent<GlobalInventory>().DropItem(hit.transform.parent.name);
+                    }
+
                     // Key press - Drop
                     if (Input.GetKeyDown(KeyCode.Q) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_dropped) //drop
                     {

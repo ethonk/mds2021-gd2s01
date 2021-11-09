@@ -9,15 +9,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1252137155764787733}
+  - component: {fileID: 1025566028267872363}
+  - component: {fileID: 7779626280382049782}
   - component: {fileID: 3572783129691661562}
   - component: {fileID: 7642494585555417769}
   - component: {fileID: 1252137155764787732}
   - component: {fileID: 1252137155764787731}
-  - component: {fileID: 1252137155764787729}
   - component: {fileID: 1252137155764787730}
   - component: {fileID: 229447369}
   - component: {fileID: 229447365}
-  m_Layer: 0
+  - component: {fileID: 1959845175}
+  - component: {fileID: 2031457474707200011}
+  m_Layer: 10
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,11 +36,49 @@ Transform:
   m_GameObject: {fileID: 1252137155764787728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 419.05478, y: 41.66, z: 113.66948}
-  m_LocalScale: {x: 4, y: 0.5, z: 4}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1025566028267872363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d85f1aa16ce0f4faf9e2ab51db0f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Normal Trap
+  itemDescription: Does a small amount of damage to monsters.
+  itemType: 0
+  maxStack: 1
+  m_CraftingItems: []
+  canBe_equipped: 0
+  canBe_consumed: 0
+  canBe_dropped: 0
+--- !u!114 &7779626280382049782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6f66e208bf4f04f89a822ba057c13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdDuration: 0.5
+  holdInteract: 1
+  multipleUse: 0
+  isInteractible: 1
+  destroyObj: 0
+  player: {fileID: 0}
 --- !u!114 &3572783129691661562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapType: 2
+  trapType: 0
   trapElement: 0
   normalDamage: 20
   slowDamage: 10
@@ -58,16 +99,6 @@ MonoBehaviour:
   slowTime: 5
   infatuationDamage: 10
   infatuationTime: 5
-  rb: {fileID: 0}
-  col: {fileID: 0}
-  player: {fileID: 0}
-  TrapContainer: {fileID: 0}
-  cam: {fileID: 0}
-  pickupRange: 0
-  dropForwardForce: 0
-  dropUpwardForce: 0
-  Activated: 0
-  equipped: 0
 --- !u!114 &7642494585555417769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,12 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458b8610b20cc0a4e840ed12fa4d79c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponScript: {fileID: 229447369}
-  rb: {fileID: 1252137155764787730}
-  col: {fileID: 1252137155764787729}
-  player: {fileID: 0}
-  weaponContainer: {fileID: 0}
-  cam: {fileID: 0}
   pickupRange: 10
   dropForwardForce: 10
   dropUpwardForce: 0
@@ -98,7 +123,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252137155764787728}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 2cc946c903896834693e7c6290817ddc, type: 3}
 --- !u!23 &1252137155764787731
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -140,19 +165,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1252137155764787729
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1252137155764787730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -205,13 +217,36 @@ MonoBehaviour:
   slowTime: 0
   infatuationDamage: 0
   infatuationTime: 0
-  rb: {fileID: 0}
-  col: {fileID: 0}
-  player: {fileID: 0}
-  TrapContainer: {fileID: 0}
-  cam: {fileID: 0}
-  pickupRange: 0
-  dropForwardForce: 0
-  dropUpwardForce: 0
-  Activated: 0
-  equipped: 0
+--- !u!114 &1959845175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d85f1aa16ce0f4faf9e2ab51db0f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemDescription: 
+  itemType: 0
+  maxStack: 0
+  m_CraftingItems: []
+  canBe_equipped: 0
+  canBe_consumed: 0
+  canBe_dropped: 0
+--- !u!65 &2031457474707200011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
