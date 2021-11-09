@@ -20,9 +20,14 @@ public class PlayerScript : MonoBehaviour
     public Camera mainCamera;
     public Camera inventoryCamera;
 
-    public enum CameraState {normal, inventory};
+    public enum CameraState {normal, inventory, shop};
     [Header("States")]
     public CameraState cameraState;
+    public enum CameraStates
+    {
+        Inventory,
+        Shop
+    };
 
     [Header("Audio")]
     public AudioClip waterEnter;

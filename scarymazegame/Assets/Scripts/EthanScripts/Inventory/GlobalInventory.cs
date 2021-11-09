@@ -58,11 +58,24 @@ public class GlobalInventory : MonoBehaviour
         LoadBackpack();                         // Update changes to backpack
     }
 
+    public void DropItemGameObject(GameObject item)
+    {
+        for (int i = 0; i < maxSpace; i++)
+        {
+            if (backpack[i] == item)
+            {
+                backpackItemCount[i]--;
+                if (backpackItemCount[i] == 0) backpack[i] = null;
+            }
+        }
+    }
+
     public void LoadInSlot(GameObject item, Transform slot)      // Add a child inside slot
     {
         var newItem = Instantiate(item);                // Create item
         newItem.transform.position = slot.position;     // Set position
         newItem.transform.SetParent(slot);              // Set parent
+        print("Item Loaded");
     }
 
     public void DestroyInSlot(Transform slot)   // Destroy all children in a slot.
@@ -82,6 +95,7 @@ public class GlobalInventory : MonoBehaviour
         {
             if (backpack[i] != null)
             {
+                print(backpackSlotContainer.transform.Find("Slot " + i));
                 DestroyInSlot(backpackSlotContainer.transform.Find("Slot " + i));                   // Destroy item inside
                 LoadInSlot(backpack[i], backpackSlotContainer.transform.Find("Slot " + i));         // Load item in slot
             }
@@ -90,6 +104,18 @@ public class GlobalInventory : MonoBehaviour
                 DestroyInSlot(backpackSlotContainer.transform.Find("Slot " + i));  // Destroy item inside
             }
         }
+    }
+
+    public bool SearchForItem(GameObject _item)
+    {
+        for (int i = 0; i < backpack.Count; i++)
+        {
+            if (backpack[i] == _item)
+            {
+                return true;
+            }
+        }
+        return false; // No item.
     }
 
     private void Start()

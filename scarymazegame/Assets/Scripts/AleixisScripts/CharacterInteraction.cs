@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// ------------------ WARNING ----------------
+// I think this script is not in use anymore
+// im not too sure but I think this is old
+// ------------------ WARNING ----------------
+
 public class CharacterInteraction : MonoBehaviour
 {
     [Header ("Declaring Variables")]

@@ -55,6 +55,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!debuffed)
         {
+            print("damage!");
             // Start cooldown
             StartCoroutine(DebuffCooldown(debuffCooldown));
 
@@ -68,6 +69,7 @@ public class EnemyAI : MonoBehaviour
         // Apply debuff cooldown
         if (!debuffed)
         {
+            print("slow!");
             // Start cooldown
             StartCoroutine(DebuffCooldown(debuffCooldown));
 
@@ -86,6 +88,7 @@ public class EnemyAI : MonoBehaviour
         // Apply debuff cooldown
         if (!debuffed)
         {
+            print("infatuate!");
             // Start cooldown
             StartCoroutine(DebuffCooldown(debuffCooldown));
 
