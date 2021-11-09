@@ -55,7 +55,7 @@ public class CatchingScript : MonoBehaviour
             }
 
             // After hit, destroy.
-            Destroy(gameObject.transform.parent.gameObject);
+            Destroy(gameObject);
         }
     }
 
