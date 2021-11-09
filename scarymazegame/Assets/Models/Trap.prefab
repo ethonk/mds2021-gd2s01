@@ -9,11 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1252137155764787733}
-  - component: {fileID: 1252137155764787734}
+  - component: {fileID: 3572783129691661562}
+  - component: {fileID: 7642494585555417769}
   - component: {fileID: 1252137155764787732}
   - component: {fileID: 1252137155764787731}
   - component: {fileID: 1252137155764787729}
   - component: {fileID: 1252137155764787730}
+  - component: {fileID: 229447369}
+  - component: {fileID: 229447365}
   m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
@@ -28,14 +31,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252137155764787728}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 419.05478, y: 41.66, z: 113.66948}
-  m_LocalScale: {x: 17.351418, y: 1, z: 15.664634}
+  m_LocalScale: {x: 4, y: 0.5, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1252137155764787734
+--- !u!114 &3572783129691661562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,24 +50,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapType: 1
+  trapType: 2
   trapElement: 0
-  normalDamage: 30
+  normalDamage: 20
   slowDamage: 10
   slowPercentage: 0.5
   slowTime: 5
   infatuationDamage: 10
   infatuationTime: 5
-  rb: {fileID: 1252137155764787730}
-  col: {fileID: 1252137155764787729}
+  rb: {fileID: 0}
+  col: {fileID: 0}
   player: {fileID: 0}
   TrapContainer: {fileID: 0}
   cam: {fileID: 0}
-  pickupRange: 10
-  dropForwardForce: 5
-  dropUpwardForce: 10
+  pickupRange: 0
+  dropForwardForce: 0
+  dropUpwardForce: 0
   Activated: 0
   equipped: 0
+--- !u!114 &7642494585555417769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458b8610b20cc0a4e840ed12fa4d79c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponScript: {fileID: 229447369}
+  rb: {fileID: 1252137155764787730}
+  col: {fileID: 1252137155764787729}
+  player: {fileID: 0}
+  weaponContainer: {fileID: 0}
+  cam: {fileID: 0}
+  pickupRange: 10
+  dropForwardForce: 10
+  dropUpwardForce: 0
+  equipped: 0
+  defaultSize: {x: 0, y: 0, z: 0}
 --- !u!33 &1252137155764787732
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -125,7 +151,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 1, z: 3}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1252137155764787730
 Rigidbody:
@@ -143,3 +169,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &229447369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb559816a33e2c146af4154cad1baf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  hitCooldown: 0
+  equipSound: {fileID: 0}
+  attackSound: {fileID: 0}
+--- !u!114 &229447365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapType: 0
+  trapElement: 0
+  normalDamage: 0
+  slowDamage: 0
+  slowPercentage: 0
+  slowTime: 0
+  infatuationDamage: 0
+  infatuationTime: 0
+  rb: {fileID: 0}
+  col: {fileID: 0}
+  player: {fileID: 0}
+  TrapContainer: {fileID: 0}
+  cam: {fileID: 0}
+  pickupRange: 0
+  dropForwardForce: 0
+  dropUpwardForce: 0
+  Activated: 0
+  equipped: 0

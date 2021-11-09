@@ -6,7 +6,8 @@ public class TrapInteraction : MonoBehaviour
 {
     public enum TrapType {Normal, Slow, Infatuation, Elemental};
     public enum TrapElement // weakness, n-1 = 1
-    {Steel = 1, 
+    {
+    Steel = 1, 
     Poison = 2,
     Grass = 3,
     Water = 4,
@@ -45,6 +46,14 @@ public class TrapInteraction : MonoBehaviour
 
     private void Start()
     {   
+        // Set attributes
+        // Initialize vars
+        player = GameObject.Find("Player").transform;
+        rb = GetComponent<Rigidbody>();
+        col = GetComponent<BoxCollider>();
+        cam = player.Find("Main Camera");
+        TrapContainer = cam.Find("WeaponContainer");
+
         Activated = false;
         // Setup
         if (!equipped)
@@ -62,23 +71,29 @@ public class TrapInteraction : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider col)    // Trap and Monster interaction.
+    public void OnCollisionEnter(Collision col)    // Trap and Monster interaction.
     {
-        print(col.name);
-
-        switch(trapType)
+        if (col.transform.gameObject.tag == "Monster")
         {
-            case TrapType.Normal:
-                col.GetComponent<EnemyAI>().Debuff_Damage(normalDamage);
-                break;
+            GameObject enemy = col.transform.root.gameObject;
 
-            case TrapType.Slow:
-                StartCoroutine(col.GetComponent<EnemyAI>().Debuff_Slow(slowDamage, slowPercentage, slowTime));
-                break;
+            switch(trapType)
+            {
+                case TrapType.Normal:
+                    enemy.GetComponent<EnemyAI>().Debuff_Damage(normalDamage);
+                    break;
 
-            case TrapType.Infatuation:
-                StartCoroutine(col.GetComponent<EnemyAI>().Debuff_Infatuation(infatuationDamage, infatuationTime));
-                break;
+                case TrapType.Slow:
+                    StartCoroutine(enemy.GetComponent<EnemyAI>().Debuff_Slow(slowDamage, slowPercentage, slowTime));
+                    break;
+
+                case TrapType.Infatuation:
+                    StartCoroutine(enemy.GetComponent<EnemyAI>().Debuff_Infatuation(infatuationDamage, infatuationTime));
+                    break;
+            }
+
+            // Destroy trap
+            Destroy(gameObject);
         }
     }
 
@@ -116,7 +131,7 @@ public class TrapInteraction : MonoBehaviour
         transform.SetParent(TrapContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
-        transform.localScale = Vector3.one;
+        transform.localScale = new Vector3(2, 1, 5);
 
         // Make rigidbody kinematic and boxcollider a trigger.
         rb.isKinematic = true;
@@ -141,7 +156,9 @@ public class TrapInteraction : MonoBehaviour
         // Add force
         rb.AddForce(cam.forward * dropForwardForce, ForceMode.Impulse);
         rb.AddForce(cam.up * dropUpwardForce, ForceMode.Impulse);
-        // For realism add random rotation
+
+        // reset
+        transform.localScale = new Vector3(5, 1, 5);
        
         
         //float randomRot = Random.Range(-1f, 1f);

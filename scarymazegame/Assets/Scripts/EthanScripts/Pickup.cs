@@ -15,9 +15,19 @@ public class Pickup : MonoBehaviour
     public bool equipped;
     public static bool slotFull;
 
+    public Vector3 defaultSize;
 
     private void Start()
     {
+        // Initialize vars
+        player = GameObject.Find("Player").transform;
+        weaponScript = GetComponent<WeaponScript>();
+        rb = GetComponent<Rigidbody>();
+        col = GetComponent<BoxCollider>();
+        cam = player.Find("Main Camera");
+        weaponContainer = cam.Find("GunContainer");
+        defaultSize = transform.localScale;
+
         // Setup
         if (!equipped)
         {
@@ -59,7 +69,6 @@ public class Pickup : MonoBehaviour
         transform.SetParent(weaponContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
-        transform.localScale = Vector3.one;
 
         // Make rigidbody kinematic and boxcollider a trigger.
         rb.isKinematic = true;
@@ -70,6 +79,9 @@ public class Pickup : MonoBehaviour
 
         // Run weaponscript pickup function
         weaponScript.PickedUp();
+
+        // Change scale
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     private void Drop()
@@ -86,10 +98,16 @@ public class Pickup : MonoBehaviour
         // Add force
         rb.AddForce(cam.forward * dropForwardForce, ForceMode.Impulse);
         rb.AddForce(cam.up * dropUpwardForce, ForceMode.Impulse);
-        // For realism add random rotation
-        float randomRot = Random.Range(-1f, 1f);
-        rb.AddTorque(new Vector3(randomRot,randomRot,randomRot) * 10);
 
         weaponScript.enabled = false;
+
+        // Reset scale
+        StartCoroutine(ResetScale(0.5f));
+    }
+
+    private IEnumerator ResetScale(float time)
+    {
+        yield return new WaitForSeconds(time);
+        transform.localScale = defaultSize;
     }
 }
