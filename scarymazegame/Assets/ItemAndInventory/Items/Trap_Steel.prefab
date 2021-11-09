@@ -9,11 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2876197663566790474}
+  - component: {fileID: 1743535837562453258}
   - component: {fileID: 2876197663563366250}
   - component: {fileID: 2876197663564496298}
   - component: {fileID: 2876197663522433466}
+  - component: {fileID: 5331983399904120644}
   m_Layer: 0
-  m_Name: bottle_Steel
+  m_Name: Trap_Steel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,15 +28,35 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2876197663566685034}
-  m_LocalRotation: {x: -0.7014772, y: 0.17339194, z: -0.08904695, w: 0.68551844}
+  m_LocalRotation: {x: -0.7014775, y: 0.17339268, z: -0.08904645, w: 0.685518}
   m_LocalPosition: {x: 0.34, y: 3.666596, z: -4.64}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 2876197663939206442}
   - {fileID: 1767675163127369418}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -68.571, y: 96.96, z: -90}
+--- !u!114 &1743535837562453258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876197663566685034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapType: 0
+  trapElement: 0
+  normalDamage: 20
+  slowDamage: 0
+  slowPercentage: 0
+  slowTime: 0
+  infatuationDamage: 0
+  infatuationTime: 0
 --- !u!33 &2876197663563366250
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -100,6 +122,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5331983399904120644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876197663566685034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458b8610b20cc0a4e840ed12fa4d79c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponScript: {fileID: 0}
+  rb: {fileID: 0}
+  col: {fileID: 0}
+  player: {fileID: 0}
+  weaponContainer: {fileID: 0}
+  cam: {fileID: 0}
+  pickupRange: 0
+  dropForwardForce: 20
+  dropUpwardForce: 0
+  equipped: 0
+  defaultSize: {x: 0, y: 0, z: 0}
 --- !u!136 &2876197663473327909
 CapsuleCollider:
   m_ObjectHideFlags: 0
