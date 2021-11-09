@@ -6,6 +6,7 @@ public class MerchantManger : MonoBehaviour
 {
     [Header ("References")]
     GameObject _PlayerRef; // creates a gameobject playeref, blank for now
+    public Transform Child;
 
     [Header ("Transformations")]
     public Transform Merchant;
@@ -33,6 +34,5 @@ public class MerchantManger : MonoBehaviour
                                                 _PlayerRef.transform.position.z);
 
         transform.LookAt(PlayerPosition);
-        
     }
 }
