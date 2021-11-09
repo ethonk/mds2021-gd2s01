@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1252137155764787733}
+  - component: {fileID: 1252137155764787734}
   - component: {fileID: 1252137155764787732}
   - component: {fileID: 1252137155764787731}
-  - component: {fileID: 1252137155764787734}
   - component: {fileID: 1252137155764787729}
   - component: {fileID: 1252137155764787730}
   m_Layer: 0
@@ -35,6 +35,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1252137155764787734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252137155764787728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapType: 1
+  trapElement: 0
+  normalDamage: 30
+  slowDamage: 10
+  slowPercentage: 0.5
+  slowTime: 5
+  infatuationDamage: 10
+  infatuationTime: 5
+  rb: {fileID: 1252137155764787730}
+  col: {fileID: 1252137155764787729}
+  player: {fileID: 0}
+  TrapContainer: {fileID: 0}
+  cam: {fileID: 0}
+  pickupRange: 10
+  dropForwardForce: 5
+  dropUpwardForce: 10
+  Activated: 0
+  equipped: 0
 --- !u!33 &1252137155764787732
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84,36 +114,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1252137155764787734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trapType: 1
-  trapElement: 0
-  normalDamage: 30
-  slowDamage: 10
-  slowPercentage: 0.5
-  slowTime: 5
-  infatuationDamage: 10
-  infatuationTime: 5
-  rb: {fileID: 1252137155764787730}
-  col: {fileID: 1252137155764787729}
-  player: {fileID: 0}
-  TrapContainer: {fileID: 0}
-  cam: {fileID: 0}
-  pickupRange: 10
-  dropForwardForce: 5
-  dropUpwardForce: 10
-  Activated: 0
-  equipped: 0
 --- !u!65 &1252137155764787729
 BoxCollider:
   m_ObjectHideFlags: 0
