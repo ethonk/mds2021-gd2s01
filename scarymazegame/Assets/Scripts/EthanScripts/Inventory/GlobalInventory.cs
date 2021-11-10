@@ -77,6 +77,7 @@ public class GlobalInventory : MonoBehaviour
         if (newItem.GetComponent<Rigidbody>() != null) newItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         newItem.transform.position = slot.position;     // Set position
         newItem.transform.SetParent(slot);              // Set parent
+        print("Item Loaded");
     }
 
     public void DestroyInSlot(Transform slot)   // Destroy all children in a slot.
@@ -96,6 +97,7 @@ public class GlobalInventory : MonoBehaviour
         {
             if (backpack[i] != null)
             {
+                print(backpackSlotContainer.transform.Find("Slot " + i));
                 DestroyInSlot(backpackSlotContainer.transform.Find("Slot " + i));                   // Destroy item inside
                 LoadInSlot(backpack[i], backpackSlotContainer.transform.Find("Slot " + i));         // Load item in slot
             }

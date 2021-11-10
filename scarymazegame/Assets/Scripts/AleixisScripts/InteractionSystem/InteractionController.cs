@@ -8,6 +8,10 @@ namespace Interact
     public class InteractionController : MonoBehaviour
     {
         #region Variables
+            [Header("Refrences")]
+            public CharacterMotor m_PlayerMotor;
+            public Camera Maincam;
+
             [Header ("Data")]
             public InteractionInputData interactionInputData;
             public InteractionData interactionData;
@@ -41,6 +45,7 @@ namespace Interact
             {
                 CheckForInteractible(); // checks if player is pointing at interactible
                 CheckForInteractibleInput();    // if it is an interactible, do something
+                CheckForLocks(); // check if the player is locked, and if meets conditions, unlock
             }
         #endregion
 
@@ -98,6 +103,23 @@ namespace Interact
                 }
             }
 
+            // checks if the player is locked down
+            void CheckForLocks()
+            {
+                if (Maincam.gameObject.activeInHierarchy && Cursor.lockState == CursorLockMode.None && !m_interacting)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    print("Cursor off");
+
+                }
+    
+                if (Maincam.gameObject.activeInHierarchy && m_PlayerMotor.playerLock && !m_interacting)
+                {
+                    print( "Lock off" );
+                    m_PlayerMotor.playerLock = false;
+                }
+            }
+
             void CheckForInteractibleInput()
             {
                 if(interactionData.IsEmpty())
@@ -133,12 +155,14 @@ namespace Interact
 
                         if(heldPercentage > 1f)
                         {
+                            uiPanel.HideBar();
  
                             if (CheckForDestroyObj())
                             {
                                 interactionData.Interact();
                                 Destroy(_hit.transform.gameObject);
                                 m_interacting = false;
+                                
                             }
                             else
                             {
