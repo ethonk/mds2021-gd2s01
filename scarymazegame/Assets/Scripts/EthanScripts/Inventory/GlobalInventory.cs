@@ -73,6 +73,8 @@ public class GlobalInventory : MonoBehaviour
     public void LoadInSlot(GameObject item, Transform slot)      // Add a child inside slot
     {
         var newItem = Instantiate(item);                // Create item
+        // If gravity induced, reset that.
+        if (newItem.GetComponent<Rigidbody>() != null) newItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         newItem.transform.position = slot.position;     // Set position
         newItem.transform.SetParent(slot);              // Set parent
         print("Item Loaded");
