@@ -5,16 +5,7 @@ using UnityEngine;
 public class TrapInteraction : MonoBehaviour
 {
     public enum TrapType {Normal, Slow, Infatuation, Elemental};
-    public enum TrapElement // weakness, n-1 = 1
-    {
-    Steel = 1, 
-    Poison = 2,
-    Grass = 3,
-    Water = 4,
-    Electric = 5,
-    Rock = 6,
-    Ghost = 7
-    };
+    public enum TrapElement {Steel, Poison,  Grass, Water, Electric, Rock, Ghost};
 
     [Header("Trap Type")]
     public TrapType trapType;
