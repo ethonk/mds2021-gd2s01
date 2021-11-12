@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     private Camera inventoryCamera;
 
     [Header("Merchant")]
-    public MerchantShop merchant;
+    private MerchantShop merchant;
 
     [Header("UI")]
     public GameObject crosshair;
