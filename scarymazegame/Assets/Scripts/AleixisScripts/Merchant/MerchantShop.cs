@@ -40,17 +40,6 @@ public class MerchantShop : MonoBehaviour
 
         // add the items onto the items list
         Items.Add(Item1);
-        Items.Add(Item2);
-        Items.Add(Item3);
-        Items.Add(Item4);
-        Items.Add(Item5);
-        Items.Add(Item6);
-        Items.Add(Item7);
-        Items.Add(Item8);
-        Items.Add(Item9);
-        Items.Add(Item10);
-        Items.Add(Item11);
-        Items.Add(Item12);
         
         // add gameObject items to merchant backpack
         foreach (GameObject obj in Items)

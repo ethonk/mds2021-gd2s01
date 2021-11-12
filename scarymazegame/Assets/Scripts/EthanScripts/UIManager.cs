@@ -10,8 +10,7 @@ public class UIManager : MonoBehaviour
     private Camera inventoryCamera;
 
     [Header("Merchant")]
-    public MerchantShop merchant;
-    private Camera merchantInventoryCamera;
+    private MerchantShop merchant;
 
     [Header("UI")]
     public GameObject crosshair;
@@ -35,7 +34,7 @@ public class UIManager : MonoBehaviour
         inventoryCamera = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("InventoryCamera").GetComponent<Camera>();
 
         // Initialize Merchant
-        merchant.transform.Find("InventoryCamera").GetComponent<Camera>();
+        merchant = GameObject.Find("Merchant").GetComponent<MerchantShop>();
     }
 
     public void CursorToMouse() // Move the mouse and anything attached to it towards the cursor.
@@ -152,7 +151,7 @@ public class UIManager : MonoBehaviour
         {
             // Raycast settings
             RaycastHit hit;
-            Ray ray = merchantInventoryCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = merchant.GetComponent<Interact.MerchantInteraction>().merchantCam.ScreenPointToRay(Input.mousePosition);
 
             // UI Functionality
             if(Physics.Raycast(ray, out hit))
@@ -168,7 +167,6 @@ public class UIManager : MonoBehaviour
                         itemDetails.gameObject.SetActive(false);
                     }
                 }
-            }
             }
         }
         #endregion

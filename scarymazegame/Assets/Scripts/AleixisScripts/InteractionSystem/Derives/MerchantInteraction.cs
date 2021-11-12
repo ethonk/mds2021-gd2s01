@@ -8,10 +8,12 @@ namespace Interact
     {
         [Header("References")]
         public Dialogue dialogue; 
-        public GameObject playerCam;
-        public GameObject merchantCam;
+        public Camera merchantCam;
+        
+        [Header("Player")]
         public GameObject Player;
         public CharacterMotor m_PlayerMotor;
+        public Camera playerCam;
 
         public override void OnInteract()
         {
@@ -21,8 +23,22 @@ namespace Interact
             Cursor.lockState =  CursorLockMode.None;
             print(Cursor.lockState);
 
-            merchantCam.SetActive(!merchantCam.activeInHierarchy);
-            playerCam.SetActive(!playerCam.activeInHierarchy);
+            merchantCam.gameObject.SetActive(!merchantCam.gameObject.activeInHierarchy);
+            playerCam.gameObject.SetActive(!playerCam.gameObject.activeInHierarchy);
+
+            // Set player cam to shop
+            Player.GetComponent<PlayerScript>().cameraState = PlayerScript.CameraState.shop;
+        }
+
+        public void Start()
+        {
+            // Player
+            Player = GameObject.Find("Player");
+            m_PlayerMotor = Player.GetComponent<CharacterMotor>();
+            playerCam = Player.transform.Find("Main Camera").GetComponent<Camera>();
+
+            // Merchant
+            merchantCam = transform.Find("MerchantCamera").GetComponent<Camera>();
         }
 
         public void Update()
