@@ -186,10 +186,10 @@ MonoBehaviour:
     - Pain
     - Is
     - Eternal
-  playerCam: {fileID: 0}
   merchantCam: {fileID: 7020156017213519777}
   Player: {fileID: 0}
   m_PlayerMotor: {fileID: 0}
+  playerCam: {fileID: 0}
 --- !u!1 &7020156017150186151
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 7020156017213519780}
   - component: {fileID: 7020156017213519779}
   m_Layer: 0
-  m_Name: InventoryCamera
+  m_Name: MerchantCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
