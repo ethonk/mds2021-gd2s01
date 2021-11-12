@@ -6,8 +6,12 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [Header("Player")]
-    public PlayerScript player;
-    public Camera inventoryCamera;
+    private PlayerScript player;
+    private Camera inventoryCamera;
+
+    [Header("Merchant")]
+    public MerchantShop merchant;
+    private Camera merchantInventoryCamera;
 
     [Header("UI")]
     public GameObject crosshair;
@@ -22,6 +26,17 @@ public class UIManager : MonoBehaviour
     [Header("Values")]
     public Vector3 keybindStartPos = new Vector3(0, 5, 0);
     public float keybindButtonOffset = -26.0f;
+
+
+    void Start()
+    {
+        // Initialize Player
+        player = GameObject.Find("Player").GetComponent<PlayerScript>();
+        inventoryCamera = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("InventoryCamera").GetComponent<Camera>();
+
+        // Initialize Merchant
+        merchant.transform.Find("InventoryCamera").GetComponent<Camera>();
+    }
 
     public void CursorToMouse() // Move the mouse and anything attached to it towards the cursor.
     {
@@ -92,11 +107,15 @@ public class UIManager : MonoBehaviour
         CursorToMouse();    // Update cursor pos
         
         #region Raycasting items
-        if(player.cameraState == PlayerScript.CameraState.inventory)
+
+        #region Player Inventory
+        if(player.cameraState == PlayerScript.CameraState.inventory)   
         {
+            // Raycast settings
             RaycastHit hit;
             Ray ray = inventoryCamera.ScreenPointToRay(Input.mousePosition);
 
+            // UI Functionality
             if(Physics.Raycast(ray, out hit))
             {
                 if(hit.transform.GetComponent<ItemScript>() != null)
@@ -126,6 +145,34 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        #endregion
+
+        #region Merchant Inventory
+        if(player.cameraState == PlayerScript.CameraState.shop)
+        {
+            // Raycast settings
+            RaycastHit hit;
+            Ray ray = merchantInventoryCamera.ScreenPointToRay(Input.mousePosition);
+
+            // UI Functionality
+            if(Physics.Raycast(ray, out hit))
+            {
+                if(hit.transform.GetComponent<ItemScript>() != null)
+                {
+                    itemDetails.gameObject.SetActive(true);
+                    InspectItem(hit.transform.gameObject.GetComponent<ItemScript>());
+                }
+                else
+                {
+                    {
+                        itemDetails.gameObject.SetActive(false);
+                    }
+                }
+            }
+            }
+        }
+        #endregion
+
         else
         {
             itemDetails.gameObject.SetActive(false);

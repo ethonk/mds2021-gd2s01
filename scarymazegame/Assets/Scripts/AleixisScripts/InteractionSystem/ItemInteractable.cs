@@ -13,6 +13,8 @@ namespace Interact
 
             // Add to inventory
             player.GetComponent<GlobalInventory>().AddItem(gameObject);
+            gameObject.transform.parent = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash");
+            gameObject.transform.position = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash").position;
         }
     }
 }
