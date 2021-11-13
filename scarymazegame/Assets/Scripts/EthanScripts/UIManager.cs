@@ -138,9 +138,8 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    {
-                        itemDetails.gameObject.SetActive(false);
-                    }
+                    print("not active");
+                    itemDetails.gameObject.SetActive(false);
                 }
             }
         }
