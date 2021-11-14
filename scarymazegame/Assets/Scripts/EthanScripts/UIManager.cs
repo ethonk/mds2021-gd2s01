@@ -152,7 +152,6 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    print("not active");
                     itemDetails.gameObject.SetActive(false);
                 }
             }
@@ -190,13 +189,6 @@ public class UIManager : MonoBehaviour
             }
         }
         #endregion
-
-        else
-        {
-            {
-                itemDetails.gameObject.SetActive(false);
-            }
-        }
         #endregion
     }
 }

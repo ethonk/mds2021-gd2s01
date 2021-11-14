@@ -79,7 +79,6 @@ public class GlobalInventory : MonoBehaviour
         
         newItem.transform.SetParent(slot);                      // Set parent
         newItem.transform.localPosition = Vector3.zero;         // Set position
-        newItem.transform.localScale = Vector3.one;             // Set scale
         newItem.transform.localEulerAngles = Vector3.zero;      // Local rotation
     }
 
