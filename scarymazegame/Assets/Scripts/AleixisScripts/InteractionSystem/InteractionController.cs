@@ -11,6 +11,7 @@ namespace Interact
             [Header("Refrences")]
             public CharacterMotor m_PlayerMotor;
             public Camera Maincam;
+            public GameObject m_Player;
 
             [Header ("Data")]
             public InteractionInputData interactionInputData;
@@ -39,6 +40,12 @@ namespace Interact
             void Awake()
             {
                 m_Camera = FindObjectOfType<Camera>();
+            }
+
+            public void Start()
+            {
+                // finds player at the start
+                m_Player = GameObject.Find("Player");
             }
 
             void Update()
@@ -117,6 +124,11 @@ namespace Interact
                 {
                     print( "Lock off" );
                     m_PlayerMotor.playerLock = false;
+                }
+                // if player main camera is up
+                if (Maincam.gameObject.activeInHierarchy)
+                {
+                    m_Player.GetComponent<PlayerScript>().cameraState = PlayerScript.CameraState.normal;
                 }
             }
 
