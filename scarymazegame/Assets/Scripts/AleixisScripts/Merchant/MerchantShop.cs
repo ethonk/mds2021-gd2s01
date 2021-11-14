@@ -16,6 +16,7 @@ public class MerchantShop : MonoBehaviour
     public List<GameObject> Items;
 
     [Header("Items")]
+    public GameObject Item0;
     public GameObject Item1;
     public GameObject Item2;
     public GameObject Item3;
@@ -27,7 +28,6 @@ public class MerchantShop : MonoBehaviour
     public GameObject Item9;
     public GameObject Item10;
     public GameObject Item11;
-    public GameObject Item12;
 
 
     // Unity Functions
@@ -39,21 +39,40 @@ public class MerchantShop : MonoBehaviour
         MaxShopSpace = Slots.transform.childCount; 
 
         // add the items onto the items list
+        Items.Add(Item0);
         Items.Add(Item1);
+        Items.Add(Item2);
+        Items.Add(Item3);
+        Items.Add(Item4);
+        Items.Add(Item5);
+        Items.Add(Item6);
+        Items.Add(Item7);
+        Items.Add(Item8);
+        Items.Add(Item9);
+        Items.Add(Item10);
+        Items.Add(Item11);
         
         // add gameObject items to merchant backpack
         foreach (GameObject obj in Items)
         {
             for ( int i = 0; i < obj.GetComponent<ItemScript>().maxStack; i++)
             {
-                m_MerchantInv.AddItem(obj);
+                if (obj != null)
+                {
+                    m_MerchantInv.AddItem(obj);
+                }
+                else
+                {
+                    print("No gameObject!");
+                }
             }
         }
+
+        GetComponent<GlobalInventory>().LoadBackpack();  
     }
 
     void Update()
-    {  
-
+    {
     }
 }
 

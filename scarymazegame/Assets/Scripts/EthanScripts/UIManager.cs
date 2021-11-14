@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Player")]
     private PlayerScript player;
+    private GameObject playerObj;
     private Camera inventoryCamera;
 
     [Header("Merchant")]
@@ -21,6 +22,7 @@ public class UIManager : MonoBehaviour
     public GameObject bind_equip;
     public GameObject bind_consume;
     public GameObject bind_drop;
+    public GameObject bind_craft;
 
     [Header("Values")]
     public Vector3 keybindStartPos = new Vector3(0, 5, 0);
@@ -31,6 +33,7 @@ public class UIManager : MonoBehaviour
     {
         // Initialize Player
         player = GameObject.Find("Player").GetComponent<PlayerScript>();
+        playerObj = GameObject.Find("Player");
         inventoryCamera = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("InventoryCamera").GetComponent<Camera>();
 
         // Initialize Merchant
@@ -39,7 +42,7 @@ public class UIManager : MonoBehaviour
 
     public void CursorToMouse() // Move the mouse and anything attached to it towards the cursor.
     {
-        if (player.cameraState == PlayerScript.CameraState.inventory)
+        if (player.cameraState != PlayerScript.CameraState.normal)
         {
             crosshair.transform.position = Input.mousePosition;
             itemDetails.transform.position = Input.mousePosition;
@@ -96,6 +99,17 @@ public class UIManager : MonoBehaviour
         else
         {
             bind_drop.SetActive(false);
+        }
+        if (item.canBe_crafted)
+        {
+            bind_craft.SetActive(true);
+            bind_craft.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
+            i += 1;
+
+        }
+        else
+        {
+            bind_craft.SetActive(false);
         }
         #endregion
     }
@@ -160,6 +174,13 @@ public class UIManager : MonoBehaviour
                 {
                     itemDetails.gameObject.SetActive(true);
                     InspectItem(hit.transform.gameObject.GetComponent<ItemScript>());
+
+                    if (Input.GetKeyDown(KeyCode.E) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
+                    {
+                        print("Crafting..");
+                        hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
+                        print("Crafting function done!");
+                    }
                 }
                 else
                 {
@@ -173,7 +194,9 @@ public class UIManager : MonoBehaviour
 
         else
         {
-            itemDetails.gameObject.SetActive(false);
+            {
+                itemDetails.gameObject.SetActive(false);
+            }
         }
         #endregion
     }
