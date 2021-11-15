@@ -39,7 +39,7 @@ public class TrapInteraction : MonoBehaviour
                     break;
 
                 case TrapType.Infatuation:
-                    StartCoroutine(enemy.GetComponent<EnemyAI>().Debuff_Infatuation(infatuationDamage, infatuationTime));
+                    enemy.GetComponent<EnemyAI>().Debuff_Infatuation(infatuationDamage, infatuationTime);
                     break;
             }
 

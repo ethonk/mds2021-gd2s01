@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     public GameObject bind_consume;
     public GameObject bind_drop;
     public GameObject bind_craft;
+    public TextMeshProUGUI monsters_caught;
 
     [Header("Values")]
     public Vector3 keybindStartPos = new Vector3(0, 5, 0);
@@ -100,12 +101,11 @@ public class UIManager : MonoBehaviour
         {
             bind_drop.SetActive(false);
         }
-        if (item.canBe_crafted)
+        if (item.canBe_crafted && player.cameraState == PlayerScript.CameraState.shop)
         {
             bind_craft.SetActive(true);
             bind_craft.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
             i += 1;
-
         }
         else
         {
@@ -189,6 +189,10 @@ public class UIManager : MonoBehaviour
             }
         }
         #endregion
+        #endregion
+    
+        #region Update monsters caught
+        monsters_caught.text = "Monsters Caught: " + player.MonsterCount + "/7";
         #endregion
     }
 }
