@@ -26,6 +26,8 @@ namespace Interact
             merchantCam.gameObject.SetActive(!merchantCam.gameObject.activeInHierarchy);
             playerCam.gameObject.SetActive(!playerCam.gameObject.activeInHierarchy);
 
+            Player.GetComponent<MouseLook>().m_CameraLock = false;
+
             // Set player cam to shop
             Player.GetComponent<PlayerScript>().cameraState = PlayerScript.CameraState.shop;
         }

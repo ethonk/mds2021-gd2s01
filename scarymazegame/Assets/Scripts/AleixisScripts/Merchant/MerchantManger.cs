@@ -24,10 +24,14 @@ public class MerchantManger : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, DetectRadius);
     }
 
+    public void Start()
+    {
+        _PlayerRef = GameObject.Find("Player"); // tells the script to find the game object called Player and assigns it to the GameObject playerRef for reference
+    }
+
     // Update is called once per frame
     void Update()
     {
-        _PlayerRef = GameObject.Find("Player"); // tells the script to find the game object called Player and assigns it to the GameObject playerRef for reference
 
         Vector3 PlayerPosition = new Vector3(_PlayerRef.transform.position.x, // line creates a new vector3 
                                                 transform.position.y, // locks the Y-axis of the rotation
