@@ -74,14 +74,14 @@ namespace Interact
                         if(interactionData.IsEmpty()) // if the interactible data is empty / if there is a slot for an interactible
                         {
                             interactionData.Interactible = _interactible; // interaction data is set to this new interactible
-                            uiPanel.SetTooltip(_hitInfo.transform.gameObject.name); // sets UI to whatever the name of the gameObject the raycast gets is
+                            uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName); // sets UI to whatever the ItemScript name of the gameObject the raycast gets is
                         }
                         else // if there is an interactible in the interactible slot
                         {
                             if(!interactionData.isSameInteractible(_interactible)) // check if its not the same
                             {
                                 interactionData.Interactible = _interactible; // override the current interactible data
-                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.name); // same thing
+                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName); // same thing
                             }
                         }
                     }
@@ -93,6 +93,7 @@ namespace Interact
                     interactionData.ResetData();
                 }
 
+                //ray used for debugging
                 Debug.DrawRay(_ray.origin, _ray.direction * rayDistance, _hitSomething ? Color.green : Color.red);
             }
 
