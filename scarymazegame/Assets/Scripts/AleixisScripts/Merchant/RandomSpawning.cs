@@ -40,12 +40,6 @@ public class RandomSpawning : MonoBehaviour
     {
         Merchant.transform.position = DefaultSpawn.transform.position;
     }
-
-    void Update()
-    {
-        
-    }
-
     private IEnumerator ElapsedTimer()
     {
         if(ResetStart)

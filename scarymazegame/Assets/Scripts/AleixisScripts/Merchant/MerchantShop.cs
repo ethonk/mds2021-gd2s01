@@ -8,6 +8,9 @@ public class MerchantShop : MonoBehaviour
     [Header("References")]
     [SerializeField] public Transform Slots;
     [SerializeField] public GlobalInventory m_MerchantInv;
+
+    [Header("Player references")]
+    [SerializeField] public GameObject m_Player;
     [SerializeField] public GlobalInventory m_PlayerInv;
 
     [Header("Shop")]
@@ -33,7 +36,8 @@ public class MerchantShop : MonoBehaviour
     // Unity Functions
     void Start()
     {
-        print("allah");
+        m_Player = GameObject.Find("Player");
+        m_PlayerInv = m_Player.GetComponent<GlobalInventory>();
 
         // find the max shop space in merchant inventory
         MaxShopSpace = Slots.transform.childCount; 
@@ -66,13 +70,12 @@ public class MerchantShop : MonoBehaviour
                     print("No gameObject!");
                 }
             }
-        }
-
-        GetComponent<GlobalInventory>().LoadBackpack();  
+        }  
     }
 
     void Update()
     {
+        GetComponent<GlobalInventory>().LoadBackpack();
     }
 }
 
