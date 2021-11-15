@@ -94,7 +94,7 @@ namespace Interact
                 }
 
                 //ray used for debugging
-                Debug.DrawRay(_ray.origin, _ray.direction * rayDistance, _hitSomething ? Color.green : Color.red);
+                //Debug.DrawRay(_ray.origin, _ray.direction * rayDistance, _hitSomething ? Color.green : Color.red);
             }
 
             bool CheckForDestroyObj()

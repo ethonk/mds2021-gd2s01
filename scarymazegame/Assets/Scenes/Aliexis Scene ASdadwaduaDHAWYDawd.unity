@@ -413,7 +413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Electric Trap
   itemDescription: Shocking
-  itemType: 1
+  itemCraftReqs: 
+  itemType: 0
   maxStack: 3
   m_CraftingItems: []
   canBe_equipped: 0
@@ -685,7 +686,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Ghost Trap
   itemDescription: straight from ghostbusters
-  itemType: 1
+  itemCraftReqs: 'Materials:
+
+    Sus essence
+
+    Astronaut Suit
+
+    CSGO Knife'
+  itemType: 0
   maxStack: 3
   m_CraftingItems:
   - {fileID: 700624502}
@@ -1304,7 +1312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Bible
   itemDescription: Pray to god
-  itemType: 2
+  itemCraftReqs: 
+  itemType: 3
   maxStack: 1
   m_CraftingItems: []
   canBe_equipped: 0
@@ -2427,6 +2436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Astronaut Suit
   itemDescription: No holes for arms and quite small for you
+  itemCraftReqs: 
   itemType: 1
   maxStack: 2
   m_CraftingItems: []
@@ -2550,6 +2560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sus Essence
   itemDescription: What the Imposters are made out of
+  itemCraftReqs: 
   itemType: 1
   maxStack: 5
   m_CraftingItems: []
@@ -2909,6 +2920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Amogus
   itemDescription: Amogus
+  itemCraftReqs: 
   itemType: 2
   maxStack: 69
   m_CraftingItems:
@@ -3062,6 +3074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: CSGO Knife
   itemDescription: Anomaly would like to trade
+  itemCraftReqs: 
   itemType: 2
   maxStack: 1
   m_CraftingItems: []
@@ -3938,11 +3951,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1027768287870463734, guid: 7f176625dd432b3489056fb9b64a1075,
-        type: 3}
-      propertyPath: merchant
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4246674241240555029, guid: 7f176625dd432b3489056fb9b64a1075,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4184,7 +4192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shovle
   itemDescription: Madness
-  itemType: 2
+  itemCraftReqs: 
+  itemType: 3
   maxStack: 1
   m_CraftingItems: []
   canBe_equipped: 0
@@ -4342,7 +4351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Grass Trap
   itemDescription: Wrapped in rose thorns and sharpened grass blades
-  itemType: 1
+  itemCraftReqs: 
+  itemType: 0
   maxStack: 3
   m_CraftingItems: []
   canBe_equipped: 0
@@ -4822,7 +4832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Tree
   itemDescription: ok I even I don't know now
-  itemType: 2
+  itemCraftReqs: 
+  itemType: 3
   maxStack: 1
   m_CraftingItems: []
   canBe_equipped: 0
@@ -5491,7 +5502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Steel Trap
   itemDescription: Smells like rotting metal
-  itemType: 1
+  itemCraftReqs: 
+  itemType: 0
   maxStack: 3
   m_CraftingItems: []
   canBe_equipped: 0
@@ -5731,7 +5743,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: GigaBird
   itemDescription: what?
-  itemType: 2
+  itemCraftReqs: 'Bird
+
+    Bird
+
+    Bird'
+  itemType: 3
   maxStack: 1
   m_CraftingItems: []
   canBe_equipped: 0
