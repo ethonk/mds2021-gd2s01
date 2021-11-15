@@ -8,12 +8,16 @@ public class ItemScript : MonoBehaviour
     {
         Trap,
         Craftable,
-        Consumable
+        Consumable,
+        Shoppable
     };
 
     [Header("General")]
     public string itemName;
+    [TextArea(3, 10)] // modifies the text area of the value in the inspector
     public string itemDescription;
+    [TextArea(3, 10)]
+    public string itemCraftReqs;
     public ItemType itemType;
     public int maxStack;
 
@@ -101,13 +105,19 @@ public class ItemScript : MonoBehaviour
                 canBe_equipped = false;
                 canBe_consumed = false;
                 canBe_dropped = true;
-                canBe_crafted = true;
+                canBe_crafted = false;
                 break;
             case ItemType.Consumable:
                 canBe_equipped = false;
                 canBe_consumed = true;
                 canBe_dropped = true;
                 canBe_crafted = false;
+                break;
+            case ItemType.Shoppable:
+                canBe_equipped = false;
+                canBe_consumed = false;
+                canBe_dropped = false;
+                canBe_crafted = true;
                 break;
         }
     }

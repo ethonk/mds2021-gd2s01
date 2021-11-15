@@ -54,12 +54,19 @@ public class UIManager : MonoBehaviour
             itemDetails.transform.position = Input.mousePosition;
         }
     }
-    
+
     public void InspectItem(ItemScript item)
     {
         // Set name and description
         itemName.text = item.itemName;
-        itemDescription.text = item.itemDescription;
+        if (player.cameraState == PlayerScript.CameraState.shop && item.canBe_crafted)
+        {
+            itemDescription.text = item.itemCraftReqs;
+        }
+        else
+        {
+            itemDescription.text = item.itemDescription;
+        }
 
         // Set get slot of item
         int itemSlot = (int)char.GetNumericValue(item.transform.parent.name[item.transform.parent.name.Length-1]);
@@ -172,8 +179,9 @@ public class UIManager : MonoBehaviour
                 {
                     itemDetails.gameObject.SetActive(true);
                     InspectItem(hit.transform.gameObject.GetComponent<ItemScript>());
+                    print("hitsomething");
 
-                    if (Input.GetKeyDown(KeyCode.E) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
+                    if (Input.GetKeyDown(KeyCode.F) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
                     {
                         print("Crafting..");
                         hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
@@ -183,10 +191,12 @@ public class UIManager : MonoBehaviour
                 else
                 {
                     {
+                        print("Nothing hit");
                         itemDetails.gameObject.SetActive(false);
                     }
                 }
             }
+    
         }
         #endregion
         #endregion
