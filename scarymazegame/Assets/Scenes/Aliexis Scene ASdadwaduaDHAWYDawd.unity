@@ -5709,6 +5709,7 @@ GameObject:
   - component: {fileID: 1936781322}
   - component: {fileID: 1936781321}
   - component: {fileID: 1936781320}
+  - component: {fileID: 1936781325}
   m_Layer: 10
   m_Name: bird
   m_TagString: Untagged
@@ -5728,7 +5729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d85f1aa16ce0f4faf9e2ab51db0f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: bird
+  itemName: GigaBird
   itemDescription: what?
   itemType: 2
   maxStack: 1
@@ -5813,6 +5814,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1936781325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936781319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bac484cc169814b80d40cdc08b100c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdDuration: 0
+  holdInteract: 0
+  multipleUse: 0
+  isInteractible: 0
+  destroyObj: 0
+  player: {fileID: 0}
 --- !u!1 &1958337577
 GameObject:
   m_ObjectHideFlags: 0
