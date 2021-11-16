@@ -15,8 +15,14 @@ namespace Interact
         public CharacterMotor m_PlayerMotor;
         public Camera playerCam;
 
+        [Header("Audio")]
+        public AudioClip talkSound;
+
         public override void OnInteract()
         {
+            // sound play
+            GetComponent<AudioSource>().PlayOneShot(talkSound);
+
             base.OnInteract();
 
             m_PlayerMotor.playerLock = true;
