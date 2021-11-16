@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : Trapinteraction
-// Description : The main function for Battleships.
+// Description : The interactions of all the traps.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : PlayerHealthBar
-// Description : The main function for Battleships.
+// Description : The script for the playerhealth bar.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

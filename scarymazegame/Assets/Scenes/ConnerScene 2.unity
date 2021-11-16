@@ -1581,8 +1581,8 @@ GameObject:
   - component: {fileID: 1750511292}
   - component: {fileID: 1750511297}
   - component: {fileID: 1750511296}
-  - component: {fileID: 1750511298}
   - component: {fileID: 1750511299}
+  - component: {fileID: 1750511298}
   m_Layer: 0
   m_Name: Mock Player
   m_TagString: Player
@@ -1715,55 +1715,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750511291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e058d8b4882e8b148807318c280d0662, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a4f42b80279ab14498215f0b4dcb697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SprintTimer: 0
-  m_Controller: {fileID: 1750511297}
-  m_Look: {fileID: 1750511296}
+  m_Controller: {fileID: 0}
+  m_Look: {fileID: 0}
   m_MoveSpeed: 6
-  m_Gravity: 40
-  m_JumpSpeed: 12
-  m_GroundedLenience: 0.25
-  m_Acceleration: 5
-  m_FrictionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_AirMomentumMultiplier: 0
-  m_SprintMod: 3
-  m_Sprinting: 0
-  m_Stamina: 100
+  m_Gravity: 32
+  m_JumpSpeed: 10
+  m_SprintSpeed: 2
   m_Velocity: {x: 0, y: 0, z: 0}
+  inputMove: {x: 0, y: 0, z: 0}
   m_Grounded: 0
-  m_GroundedTimer: 0
-  m_DistanceTravelled: 0
-  m_FeetPosition: {fileID: 0}
-  m_FootstepLength: 0.5
-  m_JumpFootstepTimer: 0
-  m_JumpFootstepCooldown: 0.5
-  m_IsRightFoot: 1
-  pCamera: {fileID: 0}
+  isSprinting: 0
+  Range: 100
+  playerLock: 0
 --- !u!114 &1750511299
 MonoBehaviour:
   m_ObjectHideFlags: 0

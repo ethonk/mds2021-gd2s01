@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : PauseMenu
-// Description : The main function for Battleships.
+// Description : Pause script.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //
