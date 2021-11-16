@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : EnergyDrink
-// Description : The main function for Battleships.
+// Description : The script for the stamina from energy drinks.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : MainMenu
-// Description : The main function for Battleships.
+// Description : Script for main menu.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

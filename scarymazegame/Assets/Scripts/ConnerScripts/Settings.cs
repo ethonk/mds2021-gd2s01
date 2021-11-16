@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : Settings
-// Description : The main function for Battleships.
+// Description : The settings page code.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

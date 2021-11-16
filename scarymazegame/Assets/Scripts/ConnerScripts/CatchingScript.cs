@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : CatchingScript
-// Description : The main function for Battleships.
+// Description : The script for catching monsters.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

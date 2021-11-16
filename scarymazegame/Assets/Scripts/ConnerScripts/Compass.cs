@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : Compass
-// Description : The main function for Battleships.
+// Description : The script for the compass to work.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

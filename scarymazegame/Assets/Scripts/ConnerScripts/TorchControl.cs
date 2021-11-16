@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : TorchControl
-// Description : The main function for Battleships.
+// Description : Script for using the torch.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //

@@ -7,7 +7,7 @@
 // (c) 2020 Media Design School
 //
 // File Name : PlayerControl
-// Description : The main function for Battleships.
+// Description : A player script for health and combat timers.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //
