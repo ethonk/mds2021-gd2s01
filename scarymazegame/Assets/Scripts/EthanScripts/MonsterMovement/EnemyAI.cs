@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange, playerInCoverageRange; // Attacking based
     public bool debuffed;
     public bool infatuated;
+    public bool firstEncounter = true;
 
     [Header("Trap Interaction Values")]
     public float debuffCooldown;
@@ -128,10 +129,15 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange)                                                        // Player is NOT in sight range and NOT attack range, Patrol.
         {
             MoveToStart();
-            //Patroling();
+            firstEncounter = true;
         }
         if (playerInSightRange && !playerInAttackRange && !player.GetComponent<CharacterMotor>().playerLock)     // Player IS in sight range and NOT in attack range, Chase.
         {
+            if (firstEncounter == true)
+            {
+                firstEncounter = false;
+                GetComponent<AudioSource>().PlayOneShot(GetComponent<MonsterDetails>().jsSound);
+            }
             ChasePlayer();
         }
         if (playerInAttackRange && playerInSightRange && !player.GetComponent<CharacterMotor>().playerLock)      // Player IS in sight range and IS in attack range, Attack.
@@ -207,7 +213,19 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            GetComponent<Attacks>().EatAttack(player.transform, transform.Find("Torso").Find("BodyParts").Find("Head").Find("EatPart"));
+            // roll
+            int roll = Random.Range(0, 2);
+            print(roll);
+            // random attacks
+            switch (roll)
+            {
+                case 0: // slash attack
+                    GetComponent<Attacks>().SlashAttack(player.GetComponent<PlayerScript>());
+                    break;
+                case 1: // eat attack
+                    GetComponent<Attacks>().EatAttack(player.transform, transform.Find("Torso").Find("BodyParts").Find("Head").Find("EatPart"));
+                    break;
+            }
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);

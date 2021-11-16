@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 357206449984170660}
   - component: {fileID: 357206449984170661}
   - component: {fileID: 357206449984170662}
-  - component: {fileID: 357206449984170663}
   - component: {fileID: 357206449984170648}
   - component: {fileID: 357206449984170649}
   - component: {fileID: 357206449984170650}
@@ -84,6 +83,7 @@ MonoBehaviour:
   slowTime: 5
   infatuationDamage: 10
   infatuationTime: 5
+  elementalDamage: 0
 --- !u!114 &357206449984170658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,26 +181,6 @@ MonoBehaviour:
   hitCooldown: 0
   equipSound: {fileID: 0}
   attackSound: {fileID: 0}
---- !u!114 &357206449984170663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357206449984170651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trapType: 0
-  trapElement: 0
-  normalDamage: 0
-  slowDamage: 0
-  slowPercentage: 0
-  slowTime: 0
-  infatuationDamage: 0
-  infatuationTime: 0
 --- !u!114 &357206449984170648
 MonoBehaviour:
   m_ObjectHideFlags: 0
