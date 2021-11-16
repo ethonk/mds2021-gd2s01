@@ -8,12 +8,16 @@ public class ItemScript : MonoBehaviour
     {
         Trap,
         Craftable,
-        Consumable
+        Consumable,
+        Shoppable
     };
 
     [Header("General")]
     public string itemName;
+    [TextArea(3, 10)] // modifies the text area of the value in the inspector
     public string itemDescription;
+    [TextArea(3, 10)]
+    public string itemCraftReqs;
     public ItemType itemType;
     public int maxStack;
 
@@ -24,15 +28,19 @@ public class ItemScript : MonoBehaviour
     public bool canBe_equipped;
     public bool canBe_consumed;
     public bool canBe_dropped;
+    public bool canBe_crafted;
     
     public bool Craft(GlobalInventory _playerInventory)
     {
+        print("crafting function called?");
         if (m_CraftingItems.Count > 0)    // a craftable item.
         {
+            print("Craftable!");
             // Check if both items exist in inventory
             foreach (GameObject item in m_CraftingItems)
             {
                 if (!_playerInventory.SearchForItem(item)) return false;
+                print("No items in inventory");
             }
 
             // If item exists but there is no space...
@@ -42,13 +50,13 @@ public class ItemScript : MonoBehaviour
                 // Otherwise, add item to backpack
                 else if (_playerInventory.backpack[i] == gameObject && _playerInventory.backpackItemCount[i] != maxStack)
                 {
-                    _playerInventory.backpackItemCount[i]++;
-
                     // Delete items
                     foreach (GameObject item in m_CraftingItems)
                     {
                         _playerInventory.DropItemGameObject(item);
                     }
+
+                    _playerInventory.backpackItemCount[i]++;
 
                     return true;
                 }
@@ -56,25 +64,29 @@ public class ItemScript : MonoBehaviour
 
             // If item doesn't exist but theres no space...
             if (_playerInventory.backpack.Count < maxStack) return false;
+            print("No space in inventory");
 
             // Otherwise... add this item to the inventory
             for (int i = 0; i < _playerInventory.backpack.Count; i++)
             {
                 if (_playerInventory.backpack[i] == null)
                 {
-                    _playerInventory.backpack[i] = gameObject;
-                    _playerInventory.backpackItemCount[i]++;
-
                     // Delete items
                     foreach (GameObject item in m_CraftingItems)
                     {
                         _playerInventory.DropItemGameObject(item);
                     }
-                    
+
+                    var craftedItem = Instantiate(gameObject);
+                    _playerInventory.backpack[i] = craftedItem;
+                    _playerInventory.backpackItemCount[i]++;
+
+                    print("Item should be added!");
                     return true;
                 }
             }
         }
+        print("Not a craftable item...");
         return false;
     }
 
@@ -87,16 +99,25 @@ public class ItemScript : MonoBehaviour
                 canBe_equipped = true;
                 canBe_consumed = false;
                 canBe_dropped = true;
+                canBe_crafted = true;
                 break;
             case ItemType.Craftable:
                 canBe_equipped = false;
                 canBe_consumed = false;
                 canBe_dropped = true;
+                canBe_crafted = false;
                 break;
             case ItemType.Consumable:
                 canBe_equipped = false;
                 canBe_consumed = true;
                 canBe_dropped = true;
+                canBe_crafted = false;
+                break;
+            case ItemType.Shoppable:
+                canBe_equipped = false;
+                canBe_consumed = false;
+                canBe_dropped = false;
+                canBe_crafted = true;
                 break;
         }
     }

@@ -1,10 +1,25 @@
-﻿using System.Collections;
+﻿//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : MouseLook.cs
+// Description : MouseLook is responsible for the camera movement of the player
+// Author : Aliexis Alvarez
+// Mail : Aliexis.Alvarez@mediadesignschool.com
+//
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
 public bool m_CursorLocked = true;
+public bool m_CameraLock = false;
 
     public float m_Spin = 0.0f;
     public float m_Tilt = 0.0f;
@@ -35,7 +50,10 @@ public bool m_CursorLocked = true;
 
         m_Tilt = Mathf.Clamp(m_Tilt, m_TiltExtents.x, m_TiltExtents.y);
 
-        transform.localEulerAngles = new Vector3(m_Tilt, m_Spin, m_Lean);
+        if (!m_CameraLock)
+        {
+            transform.localEulerAngles = new Vector3(m_Tilt, m_Spin, m_Lean);
+        }
         #endregion
 
 

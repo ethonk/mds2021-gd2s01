@@ -83,12 +83,11 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public IEnumerator Debuff_Infatuation(float infatuationDamage, float infatuationTime)
+    public void Debuff_Infatuation(float infatuationDamage, float infatuationTime)
     {
         // Apply debuff cooldown
         if (!debuffed)
         {
-            print("infatuate!");
             // Start cooldown
             StartCoroutine(DebuffCooldown(debuffCooldown));
 
@@ -96,10 +95,15 @@ public class EnemyAI : MonoBehaviour
             GetComponent<MonsterDetails>().health -= infatuationDamage;
             
             // Apply infatuation
+            StartCoroutine(Infatuation_Cooldown(infatuationTime));
+        }
+    }
+
+    public IEnumerator Infatuation_Cooldown(float infatuationTime)
+    {
             infatuated = true;
             yield return new WaitForSeconds(infatuationTime);
             infatuated = false;
-        }
     }
 
     #endregion

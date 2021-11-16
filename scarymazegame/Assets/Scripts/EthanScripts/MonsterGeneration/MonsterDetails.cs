@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class MonsterDetails : MonoBehaviour
 {
+    // Types of monster
+    public enum Types {Steel = 1, Poison = 2,  Grass = 3, Water = 4, Electric = 5, Rock = 6, Ghost = 7};
     [Header("Monster Details")]
     public string monsterName = "unknown";
-    public string monsterType = "unknown";
+    public Types monsterType;
     public List<string> nameSyllables; // Monster name syllables
 
     [Header("Monster Stats")]

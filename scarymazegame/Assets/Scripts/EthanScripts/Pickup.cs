@@ -10,15 +10,8 @@ public class Pickup : MonoBehaviour
     public bool equipped;
     public static bool slotFull;
 
-    public Vector3 defaultSize;
-
     private void Start()
     {
-        if (GetComponent<ItemScript>().itemType == ItemScript.ItemType.Trap)
-        {
-            defaultSize = new Vector3(1, 0.5f, 1);
-        }
-
         // Setup
         if (!equipped)
         {
@@ -37,13 +30,7 @@ public class Pickup : MonoBehaviour
     private void Update()
     {
         Vector3 distanceToPlayer = GameObject.Find("Player").transform.position - transform.position;    // Get distance of weapon from player
-
-        // If player is in range and E is pressed.
-        if (!equipped && distanceToPlayer.magnitude <= pickupRange && Input.GetKeyDown(KeyCode.E) && !slotFull)
-        {
-            //PickUp();
-        }
-
+        
         // If player presses Q with an item equipped.
         if (equipped && Input.GetKeyDown(KeyCode.Q))
         {
@@ -74,9 +61,6 @@ public class Pickup : MonoBehaviour
 
         // Run weaponscript pickup function
         GetComponent<WeaponScript>().PickedUp();
-
-        // Change scale
-        transform.localScale = new Vector3(1, 1, 1);
     }
 
     private void Drop()
@@ -95,14 +79,5 @@ public class Pickup : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(GameObject.Find("Player").transform.Find("Main Camera").up * dropUpwardForce, ForceMode.Impulse);
 
         GetComponent<WeaponScript>().enabled = false;
-
-        // Reset scale
-        StartCoroutine(ResetScale(0.5f));
-    }
-
-    private IEnumerator ResetScale(float time)
-    {
-        yield return new WaitForSeconds(time);
-        transform.localScale = defaultSize;
     }
 }

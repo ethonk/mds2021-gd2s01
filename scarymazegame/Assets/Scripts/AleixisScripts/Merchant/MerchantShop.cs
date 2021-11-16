@@ -8,6 +8,9 @@ public class MerchantShop : MonoBehaviour
     [Header("References")]
     [SerializeField] public Transform Slots;
     [SerializeField] public GlobalInventory m_MerchantInv;
+
+    [Header("Player references")]
+    [SerializeField] public GameObject m_Player;
     [SerializeField] public GlobalInventory m_PlayerInv;
 
     [Header("Shop")]
@@ -16,6 +19,7 @@ public class MerchantShop : MonoBehaviour
     public List<GameObject> Items;
 
     [Header("Items")]
+    public GameObject Item0;
     public GameObject Item1;
     public GameObject Item2;
     public GameObject Item3;
@@ -27,18 +31,19 @@ public class MerchantShop : MonoBehaviour
     public GameObject Item9;
     public GameObject Item10;
     public GameObject Item11;
-    public GameObject Item12;
 
 
     // Unity Functions
     void Start()
     {
-        print("allah");
+        m_Player = GameObject.Find("Player");
+        m_PlayerInv = m_Player.GetComponent<GlobalInventory>();
 
         // find the max shop space in merchant inventory
         MaxShopSpace = Slots.transform.childCount; 
 
         // add the items onto the items list
+        Items.Add(Item0);
         Items.Add(Item1);
         Items.Add(Item2);
         Items.Add(Item3);
@@ -50,21 +55,27 @@ public class MerchantShop : MonoBehaviour
         Items.Add(Item9);
         Items.Add(Item10);
         Items.Add(Item11);
-        Items.Add(Item12);
         
         // add gameObject items to merchant backpack
         foreach (GameObject obj in Items)
         {
             for ( int i = 0; i < obj.GetComponent<ItemScript>().maxStack; i++)
             {
-                m_MerchantInv.AddItem(obj);
+                if (obj != null)
+                {
+                    m_MerchantInv.AddItem(obj);
+                }
+                else
+                {
+                    print("No gameObject!");
+                }
             }
-        }
+        }  
     }
 
     void Update()
-    {  
-
+    {
+        GetComponent<GlobalInventory>().LoadBackpack();
     }
 }
 
