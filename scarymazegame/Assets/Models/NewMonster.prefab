@@ -49,13 +49,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: unknown
-  monsterType: unknown
+  monsterType: 0
   nameSyllables: []
   health: 100
-  speed: 15
+  speed: 20
   currentSpeed: 0
+  jsSound: {fileID: 8300000, guid: 17629bce1b5d319488501fdc75a899fe, type: 3}
   eatSound: {fileID: 8300000, guid: dff0c48c15088d1409c40c1da1131663, type: 3}
   spitSound: {fileID: 8300000, guid: e9ed8b84ba75f3d4db2d2b063bb84041, type: 3}
+  slashSound: {fileID: 8300000, guid: 007b359b66299d4409f3f481ed9cbdfb, type: 3}
 --- !u!114 &1111963009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +89,7 @@ MonoBehaviour:
   playerInCoverageRange: 0
   debuffed: 0
   infatuated: 0
+  firstEncounter: 1
   debuffCooldown: 10
   startPosition: {x: 0, y: 0, z: 0}
   areaCoverage: 150

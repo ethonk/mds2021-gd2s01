@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : Trapinteraction
+// Description : The interactions of all the traps.
+// Author : Conner Hall
+// Mail : conner.hall@mediadesignschool.com
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +35,8 @@ public class TrapInteraction : MonoBehaviour
     
     public float infatuationDamage;
     public float infatuationTime;
+
+    public float elementalDamage;
 
     public void OnCollisionEnter(Collision col)    // Trap and Monster interaction.
     {

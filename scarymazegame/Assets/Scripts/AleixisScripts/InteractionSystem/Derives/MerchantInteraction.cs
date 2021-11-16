@@ -21,13 +21,14 @@ namespace Interact
 
             m_PlayerMotor.playerLock = true;
             Cursor.lockState =  CursorLockMode.None;
-            print(Cursor.lockState);
+            Player.GetComponent<MouseLook>().m_CameraLock = true;
 
             merchantCam.gameObject.SetActive(!merchantCam.gameObject.activeInHierarchy);
             playerCam.gameObject.SetActive(!playerCam.gameObject.activeInHierarchy);
 
             // Set player cam to shop
             Player.GetComponent<PlayerScript>().cameraState = PlayerScript.CameraState.shop;
+            GetComponent<GlobalInventory>().LoadBackpack();
         }
 
         public void Start()
@@ -39,11 +40,6 @@ namespace Interact
 
             // Merchant
             merchantCam = transform.Find("MerchantCamera").GetComponent<Camera>();
-        }
-
-        public void Update()
-        {
-            GetComponent<GlobalInventory>().LoadBackpack();
         }
     }
 }

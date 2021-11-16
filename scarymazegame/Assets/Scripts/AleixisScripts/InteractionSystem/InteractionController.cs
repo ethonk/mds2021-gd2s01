@@ -52,7 +52,6 @@ namespace Interact
             {
                 CheckForInteractible(); // checks if player is pointing at interactible
                 CheckForInteractibleInput();    // if it is an interactible, do something
-                CheckForLocks(); // check if the player is locked, and if meets conditions, unlock
             }
         #endregion
 
@@ -111,7 +110,7 @@ namespace Interact
                 }
             }
 
-            // checks if the player is locked down
+            // checks if the player is locked down, on most locks
             void CheckForLocks()
             {
                 if (Maincam.gameObject.activeInHierarchy && Cursor.lockState == CursorLockMode.None && !m_interacting)
@@ -126,6 +125,12 @@ namespace Interact
                     print( "Lock off" );
                     m_PlayerMotor.playerLock = false;
                 }
+
+                if (Maincam.gameObject.activeInHierarchy && m_Player.GetComponent<MouseLook>().m_CameraLock && !m_interacting)
+                {
+                    m_Player.GetComponent<MouseLook>().m_CameraLock = false;
+                }
+
                 // if player main camera is up
                 if (Maincam.gameObject.activeInHierarchy)
                 {
@@ -181,6 +186,7 @@ namespace Interact
                             {
                                 interactionData.Interact();
                                 m_interacting = false;
+                                CheckForLocks(); // check if the player is locked, and if meets conditions, unlock
                             }
                         }
                     }
@@ -196,6 +202,7 @@ namespace Interact
                         {
                             interactionData.Interact();
                             m_interacting = false;
+                            CheckForLocks(); // check if the player is locked, and if meets conditions, unlock
                         }
                     }
                 }

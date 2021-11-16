@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : Compass
+// Description : The script for the compass to work.
+// Author : Conner Hall
+// Mail : conner.hall@mediadesignschool.com
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +34,7 @@ public class Compass : MonoBehaviour
     void Start()
     {
         
-        playertransform = GameObject.FindWithTag("Player");
+        playertransform = GameObject.Find("Player");
         Spawnpoints = GameObject.FindGameObjectsWithTag("Spawner");
         
         
