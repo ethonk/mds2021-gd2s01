@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CursorLocked: 1
+  m_CameraLock: 0
   m_Spin: 0
   m_Tilt: 0
   m_Lean: 0
@@ -365,8 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11198210d0c5b74393542d436353400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerMotor: {fileID: 0}
-  Maincam: {fileID: 0}
+  m_PlayerMotor: {fileID: 4216341558583236970}
+  Maincam: {fileID: 4216341556742346033}
+  m_Player: {fileID: 0}
   interactionInputData: {fileID: 11400000, guid: 3a9c8c831835be747b4ae0a1e3b6fb2d,
     type: 2}
   interactionData: {fileID: 11400000, guid: debab3b342ca15e469d53e7dbb5f1452, type: 2}
