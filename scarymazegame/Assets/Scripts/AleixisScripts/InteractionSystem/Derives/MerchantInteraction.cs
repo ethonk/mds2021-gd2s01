@@ -47,5 +47,5 @@ namespace Interact
             // Merchant
             merchantCam = transform.Find("MerchantCamera").GetComponent<Camera>();
         }
-    }
+    }   
 }

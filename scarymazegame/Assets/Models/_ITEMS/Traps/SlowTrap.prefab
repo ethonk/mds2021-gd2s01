@@ -54,10 +54,21 @@ MonoBehaviour:
   itemName: Slow Trap
   itemDescription: Significantly reduces a monster's move speed and deals very little
     damage.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Scrap Metal
+
+    Scrap Metal
+
+    Machine Parts'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
+  - {fileID: 265393512573362402, guid: 4cb789387d28aaa49ac038844e989bad, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -131,6 +142,52 @@ MonoBehaviour:
   hitCooldown: 0
   equipSound: {fileID: 0}
   attackSound: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &7093741377196880878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291817583964847931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapType: 0
+  trapElement: 0
+  normalDamage: 0
+  slowDamage: 0
+  slowPercentage: 0
+  slowTime: 0
+  infatuationDamage: 0
+  infatuationTime: 0
+--- !u!114 &7093741377077557276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291817583964847931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d85f1aa16ce0f4faf9e2ab51db0f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemDescription: 
+  itemCraftReqs: 
+  itemType: 0
+  maxStack: 0
+  m_CraftingItems: []
+  m_CraftItemNames: []
+  canBe_equipped: 0
+  canBe_consumed: 0
+  canBe_dropped: 0
+  canBe_crafted: 0
+>>>>>>> Stashed changes
 --- !u!65 &9098159642715782432
 BoxCollider:
   m_ObjectHideFlags: 0
