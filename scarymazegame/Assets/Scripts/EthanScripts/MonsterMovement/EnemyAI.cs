@@ -52,6 +52,12 @@ public class EnemyAI : MonoBehaviour
     #region == FUNCTIONS ==
 
     #region Trap Effects
+    public IEnumerator PlayJumpscare(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        GetComponent<AudioSource>().PlayOneShot(GetComponent<MonsterDetails>().jsSound);
+    }
+
     public void Debuff_Damage(float normalDamage)
     {
         if (!debuffed)
@@ -136,7 +142,7 @@ public class EnemyAI : MonoBehaviour
             if (firstEncounter == true)
             {
                 firstEncounter = false;
-                GetComponent<AudioSource>().PlayOneShot(GetComponent<MonsterDetails>().jsSound);
+                StartCoroutine(PlayJumpscare(0.3f));
             }
             ChasePlayer();
         }
