@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -182.124, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.46196, y: 0.9574404}
+  m_AnchoredPosition: {x: 25.46196, y: 5.48}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4046360
@@ -421,6 +421,7 @@ MonoBehaviour:
   m_CraftingItems:
   - {fileID: 202951927}
   - {fileID: 700624502}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -703,6 +704,7 @@ MonoBehaviour:
   - {fileID: 700624502}
   - {fileID: 619509494}
   - {fileID: 964026964}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -722,7 +724,7 @@ MonoBehaviour:
   holdDuration: 1
   holdInteract: 1
   multipleUse: 0
-  isInteractible: 0
+  isInteractible: 1
   destroyObj: 0
   player: {fileID: 194286584}
 --- !u!1 &139525267
@@ -1305,7 +1307,7 @@ MonoBehaviour:
   holdDuration: 0
   holdInteract: 0
   multipleUse: 0
-  isInteractible: 0
+  isInteractible: 1
   destroyObj: 0
   player: {fileID: 0}
 --- !u!114 &381571964
@@ -1325,9 +1327,8 @@ MonoBehaviour:
   itemCraftReqs: 
   itemType: 3
   maxStack: 1
-  m_CraftingItems:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -1402,7 +1403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381571962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.037, y: 1.250663, z: 23.377}
+  m_LocalPosition: {x: -7.037, y: 1.250663, z: 22.774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2342,7 +2343,6 @@ GameObject:
   - component: {fileID: 619509497}
   - component: {fileID: 619509496}
   - component: {fileID: 619509499}
-  - component: {fileID: 619509500}
   - component: {fileID: 619509501}
   m_Layer: 10
   m_Name: Astronaut Suit
@@ -2359,7 +2359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619509494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.816193, y: 9.087545, z: -9.240859}
+  m_LocalPosition: {x: 23.011, y: 9.087545, z: -9.240859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 441062029}
@@ -2446,22 +2446,11 @@ MonoBehaviour:
   itemType: 1
   maxStack: 2
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
   canBe_crafted: 0
---- !u!114 &619509500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619509494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6f66e208bf4f04f89a822ba057c13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &619509501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2529,7 +2518,6 @@ GameObject:
   - component: {fileID: 700624506}
   - component: {fileID: 700624505}
   - component: {fileID: 700624504}
-  - component: {fileID: 700624508}
   - component: {fileID: 700624509}
   m_Layer: 10
   m_Name: Sus Essence
@@ -2570,6 +2558,7 @@ MonoBehaviour:
   itemType: 1
   maxStack: 5
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -2636,18 +2625,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700624502}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &700624508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700624502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6f66e208bf4f04f89a822ba057c13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &700624509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2917,10 +2894,8 @@ MonoBehaviour:
   itemCraftReqs: 
   itemType: 2
   maxStack: 69
-  m_CraftingItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -2968,7 +2943,6 @@ GameObject:
   - component: {fileID: 964026967}
   - component: {fileID: 964026966}
   - component: {fileID: 964026969}
-  - component: {fileID: 964026970}
   - component: {fileID: 964026971}
   m_Layer: 10
   m_Name: csgo knife
@@ -3072,22 +3046,11 @@ MonoBehaviour:
   itemType: 2
   maxStack: 1
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
   canBe_crafted: 0
---- !u!114 &964026970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964026964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6f66e208bf4f04f89a822ba057c13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &964026971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3195,7 +3158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994020356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.171957, y: -2.2191372, z: 1.9020691}
+  m_LocalPosition: {x: 7.171957, y: -1.76, z: 1.9020691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 952601621}
@@ -4169,7 +4132,7 @@ MonoBehaviour:
   holdDuration: 0
   holdInteract: 0
   multipleUse: 0
-  isInteractible: 0
+  isInteractible: 1
   destroyObj: 0
   player: {fileID: 0}
 --- !u!114 &1289965473
@@ -4190,6 +4153,7 @@ MonoBehaviour:
   itemType: 3
   maxStack: 1
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -4349,6 +4313,7 @@ MonoBehaviour:
   itemType: 0
   maxStack: 3
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -4368,7 +4333,7 @@ MonoBehaviour:
   holdDuration: 1
   holdInteract: 1
   multipleUse: 0
-  isInteractible: 0
+  isInteractible: 1
   destroyObj: 0
   player: {fileID: 194286584}
 --- !u!1 &1468028413
@@ -4830,6 +4795,7 @@ MonoBehaviour:
   itemType: 3
   maxStack: 1
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -4903,13 +4869,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629558742}
-  m_LocalRotation: {x: -0.05249561, y: -0, z: -0, w: 0.99862117}
-  m_LocalPosition: {x: -6.92, y: 1.148, z: 26.404985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.92, y: 1.148, z: 26.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: -6.018, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647064005
 GameObject:
   m_ObjectHideFlags: 0
@@ -5569,6 +5535,7 @@ MonoBehaviour:
   itemType: 0
   maxStack: 3
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -5588,7 +5555,7 @@ MonoBehaviour:
   holdDuration: 1
   holdInteract: 1
   multipleUse: 0
-  isInteractible: 0
+  isInteractible: 1
   destroyObj: 0
   player: {fileID: 194286584}
 --- !u!1 &1862628236
@@ -5819,6 +5786,7 @@ MonoBehaviour:
   itemType: 3
   maxStack: 1
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -5914,9 +5882,9 @@ MonoBehaviour:
   holdDuration: 0
   holdInteract: 0
   multipleUse: 0
-  isInteractible: 0
+  isInteractible: 1
   destroyObj: 0
-  player: {fileID: 0}
+  player: {fileID: 194286584}
 --- !u!1 &1958337577
 GameObject:
   m_ObjectHideFlags: 0
@@ -6222,7 +6190,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 25c03eb58adec784889f9bf49ba042f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.275
+      value: 35.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 25c03eb58adec784889f9bf49ba042f8,
         type: 3}
@@ -6413,5 +6381,20 @@ PrefabInstance:
       propertyPath: Item11
       value: 
       objectReference: {fileID: 964026964}
+    - target: {fileID: 7020156017379269857, guid: ba15648242033624788422fb162901a6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020156017379269860, guid: ba15648242033624788422fb162901a6,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020156018202797906, guid: ba15648242033624788422fb162901a6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.105
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba15648242033624788422fb162901a6, type: 3}

@@ -70,12 +70,7 @@ public class MerchantShop : MonoBehaviour
                     print("No gameObject!");
                 }
             }
-        }  
-    }
-
-    void Update()
-    {
-        GetComponent<GlobalInventory>().LoadBackpack();
+        } 
     }
 }
 

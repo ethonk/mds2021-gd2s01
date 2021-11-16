@@ -23,6 +23,7 @@ public class ItemScript : MonoBehaviour
 
     [Header("Crafting Mats")]
     public List<GameObject> m_CraftingItems;
+    public List<string> m_CraftItemNames;
 
     [Header("Advanced - Do Not Modify")]
     public bool canBe_equipped;
@@ -32,7 +33,6 @@ public class ItemScript : MonoBehaviour
     
     public bool Craft(GlobalInventory _playerInventory)
     {
-        print("crafting function called?");
         if (m_CraftingItems.Count > 0)    // a craftable item.
         {
             print("Craftable!");
@@ -62,7 +62,7 @@ public class ItemScript : MonoBehaviour
                 }
             }
 
-            // If item doesn't exist but theres no space...
+            // If item does exist but theres no space...
             if (_playerInventory.backpack.Count < maxStack) return false;
             print("No space in inventory");
 
@@ -114,11 +114,22 @@ public class ItemScript : MonoBehaviour
                 canBe_crafted = false;
                 break;
             case ItemType.Shoppable:
-                canBe_equipped = false;
-                canBe_consumed = false;
-                canBe_dropped = false;
+                canBe_equipped = true;
+                canBe_consumed = true;
+                canBe_dropped = true;
                 canBe_crafted = true;
                 break;
+        }
+
+        //reading crafting list for item
+
+        //if there are crafting items
+        if (m_CraftingItems.Count > 0)
+        {
+            foreach (GameObject obj in m_CraftingItems)
+            {
+                m_CraftItemNames.Add(obj.name);
+            }
         }
     }
 }
