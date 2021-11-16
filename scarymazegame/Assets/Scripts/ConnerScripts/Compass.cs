@@ -20,7 +20,7 @@ public class Compass : MonoBehaviour
     void Start()
     {
         
-        playertransform = GameObject.FindWithTag("Player");
+        playertransform = GameObject.Find("Player");
         Spawnpoints = GameObject.FindGameObjectsWithTag("Spawner");
         
         
