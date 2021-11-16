@@ -6,8 +6,8 @@
 //
 // (c) 2020 Media Design School
 //
-// File Name : TorchControl
-// Description : Script for using the torch.
+// File Name : EnergyDrink
+// Description : The script for the stamina from energy drinks.
 // Author : Conner Hall
 // Mail : conner.hall@mediadesignschool.com
 //
@@ -16,23 +16,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorchControl : MonoBehaviour
+public class EnergyDrink : MonoBehaviour
 {
-
-    public GameObject m_Torch;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        m_Torch.SetActive(true);
-    }
-
+    public GameObject Player;
+   
+ 
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            m_Torch.SetActive(!m_Torch.activeInHierarchy);
+            Player.GetComponent<PlayerScript>().stamina = 100;
+            Destroy(gameObject);
         }
     }
 }

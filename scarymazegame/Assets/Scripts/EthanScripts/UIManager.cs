@@ -9,8 +9,10 @@ public class UIManager : MonoBehaviour
     private PlayerScript player;
     private GameObject playerObj;
     private Camera inventoryCamera;
+    private Camera merchantCamera;
 
     [Header("Merchant")]
+    private GameObject merchantObj;
     private MerchantShop merchant;
 
     [Header("UI")]
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
 
         // Initialize Merchant
         merchant = GameObject.Find("Merchant").GetComponent<MerchantShop>();
+        merchantObj = GameObject.Find("Merchant");
+        merchantCamera = merchantObj.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("MerchantCamera").GetComponent<Camera>();
     }
 
     public void CursorToMouse() // Move the mouse and anything attached to it towards the cursor.
@@ -76,37 +80,40 @@ public class UIManager : MonoBehaviour
         int i = 0;
         
         #region Algorithm for item
-        if(item.canBe_equipped)
+        if (player.cameraState != PlayerScript.CameraState.shop)
         {
-            bind_equip.SetActive(true);
-            bind_equip.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
-            i += 1;
-        }
-        else
-        {
-            bind_equip.SetActive(false);
-        }
+            if(item.canBe_equipped)
+            {
+                bind_equip.SetActive(true);
+                bind_equip.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
+                i += 1;
+            }
+            else
+            {
+                bind_equip.SetActive(false);
+            }
 
-        if(item.canBe_consumed)
-        {
-            bind_consume.SetActive(true);
-            bind_consume.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
-            i += 1;
-        }
-        else
-        {
-            bind_consume.SetActive(false);
-        }
+            if(item.canBe_consumed)
+            {
+                bind_consume.SetActive(true);
+                bind_consume.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
+                i += 1;
+            }
+            else
+            {
+                bind_consume.SetActive(false);
+            }
 
-        if(item.canBe_dropped)
-        {
-            bind_drop.SetActive(true);
-            bind_drop.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
-            i += 1;
-        }
-        else
-        {
-            bind_drop.SetActive(false);
+            if(item.canBe_dropped)
+            {
+                bind_drop.SetActive(true);
+                bind_drop.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
+                i += 1;
+            }
+            else
+            {
+                bind_drop.SetActive(false);
+            }
         }
         if (item.canBe_crafted && player.cameraState == PlayerScript.CameraState.shop)
         {
@@ -166,37 +173,32 @@ public class UIManager : MonoBehaviour
         #endregion
 
         #region Merchant Inventory
-        if(player.cameraState == PlayerScript.CameraState.shop)
+        if (player.cameraState == PlayerScript.CameraState.shop)
         {
             // Raycast settings
-            RaycastHit hit;
-            Ray ray = merchant.GetComponent<Interact.MerchantInteraction>().merchantCam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit _hit;
+            Ray _ray = merchantCamera.ScreenPointToRay(Input.mousePosition);
 
             // UI Functionality
-            if(Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(_ray, out _hit))
             {
-                if(hit.transform.GetComponent<ItemScript>() != null)
+                if(_hit.transform.GetComponent<ItemScript>() != null)
                 {
                     itemDetails.gameObject.SetActive(true);
-                    InspectItem(hit.transform.gameObject.GetComponent<ItemScript>());
-                    print("hitsomething");
+                    InspectItem(_hit.transform.gameObject.GetComponent<ItemScript>());
 
-                    if (Input.GetKeyDown(KeyCode.F) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
+                    if (Input.GetKeyDown(KeyCode.F) && _hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
                     {
-                        print("Crafting..");
-                        hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
+                        _hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
                         print("Crafting function done!");
                     }
                 }
                 else
                 {
-                    {
-                        print("Nothing hit");
-                        itemDetails.gameObject.SetActive(false);
-                    }
+                    print("hitting nothing supposedly");
+                    itemDetails.gameObject.SetActive(false);
                 }
             }
-    
         }
         #endregion
         #endregion

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1252137155764787728
+--- !u!1 &1954052382679341246
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,30 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1252137155764787733}
-  - component: {fileID: 1025566028267872363}
-  - component: {fileID: 3572783129691661562}
-  - component: {fileID: 7642494585555417769}
-  - component: {fileID: 1252137155764787732}
-  - component: {fileID: 1252137155764787731}
-  - component: {fileID: 1252137155764787730}
-  - component: {fileID: 229447369}
-  - component: {fileID: 2031457474707200011}
-  - component: {fileID: 1633142180}
+  - component: {fileID: 1954052382679341243}
+  - component: {fileID: 307870455986610885}
+  - component: {fileID: 4317649128578459220}
+  - component: {fileID: 6949568828361046023}
+  - component: {fileID: 1954052382679341242}
+  - component: {fileID: 1954052382679341245}
+  - component: {fileID: 1954052382679341244}
+  - component: {fileID: 756125702932862055}
+  - component: {fileID: 1607613119856253605}
+  - component: {fileID: 756125704464221962}
   m_Layer: 10
-  m_Name: Trap
+  m_Name: Steel Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1252137155764787733
+--- !u!4 &1954052382679341243
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 1, z: 4}
@@ -39,20 +39,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1025566028267872363
+--- !u!114 &307870455986610885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49d85f1aa16ce0f4faf9e2ab51db0f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Normal Trap
-  itemDescription: Does a small amount of damage to monsters.
+  itemName: Steel Trap
+  itemDescription: Elemental. A trap enhanced with the power of steel.
   itemCraftReqs: 
   itemType: 0
   maxStack: 1
@@ -61,19 +61,19 @@ MonoBehaviour:
   canBe_consumed: 0
   canBe_dropped: 0
   canBe_crafted: 0
---- !u!114 &3572783129691661562
+--- !u!114 &4317649128578459220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapType: 0
+  trapType: 3
   trapElement: 0
   normalDamage: 20
   slowDamage: 10
@@ -81,14 +81,14 @@ MonoBehaviour:
   slowTime: 5
   infatuationDamage: 10
   infatuationTime: 5
-  elementalDamage: 0
---- !u!114 &7642494585555417769
+  elementalDamage: 40
+--- !u!114 &6949568828361046023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 458b8610b20cc0a4e840ed12fa4d79c3, type: 3}
@@ -98,21 +98,21 @@ MonoBehaviour:
   dropForwardForce: 10
   dropUpwardForce: 0
   equipped: 0
---- !u!33 &1252137155764787732
+--- !u!33 &1954052382679341242
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Mesh: {fileID: 1360330337689484466, guid: ad84829a79af6a24399b6cf700225d0d, type: 3}
---- !u!23 &1252137155764787731
+--- !u!23 &1954052382679341245
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -147,13 +147,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &1252137155764787730
+--- !u!54 &1954052382679341244
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -163,13 +163,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &229447369
+--- !u!114 &756125702932862055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb559816a33e2c146af4154cad1baf1b, type: 3}
@@ -179,26 +179,26 @@ MonoBehaviour:
   hitCooldown: 0
   equipSound: {fileID: 0}
   attackSound: {fileID: 0}
---- !u!65 &2031457474707200011
+--- !u!65 &1607613119856253605
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.3, z: 0.5}
   m_Center: {x: -0.08, y: 0, z: 0}
---- !u!114 &1633142180
+--- !u!114 &756125704464221962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252137155764787728}
+  m_GameObject: {fileID: 1954052382679341246}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31bac484cc169814b80d40cdc08b100c, type: 3}
