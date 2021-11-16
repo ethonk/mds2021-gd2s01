@@ -33,10 +33,10 @@ public class Attacks : MonoBehaviour
         player.position = mouthPoint.position;                                   // Sets player position.
         player.gameObject.GetComponent<PlayerScript>().TakeDamage(50f);          // Damage
 
-        StartCoroutine(Spit(player, mouthPoint, 3.0f));
+        StartCoroutine(Spit(player, plrOrigPosition, 3.0f));
     }
 
-    IEnumerator Spit(Transform player, Transform mouthPoint, float seconds)
+    IEnumerator Spit(Transform player, Vector3 _origPos, float seconds)
     {
         yield return new WaitForSeconds(seconds);
 
@@ -44,7 +44,7 @@ public class Attacks : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(GetComponent<MonsterDetails>().spitSound);
 
         // Add impulse
-        player.transform.position = mouthPoint.forward * 50;
+        player.transform.position = _origPos;
 
         eaten = false;
         player.gameObject.GetComponent<CharacterMotor>().playerLock = false;     // Unlock player.
