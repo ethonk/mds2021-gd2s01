@@ -120,6 +120,12 @@ namespace Interact
                     print("Cursor off");
 
                 }
+    
+                if (Maincam.gameObject.activeInHierarchy && m_PlayerMotor.playerLock && !m_interacting)
+                {
+                    print( "Lock off" );
+                    m_PlayerMotor.playerLock = false;
+                }
                 // if player main camera is up
                 if (Maincam.gameObject.activeInHierarchy)
                 {
