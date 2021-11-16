@@ -19,8 +19,10 @@ public class MonsterDetails : MonoBehaviour
     public float currentSpeed;
 
     [Header("Audio")]
+    public AudioClip jsSound;
     public AudioClip eatSound;
     public AudioClip spitSound;
+    public AudioClip slashSound;
     
     public void LoadNames()
     { 

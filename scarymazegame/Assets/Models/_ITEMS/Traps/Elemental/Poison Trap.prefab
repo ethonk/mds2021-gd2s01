@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2800966897275615299}
   - component: {fileID: 2800966897275615298}
   - component: {fileID: 2800966897275615297}
-  - component: {fileID: 2800966897275615296}
   - component: {fileID: 2800966897275615303}
   - component: {fileID: 2800966897275615302}
   m_Layer: 10
@@ -82,6 +81,7 @@ MonoBehaviour:
   slowTime: 5
   infatuationDamage: 10
   infatuationTime: 5
+  elementalDamage: 40
 --- !u!114 &2800966897275615357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,26 +179,6 @@ MonoBehaviour:
   hitCooldown: 0
   equipSound: {fileID: 0}
   attackSound: {fileID: 0}
---- !u!114 &2800966897275615296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800966897275615301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff11e770fc16dd498d439a865dfa542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trapType: 0
-  trapElement: 0
-  normalDamage: 0
-  slowDamage: 0
-  slowPercentage: 0
-  slowTime: 0
-  infatuationDamage: 0
-  infatuationTime: 0
 --- !u!65 &2800966897275615303
 BoxCollider:
   m_ObjectHideFlags: 0

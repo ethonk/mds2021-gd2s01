@@ -36,6 +36,8 @@ public class TrapInteraction : MonoBehaviour
     public float infatuationDamage;
     public float infatuationTime;
 
+    public float elementalDamage;
+
     public void OnCollisionEnter(Collision col)    // Trap and Monster interaction.
     {
         if (col.transform.gameObject.tag == "Monster")
