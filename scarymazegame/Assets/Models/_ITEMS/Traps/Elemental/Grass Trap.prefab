@@ -53,10 +53,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Grass Trap
   itemDescription: Elemental. A trap enhanced with the power of grass.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Trap
+
+    Oak Tree Log'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 1252137155764787728, guid: f1a97a260e8693d4f8ffe4ed8de46137, type: 3}
+  - {fileID: 7358814881754807747, guid: e9370157d8d9d564cabea0c03250d1d7, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0

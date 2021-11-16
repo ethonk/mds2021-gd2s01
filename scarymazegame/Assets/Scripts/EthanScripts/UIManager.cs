@@ -196,6 +196,7 @@ public class UIManager : MonoBehaviour
             // UI Functionality
             if(Physics.Raycast(_ray, out _hit))
             {
+                print("hitting something bruh");
                 if(_hit.transform.GetComponent<ItemScript>() != null)
                 {
                     itemDetails.gameObject.SetActive(true);
@@ -203,8 +204,8 @@ public class UIManager : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.F) && _hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
                     {
+                        print("Crafting pressed");
                         _hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
-                        print("Crafting function done!");
                     }
                 }
                 else

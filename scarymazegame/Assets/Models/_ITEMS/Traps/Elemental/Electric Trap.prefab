@@ -53,10 +53,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Electric Trap
   itemDescription: Elemental. A trap enhanced with the power of electricity.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Trap
+
+    Machine Parts'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 1252137155764787728, guid: f1a97a260e8693d4f8ffe4ed8de46137, type: 3}
+  - {fileID: 265393512573362402, guid: 4cb789387d28aaa49ac038844e989bad, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0

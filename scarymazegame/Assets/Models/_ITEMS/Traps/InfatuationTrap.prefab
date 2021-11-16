@@ -55,10 +55,21 @@ MonoBehaviour:
   itemName: Infatuation Trap
   itemDescription: Increases a monster's affection towards you - Monster's cannot
     attack you for a small amount of time.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Scrap Metal
+
+    Scrap Metal
+
+    Ghost in a Jar'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
+  - {fileID: 8064559670619101667, guid: d7b1f99dec6717040b8cb5a53fc0037a, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -199,6 +210,7 @@ MonoBehaviour:
   itemType: 0
   maxStack: 0
   m_CraftingItems: []
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
