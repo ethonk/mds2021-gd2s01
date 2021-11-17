@@ -44,7 +44,7 @@ public class ItemScript : MonoBehaviour
     public bool canBe_consumed;
     public bool canBe_dropped;
     public bool canBe_crafted;
-    
+
     public bool Craft(GlobalInventory _playerInventory)
     {
         if (m_CraftingItems.Count > 0)    // a craftable item.
