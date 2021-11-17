@@ -32,10 +32,17 @@ public class GlobalInventory : MonoBehaviour
         for (int i = 0; i < maxSpace; i++)
         {
             // If item of same type exists and currently isn't at a max stack.
-            if (backpack[i] == item && backpackItemCount[i] != item.GetComponent<ItemScript>().maxStack)
+            if (backpack[i] != null)
             {
-                backpackItemCount[i] += 1;
-                return true;
+                if (backpack[i].GetComponent<ItemScript>().itemName == item.GetComponent<ItemScript>().itemName && backpackItemCount[i] != item.GetComponent<ItemScript>().maxStack)
+                {
+                    backpackItemCount[i] += 1;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -128,9 +135,12 @@ public class GlobalInventory : MonoBehaviour
     {
         for (int i = 0; i < backpack.Count; i++)
         {
-            if (backpack[i].gameObject.GetComponent<ItemScript>().itemName == _item.GetComponent<ItemScript>().itemName)
+            if (backpack[i] != null)
             {
-                return true;
+                if (backpack[i].gameObject.GetComponent<ItemScript>().itemName == _item.GetComponent<ItemScript>().itemName)
+                {
+                    return true;
+                }
             }
         }
         return false; // No item.

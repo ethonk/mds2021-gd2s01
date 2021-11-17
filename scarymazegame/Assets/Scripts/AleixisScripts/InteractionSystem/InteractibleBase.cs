@@ -34,7 +34,7 @@ namespace Interact
         #region Classes
             public virtual void OnInteract()
             {
-                Debug.Log("INTERACTED: " + gameObject.name);
+                //Debug.Log("INTERACTED: " + gameObject.name);
             }
         #endregion
 

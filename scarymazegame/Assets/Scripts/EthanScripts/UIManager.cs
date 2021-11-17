@@ -86,10 +86,16 @@ public class UIManager : MonoBehaviour
             itemDescription.text = item.itemDescription;
         }
 
-        // Set get slot of item
-        int itemSlot = (int)char.GetNumericValue(item.transform.parent.name[item.transform.parent.name.Length-1]);
-        // Set item count with slot
-        itemCount.text = player.GetComponent<GlobalInventory>().backpackItemCount[itemSlot].ToString();
+        for (int x = 0; x < player.GetComponent<GlobalInventory>().backpack.Count; x++)
+        {
+            if (player.GetComponent<GlobalInventory>().backpack[x] != null)
+            {
+                if (player.GetComponent<GlobalInventory>().backpack[x].GetComponent<ItemScript>().itemName == item.itemName)
+                {
+                    itemCount.text = player.GetComponent<GlobalInventory>().backpackItemCount[x].ToString();
+                }
+            }
+        }
 
         int i = 0;
         
@@ -131,9 +137,12 @@ public class UIManager : MonoBehaviour
         }
         if (item.canBe_crafted && player.cameraState == PlayerScript.CameraState.shop)
         {
+            bind_drop.SetActive(false);
+            bind_consume.SetActive(false);
+            bind_equip.SetActive(false);
+
             bind_craft.SetActive(true);
-            bind_craft.transform.localPosition = keybindStartPos + new Vector3(0, ((keybindButtonOffset - 10) * i), 0);
-            i += 1;
+            bind_craft.transform.localPosition = keybindStartPos + new Vector3(0, 0, 0);
         }
         else
         {

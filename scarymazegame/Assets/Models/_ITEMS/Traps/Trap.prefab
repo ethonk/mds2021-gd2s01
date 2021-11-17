@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d85f1aa16ce0f4faf9e2ab51db0f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Player: {fileID: 0}
   itemName: Normal Trap
   itemDescription: Does a small amount of damage to monsters.
   itemCraftReqs: 'Materials
@@ -62,8 +63,8 @@ MonoBehaviour:
   itemType: 0
   maxStack: 1
   m_CraftingItems:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0

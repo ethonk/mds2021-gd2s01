@@ -49,15 +49,12 @@ public class ItemScript : MonoBehaviour
     {
         if (m_CraftingItems.Count > 0)    // a craftable item.
         {
-            print("Craftable!");
             // Check if both items exist in inventory
             foreach (GameObject item in m_CraftingItems)
             {
-
+                print(item.GetComponent<ItemScript>().itemName);
                 if (!_playerInventory.SearchForItem(item)) return false;
             }
-
-            print("Items exist");
 
             // If item exists but there is no space...
             for (int i = 0; i < _playerInventory.maxSpace; i++) 
@@ -67,20 +64,17 @@ public class ItemScript : MonoBehaviour
                 else if (_playerInventory.backpack[i] == gameObject && _playerInventory.backpackItemCount[i] != maxStack)
                 {
                     // Delete items
-                    print("Deleting items...");
                     foreach (GameObject item in m_CraftingItems)
                     {
                         _playerInventory.DropItemGameObject(item);
                     }
 
                     _playerInventory.backpackItemCount[i]++;
-                    print("Item should have been added");
                     return true;
                 }
             }
 
             // If item does exist but theres no space...
-            print("No space in inventory");
             if (_playerInventory.backpack.Count < maxStack) return false;
 
             // Otherwise... add this item to the inventory
@@ -89,30 +83,29 @@ public class ItemScript : MonoBehaviour
                 if (_playerInventory.backpack[i] == null)
                 {
                     // Delete items
-                    print("Deleting items...");
                     foreach (GameObject item in m_CraftingItems)
                     {
                         for (int j = 0; j < m_Player.GetComponent<GlobalInventory>().maxSpace; j++)
-                        {
-                            if (m_Player.GetComponent<GlobalInventory>().backpack[j].GetComponent<ItemScript>().itemName == item.GetComponent<ItemScript>().itemName)
+                        {   
+                            if (m_Player.GetComponent<GlobalInventory>().backpack[j] != null)
                             {
-                                m_Player.GetComponent<GlobalInventory>().backpackItemCount[j]--;
-                                if (m_Player.GetComponent<GlobalInventory>().backpackItemCount[j] == 0) m_Player.GetComponent<GlobalInventory>().backpack[j] = null;
+                                if (m_Player.GetComponent<GlobalInventory>().backpack[j].GetComponent<ItemScript>().itemName == item.GetComponent<ItemScript>().itemName)
+                                {
+                                    m_Player.GetComponent<GlobalInventory>().backpackItemCount[j]--;
+                                    if (m_Player.GetComponent<GlobalInventory>().backpackItemCount[j] == 0) m_Player.GetComponent<GlobalInventory>().backpack[j] = null;
+                                }
                             }
                         }
                     }
 
-                    print("Instantiating...");
                     var craftedItem = Instantiate(gameObject);
                     _playerInventory.backpack[i] = craftedItem;
                     _playerInventory.backpackItemCount[i]++;
 
-                    print("Item should be added!");
                     return true;
                 }
             }
         }
-        print("Not a craftable item...");
         return false;
     }
 

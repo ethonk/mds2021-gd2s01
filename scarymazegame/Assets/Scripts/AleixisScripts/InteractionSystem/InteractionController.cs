@@ -140,12 +140,10 @@ namespace Interact
             {
                 if (interactionData.Interactible.DestroyObj)
                 {
-                    print("Bruh:");
                     return true;
                 }
                 else
                 {
-                    print("Bruh2");
                     return false;
                 }
             }
