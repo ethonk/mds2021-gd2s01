@@ -16,6 +16,7 @@ public class MerchantManger : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip teleportIn;
+    public AudioClip teleportOut;
 
 
     void OnDrawGizmosSelected()

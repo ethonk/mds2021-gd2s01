@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2349816334768289638}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -49,10 +49,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Energy Drink
   itemDescription: Illegal substances into one powerful boost.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Lily Pad
+
+    Scrap Metal'
   itemType: 2
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 3983247062229703918, guid: 9519ba8930f8d41409dbfd98238f8ea4, type: 3}
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
@@ -72,7 +80,7 @@ MonoBehaviour:
   holdDuration: 0.5
   holdInteract: 1
   multipleUse: 0
-  isInteractible: 1
+  isInteractible: 0
   destroyObj: 0
   player: {fileID: 0}
 --- !u!33 &2349816334768289634

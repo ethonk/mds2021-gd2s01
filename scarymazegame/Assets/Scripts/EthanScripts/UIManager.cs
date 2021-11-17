@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : UIManager.cs
+// Description : Manages all things UI in the game.
+// Author : Ethan Velasco Uy
+// Mail : ethan.uy@mediadesignschool.com
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -187,10 +201,11 @@ public class UIManager : MonoBehaviour
                     itemDetails.gameObject.SetActive(true);
                     InspectItem(_hit.transform.gameObject.GetComponent<ItemScript>());
 
-                    if (Input.GetKeyDown(KeyCode.F) && _hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
+                    if (Input.GetKeyDown(KeyCode.R) && _hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
                     {
+                        print("Crafting pressed");
                         _hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
-                        print("Crafting function done!");
+                        print("crafting finished");
                     }
                 }
                 else

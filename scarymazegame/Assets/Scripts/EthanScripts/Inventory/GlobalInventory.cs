@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : GlobalInventory.cs
+// Description : Controls everything that requires an inventory, and renders their items in physically.
+// Author : Ethan Velasco Uy
+// Mail : ethan.uy@mediadesignschool.com
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -118,6 +132,7 @@ public class GlobalInventory : MonoBehaviour
                 return true;
             }
         }
+        print("Items not found");
         return false; // No item.
     }
 

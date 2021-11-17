@@ -1,2 +1,2 @@
 # Creatures Lurk
-Alone in the woods with mutants, what the fuck do we do.
+Alone in the woods with mutants, what do we do.
