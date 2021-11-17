@@ -53,10 +53,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Rock Trap
   itemDescription: Elemental. A trap enhanced with the power of rocks.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Trap
+
+    Rare Mineral'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 1252137155764787728, guid: f1a97a260e8693d4f8ffe4ed8de46137, type: 3}
+  - {fileID: 6957062999573084545, guid: 94278a0f56a7f69458248a670bfb9e7c, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0

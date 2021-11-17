@@ -53,10 +53,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Normal Trap
   itemDescription: Does a small amount of damage to monsters.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Scrap Metal
+
+    Scrap Metal'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0

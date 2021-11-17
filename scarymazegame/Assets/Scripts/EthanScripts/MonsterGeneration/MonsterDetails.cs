@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : MonsterDetails.cs
+// Description : Generates the stats and properties of each monster.
+// Author : Ethan Velasco Uy
+// Mail : ethan.uy@mediadesignschool.com
+//
+
 using System.IO;
 using System.Linq;
 using System.Collections;

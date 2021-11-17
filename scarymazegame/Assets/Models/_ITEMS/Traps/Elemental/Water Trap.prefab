@@ -53,10 +53,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Water Trap
   itemDescription: Elemental. A trap enhanced with the power of water.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Trap
+
+    Serpent Scale'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 1252137155764787728, guid: f1a97a260e8693d4f8ffe4ed8de46137, type: 3}
+  - {fileID: 2460657757335069861, guid: 63ea7866b60b8d5478ce0f0d74974959, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0
