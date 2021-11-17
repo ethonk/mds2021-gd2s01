@@ -39,9 +39,9 @@ public class GlobalInventory : MonoBehaviour
                     backpackItemCount[i] += 1;
                     return true;
                 }
-                else
+                else if (backpack[i].GetComponent<ItemScript>().itemName == item.GetComponent<ItemScript>().itemName && backpack[i].GetComponent<ItemScript>().itemType != ItemScript.ItemType.Craftable && backpackItemCount[i] == item.GetComponent<ItemScript>().maxStack)
                 {
-                    return false;
+                    continue;
                 }
             }
         }

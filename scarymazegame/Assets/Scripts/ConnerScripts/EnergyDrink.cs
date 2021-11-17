@@ -19,15 +19,15 @@ using UnityEngine;
 public class EnergyDrink : MonoBehaviour
 {
     public GameObject Player;
-   
+    
+    void Start()
+    {
+        Player = GameObject.Find("Player");
+    }
  
     // Update is called once per frame
-    void Update()
+    public void Drink()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Player.GetComponent<PlayerScript>().stamina = 100;
-            Destroy(gameObject);
-        }
+        Player.GetComponent<PlayerScript>().stamina = Player.GetComponent<PlayerScript>().stamina_max;
     }
 }

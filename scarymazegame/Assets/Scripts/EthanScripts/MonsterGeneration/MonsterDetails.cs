@@ -62,8 +62,8 @@ public class MonsterDetails : MonoBehaviour
 
     void Start()
     {
-        LoadNames();    // Load index of name syllables.
-        monsterName = GenerateName();   // Generate monster name
+        //LoadNames();    // Load index of name syllables.
+        //monsterName = GenerateName();   // Generate monster name
 
         currentSpeed = speed;   // Initialize speed
     }

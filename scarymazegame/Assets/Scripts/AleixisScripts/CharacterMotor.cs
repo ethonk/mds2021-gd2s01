@@ -41,26 +41,29 @@ public class CharacterMotor : MonoBehaviour
 
     public void SwitchToInventory()
     {
-        GetComponent<PlayerScript>().mainCamera.gameObject.SetActive(!GetComponent<PlayerScript>().mainCamera.gameObject.activeInHierarchy);
-        GetComponent<PlayerScript>().inventoryCamera.gameObject.SetActive(!GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy);
-
-        // Determine MouseLock.
-        Cursor.lockState = GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
-
-        // Load Inventory
-        if (GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy)
+        if (GetComponent<PlayerScript>().cameraState != PlayerScript.CameraState.shop)
         {
-            GetComponent<GlobalInventory>().LoadBackpack();
-            
-            playerLock = true;
-        }
-        else
-        {
-            playerLock = false;
-        }
+            GetComponent<PlayerScript>().mainCamera.gameObject.SetActive(!GetComponent<PlayerScript>().mainCamera.gameObject.activeInHierarchy);
+            GetComponent<PlayerScript>().inventoryCamera.gameObject.SetActive(!GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy);
 
-        // Switch camera state
-        GetComponent<PlayerScript>().SwitchCameraState();
+            // Determine MouseLock.
+            Cursor.lockState = GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
+
+            // Load Inventory
+            if (GetComponent<PlayerScript>().inventoryCamera.gameObject.activeInHierarchy)
+            {
+                GetComponent<GlobalInventory>().LoadBackpack();
+                
+                playerLock = true;
+            }
+            else
+            {
+                playerLock = false;
+            }
+
+            // Switch camera state
+            GetComponent<PlayerScript>().SwitchCameraState();
+        }
     }
 
     void Update()

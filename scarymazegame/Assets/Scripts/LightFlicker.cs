@@ -22,6 +22,9 @@ public class LightFlicker : MonoBehaviour
     public AudioClip flicker_off;
     public AudioClip flicker_on;
 
+    [Header("Laughs")]
+    public List<AudioClip> laughs;
+
     public IEnumerator Flicker()
     {
         yield return new WaitForSeconds(5.0f);
@@ -52,9 +55,21 @@ public class LightFlicker : MonoBehaviour
         StartCoroutine(Flicker());
     }
 
+    public IEnumerator PlayLaugh()
+    {
+        yield return new WaitForSeconds(7.0f);
+        // select random laugh
+        if (Vector3.Distance(GameObject.Find("Merchant").transform.position, GameObject.Find("Player").transform.position) < 14)
+        {
+            GetComponent<AudioSource>().PlayOneShot(laughs[Random.Range(0, laughs.Count)]); // if it's an array)
+        }
+        StartCoroutine(PlayLaugh());
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Flicker());
+        StartCoroutine(PlayLaugh());
     }
 }

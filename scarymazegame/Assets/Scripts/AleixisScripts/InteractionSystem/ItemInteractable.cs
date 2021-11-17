@@ -8,30 +8,32 @@ namespace Interact
     {
         public override void OnInteract()
         {
-            // Run on interaction
-            base.OnInteract();
-
-            // Add to inventory
-            // 1) is there already a max stack of that item inside the inventory
-            var newItem = Instantiate(gameObject);
-            newItem.name = gameObject.name;
-            newItem.SetActive(true);
-
-            if(player.GetComponent<GlobalInventory>().AddItem(newItem))
+            if (gameObject.transform.parent == null)
             {
-                // 2) if not, continue
-                gameObject.SetActive(false); // original item
+                // Run on interaction
+                base.OnInteract();
 
-                newItem.transform.parent = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash");
-                newItem.transform.position = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash").position;
-            } 
-            else
-            {  
-                print("Can't add item, stack maxed.");
-                // 2.5) if it is, destroy
-                Destroy(newItem);
+                // Add to inventory
+                // 1) is there already a max stack of that item inside the inventory
+                var newItem = Instantiate(gameObject);
+                newItem.name = gameObject.name;
+                newItem.SetActive(true);
+
+                if(player.GetComponent<GlobalInventory>().AddItem(newItem))
+                {
+                    // 2) if not, continue
+                    gameObject.SetActive(false); // original item
+
+                    newItem.transform.parent = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash");
+                    newItem.transform.position = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash").position;
+                } 
+                else
+                {  
+                    print("Can't add item, stack maxed.");
+                    // 2.5) if it is, destroy
+                    Destroy(newItem);
+                }
             }
-            
         }
     }
 }
