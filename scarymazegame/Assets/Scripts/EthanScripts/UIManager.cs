@@ -215,6 +215,11 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+
+        if (player.cameraState == PlayerScript.CameraState.normal)
+        {
+            itemDetails.gameObject.SetActive(false);
+        }
         #endregion
         #endregion
     
