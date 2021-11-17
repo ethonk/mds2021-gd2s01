@@ -23,7 +23,6 @@ namespace Interact
                 {
                     // 2) if not, continue
                     gameObject.SetActive(false); // original item
-
                     newItem.transform.parent = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash");
                     newItem.transform.position = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash").position;
                 } 
