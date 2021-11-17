@@ -21,7 +21,7 @@ namespace Interact
         public override void OnInteract()
         {
             // sound play
-            GetComponent<AudioSource>().PlayOneShot(talkSound);
+            if (Player.GetComponent<PlayerScript>().cameraState != PlayerScript.CameraState.shop) GetComponent<AudioSource>().PlayOneShot(talkSound);
 
             base.OnInteract();
 
