@@ -115,11 +115,11 @@ namespace Interact
 
                                 if (_hitInfo.transform.gameObject.GetComponent<ItemScript>() != null) // same thing
                                 {
-                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName);
+                                    uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName);
                                 }
                                 else
                                 {
-                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.name);
+                                    uiPanel.SetTooltip(_hitInfo.transform.gameObject.name);
                                 }
                             }
                         }

@@ -203,14 +203,12 @@ public class UIManager : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.R) && _hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
                     {
-                        print("Crafting pressed");
                         _hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
                         print("crafting finished");
                     }
                 }
                 else
                 {
-                    print("hitting nothing supposedly");
                     itemDetails.gameObject.SetActive(false);
                 }
             }
