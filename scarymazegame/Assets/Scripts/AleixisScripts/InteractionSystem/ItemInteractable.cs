@@ -15,6 +15,7 @@ namespace Interact
             gameObject.SetActive(false); // original item
 
             var newItem = Instantiate(gameObject);
+            newItem.name = gameObject.name;
             newItem.SetActive(true);
             player.GetComponent<GlobalInventory>().AddItem(newItem);
             
