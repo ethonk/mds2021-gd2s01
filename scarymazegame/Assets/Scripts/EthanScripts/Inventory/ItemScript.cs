@@ -27,6 +27,7 @@ public class ItemScript : MonoBehaviour
     };
 
     [Header("General")]
+    public GameObject m_Player;
     public string itemName;
     [TextArea(3, 10)] // modifies the text area of the value in the inspector
     public string itemDescription;
@@ -52,6 +53,7 @@ public class ItemScript : MonoBehaviour
             // Check if both items exist in inventory
             foreach (GameObject item in m_CraftingItems)
             {
+
                 if (!_playerInventory.SearchForItem(item)) return false;
             }
 
@@ -60,7 +62,6 @@ public class ItemScript : MonoBehaviour
             // If item exists but there is no space...
             for (int i = 0; i < _playerInventory.maxSpace; i++) 
             {
-                print("No space!");
                 if (_playerInventory.backpack[i] == gameObject && _playerInventory.backpackItemCount[i] == maxStack) return false;
                 // Otherwise, add item to backpack
                 else if (_playerInventory.backpack[i] == gameObject && _playerInventory.backpackItemCount[i] != maxStack)
@@ -79,8 +80,8 @@ public class ItemScript : MonoBehaviour
             }
 
             // If item does exist but theres no space...
-            if (_playerInventory.backpack.Count > maxStack) return false;
             print("No space in inventory");
+            if (_playerInventory.backpack.Count < maxStack) return false;
 
             // Otherwise... add this item to the inventory
             for (int i = 0; i < _playerInventory.backpack.Count; i++)
@@ -91,7 +92,14 @@ public class ItemScript : MonoBehaviour
                     print("Deleting items...");
                     foreach (GameObject item in m_CraftingItems)
                     {
-                        _playerInventory.DropItemGameObject(item);
+                        for (int j = 0; j < m_Player.GetComponent<GlobalInventory>().maxSpace; j++)
+                        {
+                            if (m_Player.GetComponent<GlobalInventory>().backpack[j].GetComponent<ItemScript>().itemName == item.GetComponent<ItemScript>().itemName)
+                            {
+                                m_Player.GetComponent<GlobalInventory>().backpackItemCount[j]--;
+                                if (m_Player.GetComponent<GlobalInventory>().backpackItemCount[j] == 0) m_Player.GetComponent<GlobalInventory>().backpack[j] = null;
+                            }
+                        }
                     }
 
                     print("Instantiating...");
@@ -123,7 +131,7 @@ public class ItemScript : MonoBehaviour
                 canBe_equipped = false;
                 canBe_consumed = false;
                 canBe_dropped = true;
-                canBe_crafted = false;
+                canBe_crafted = true;
                 break;
             case ItemType.Consumable:
                 canBe_equipped = false;
@@ -138,5 +146,7 @@ public class ItemScript : MonoBehaviour
                 canBe_crafted = true;
                 break;
         }
+
+        m_Player = GameObject.Find("Player");
     }
 }

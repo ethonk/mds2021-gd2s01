@@ -83,10 +83,11 @@ public class GlobalInventory : MonoBehaviour
             }
         }
     }
-
+    
     public void LoadInSlot(GameObject item, Transform slot)      // Add a child inside slot
     {
         var newItem = Instantiate(item);                // Create item
+        newItem.name = item.name;
 
         // If gravity induced, reset that.
         if (newItem.GetComponent<Rigidbody>() != null) newItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -127,12 +128,11 @@ public class GlobalInventory : MonoBehaviour
     {
         for (int i = 0; i < backpack.Count; i++)
         {
-            if (backpack[i] == _item)
+            if (backpack[i].gameObject.GetComponent<ItemScript>().itemName == _item.GetComponent<ItemScript>().itemName)
             {
                 return true;
             }
         }
-        print("Items not found");
         return false; // No item.
     }
 
