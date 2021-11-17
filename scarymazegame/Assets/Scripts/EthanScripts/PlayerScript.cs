@@ -37,18 +37,13 @@ public class PlayerScript : MonoBehaviour
     public enum CameraState {normal, inventory, shop};
     [Header("States")]
     public CameraState cameraState;
-    public enum CameraStates
-    {
-        Inventory,
-        Shop
-    };
 
     [Header("Audio")]
     public AudioClip waterEnter;
     public AudioClip waterExit;
     public AudioClip sprintSound;
-    public AudioClip pain_light;
     public AudioClip pain_heavy;
+    public AudioClip backpack_open;
     
 
     void Update()
@@ -77,6 +72,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (cameraState == CameraState.normal)
         {
+            if(!(GetComponent<AudioSource>().clip == backpack_open && GetComponent<AudioSource>().isPlaying))
+            {
+                GetComponent<AudioSource>().PlayOneShot(backpack_open);
+            }
             cameraState = CameraState.inventory;
         }
         else
