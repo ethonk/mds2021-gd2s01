@@ -9,6 +9,9 @@ public class RandomSpawning : MonoBehaviour
     float ResetTime = 3.0f;
     bool ResetStart = false;
 
+    [Header("States")]
+    bool teleported = false;
+
     [Header("Serialized Fields")] //serializes the fields
     [SerializeField] private Transform Merchant;
     [SerializeField] private Transform DefaultSpawn;
@@ -22,8 +25,8 @@ public class RandomSpawning : MonoBehaviour
             Merchant.transform.position = other.transform.position; //Takes the position of the merchant then transforms it (changes it) to the transform of the selected position
             Physics.SyncTransforms(); //Syncs transforms so that nothing breaks, unity does a lot of the damage control
 
-            // Play monster cry
-            GetComponent<AudioSource>().PlayOneShot(Merchant.GetComponent<MerchantManger>().teleportIn);
+            if (teleported == false) GetComponent<AudioSource>().PlayOneShot(Merchant.GetComponent<MerchantManger>().teleportIn); // Play teleport sound 
+            teleported = true;
         }
     }
 
@@ -59,6 +62,8 @@ public class RandomSpawning : MonoBehaviour
         if (ElapsedTime >= ResetTime)
         {
             Merchant.transform.position = DefaultSpawn.transform.position;
+            GetComponent<AudioSource>().PlayOneShot(Merchant.GetComponent<MerchantManger>().teleportOut); // Play disappear sound 
+            teleported = false;
         }
 
         yield return null;

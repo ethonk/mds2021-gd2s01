@@ -4175,8 +4175,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 5
-  m_Height: 20
+  m_Radius: 2
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 4, z: 1}
 --- !u!114 &7020156017062746138
@@ -4240,6 +4240,7 @@ MonoBehaviour:
   Merchant: {fileID: 7020156017062746136}
   DetectRadius: 5
   teleportIn: {fileID: 0}
+  teleportOut: {fileID: 0}
 --- !u!114 &7020156017062746131
 MonoBehaviour:
   m_ObjectHideFlags: 0
