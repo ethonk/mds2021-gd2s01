@@ -196,16 +196,16 @@ public class UIManager : MonoBehaviour
             // UI Functionality
             if(Physics.Raycast(_ray, out _hit))
             {
-                print(_hit.transform.gameObject.name);
                 if(_hit.transform.GetComponent<ItemScript>() != null)
                 {
                     itemDetails.gameObject.SetActive(true);
                     InspectItem(_hit.transform.gameObject.GetComponent<ItemScript>());
 
-                    if (Input.GetKeyDown(KeyCode.F) && _hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
+                    if (Input.GetKeyDown(KeyCode.R) && _hit.transform.gameObject.GetComponent<ItemScript>().canBe_crafted)
                     {
                         print("Crafting pressed");
                         _hit.transform.gameObject.GetComponent<ItemScript>().Craft(playerObj.GetComponent<GlobalInventory>());
+                        print("crafting finished");
                     }
                 }
                 else

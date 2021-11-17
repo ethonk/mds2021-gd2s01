@@ -132,6 +132,7 @@ public class GlobalInventory : MonoBehaviour
                 return true;
             }
         }
+        print("Items not found");
         return false; // No item.
     }
 

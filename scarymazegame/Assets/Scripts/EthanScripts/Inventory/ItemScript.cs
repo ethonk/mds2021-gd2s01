@@ -37,7 +37,6 @@ public class ItemScript : MonoBehaviour
 
     [Header("Crafting Mats")]
     public List<GameObject> m_CraftingItems;
-    public List<string> m_CraftItemNames;
 
     [Header("Advanced - Do Not Modify")]
     public bool canBe_equipped;
@@ -80,7 +79,7 @@ public class ItemScript : MonoBehaviour
             }
 
             // If item does exist but theres no space...
-            if (_playerInventory.backpack.Count < maxStack) return false;
+            if (_playerInventory.backpack.Count > maxStack) return false;
             print("No space in inventory");
 
             // Otherwise... add this item to the inventory
@@ -89,7 +88,7 @@ public class ItemScript : MonoBehaviour
                 if (_playerInventory.backpack[i] == null)
                 {
                     // Delete items
-                    print("Deleting items 2...");
+                    print("Deleting items...");
                     foreach (GameObject item in m_CraftingItems)
                     {
                         _playerInventory.DropItemGameObject(item);
