@@ -25,6 +25,9 @@ public class RandomSpawning : MonoBehaviour
             Merchant.transform.position = other.transform.position; //Takes the position of the merchant then transforms it (changes it) to the transform of the selected position
             Physics.SyncTransforms(); //Syncs transforms so that nothing breaks, unity does a lot of the damage control
 
+            // Pre-load inventory
+            Merchant.GetComponent<GlobalInventory>().LoadBackpack();
+
             if (teleported == false) GetComponent<AudioSource>().PlayOneShot(Merchant.GetComponent<MerchantManger>().teleportIn); // Play teleport sound 
             teleported = true;
         }

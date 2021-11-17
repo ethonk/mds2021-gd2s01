@@ -19,7 +19,7 @@ using UnityEngine;
 
 public class CatchingScript : MonoBehaviour
 {
-    public MonsterDetails EnemyDetails;
+    public GameObject Enemy;
     public GameObject Player;
 
     public float Chance;
@@ -39,10 +39,10 @@ public class CatchingScript : MonoBehaviour
         if (hit.transform.gameObject.tag == "Monster" && hashit == false)
         {
             hashit = true;
-            GameObject Enemy = hit.transform.root.gameObject;
+            Enemy = hit.transform.root.gameObject;
+            print(Enemy.name);
 
             // Define enemy details
-            EnemyDetails = hit.gameObject.GetComponent<MonsterDetails>();
 
             Chance = 100 - Enemy.GetComponent<MonsterDetails>().health;
             NumberGenerated = Random.Range(1, 100);

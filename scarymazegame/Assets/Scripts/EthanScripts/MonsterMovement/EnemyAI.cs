@@ -235,7 +235,7 @@ public class EnemyAI : MonoBehaviour
         {
             // roll
             int roll = Random.Range(0, 2);
-            print(roll);
+
             // random attacks
             switch (roll)
             {

@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
     {
         // Set name and description
         itemName.text = item.itemName;
+        
         if (player.cameraState == PlayerScript.CameraState.shop && item.canBe_crafted)
         {
             itemDescription.text = item.itemCraftReqs;
@@ -185,6 +186,13 @@ public class UIManager : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Q) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_dropped) //drop
                     {
                         player.GetComponent<GlobalInventory>().DropItem(hit.transform.parent.name);
+                    }
+
+                    // Key press - Consume
+                    if (Input.GetKeyDown(KeyCode.R) && hit.transform.gameObject.GetComponent<ItemScript>().canBe_consumed)  // consume
+                    {
+                        hit.transform.gameObject.GetComponent<EnergyDrink>().Drink();
+                        player.GetComponent<GlobalInventory>().DropItem(hit.transform.parent.name); // drop it afterward
                     }
                 }
                 else

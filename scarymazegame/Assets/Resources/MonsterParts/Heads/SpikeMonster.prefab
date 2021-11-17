@@ -40487,7 +40487,7 @@ Transform:
   m_LocalScale: {x: 0.27453, y: 0.27453, z: 0.27453}
   m_Children: []
   m_Father: {fileID: 4351000314342771179}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6179067315730423130
 MeshFilter:
@@ -40560,6 +40560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4351000314342771179}
+  - component: {fileID: 3040600644625712811}
   m_Layer: 0
   m_Name: SpikeMonster
   m_TagString: Monster
@@ -40578,11 +40579,25 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2333641980920167676}
   - {fileID: 4875872581660561888}
+  - {fileID: 2333641980920167676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &3040600644625712811
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6076763357343275300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6150790367838083586
 GameObject:
   m_ObjectHideFlags: 0
@@ -42798,7 +42813,7 @@ Transform:
   - {fileID: 8176216639194975885}
   - {fileID: 1688455881695182093}
   m_Father: {fileID: 4351000314342771179}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8749053629308717641
 GameObject:
