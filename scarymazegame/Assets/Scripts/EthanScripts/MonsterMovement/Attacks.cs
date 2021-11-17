@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : Attacks.cs
+// Description : Controls every kind of monster attack.
+// Author : Ethan Velasco Uy
+// Mail : ethan.uy@mediadesignschool.com
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,12 +57,10 @@ public class Attacks : MonoBehaviour
         // play sound
         GetComponent<AudioSource>().PlayOneShot(GetComponent<MonsterDetails>().spitSound);
 
-        // Add impulse
-        player.transform.position = _origPos;
-
         eaten = false;
         player.gameObject.GetComponent<CharacterMotor>().playerLock = false;     // Unlock player.
         player.transform.parent = null;
         player.gameObject.GetComponent<PlayerScript>().TakeDamage(10f);          // Damage
+        player.transform.position = _origPos;                                    // Add impulse
     }
 }

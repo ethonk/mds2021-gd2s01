@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : WaterScript.cs
+// Description : Controls every water plane, reducing the speed of the player.
+// Author : Ethan Velasco Uy
+// Mail : ethan.uy@mediadesignschool.com
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

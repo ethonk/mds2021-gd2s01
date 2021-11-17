@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : WeaponScript.cs
+// Description : Controls any weapon-type object.
+// Author : Ethan Velasco Uy
+// Mail : ethan.uy@mediadesignschool.com
+//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

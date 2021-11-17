@@ -12,9 +12,14 @@ namespace Interact
             base.OnInteract();
 
             // Add to inventory
-            player.GetComponent<GlobalInventory>().AddItem(gameObject);
-            gameObject.transform.parent = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash");
-            gameObject.transform.position = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash").position;
+            gameObject.SetActive(false); // original item
+
+            var newItem = Instantiate(gameObject);
+            newItem.SetActive(true);
+            player.GetComponent<GlobalInventory>().AddItem(newItem);
+            
+            newItem.transform.parent = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash");
+            newItem.transform.position = player.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("trash").position;
         }
     }
 }

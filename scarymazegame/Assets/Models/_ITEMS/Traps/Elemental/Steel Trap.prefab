@@ -53,10 +53,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Steel Trap
   itemDescription: Elemental. A trap enhanced with the power of steel.
-  itemCraftReqs: 
+  itemCraftReqs: 'Materials
+
+
+    Trap
+
+    Scrap Metal'
   itemType: 0
   maxStack: 1
-  m_CraftingItems: []
+  m_CraftingItems:
+  - {fileID: 1252137155764787728, guid: f1a97a260e8693d4f8ffe4ed8de46137, type: 3}
+  - {fileID: 4881598483435952613, guid: 4c27dbc8435949948b0c11e5d821a30c, type: 3}
+  m_CraftItemNames: []
   canBe_equipped: 0
   canBe_consumed: 0
   canBe_dropped: 0

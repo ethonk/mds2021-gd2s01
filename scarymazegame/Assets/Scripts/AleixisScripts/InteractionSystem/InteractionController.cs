@@ -12,6 +12,7 @@ namespace Interact
             public CharacterMotor m_PlayerMotor;
             public Camera Maincam;
             public GameObject m_Player;
+            public PlayerScript m_PlayerScript;
 
             [Header ("Data")]
             public InteractionInputData interactionInputData;
@@ -46,6 +47,7 @@ namespace Interact
             {
                 // finds player at the start
                 m_Player = GameObject.Find("Player");
+                m_PlayerScript = m_Player.GetComponent<PlayerScript>();
             }
 
             void Update()
@@ -73,14 +75,52 @@ namespace Interact
                         if(interactionData.IsEmpty()) // if the interactible data is empty / if there is a slot for an interactible
                         {
                             interactionData.Interactible = _interactible; // interaction data is set to this new interactible
-                            uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName); // sets UI to whatever the ItemScript name of the gameObject the raycast gets is
+
+                            //merchant specific
+                            if (_hitInfo.transform.gameObject.CompareTag("Merchant"))
+                            {
+                                 uiPanel.SetTooltip("Merchant press (E) to interact");
+                            }
+                            else
+                            {
+                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.name); // else just use the default name
+                            }
+
+                            if (m_PlayerScript.cameraState == PlayerScript.CameraState.shop)
+                            {
+                                 uiPanel.SetTooltip("Press (E) to exit");
+                            }
+
+                            else if (_hitInfo.transform.gameObject.GetComponent<ItemScript>() != null)
+                            {
+                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName); // sets UI to whatever the ItemScript name of the gameObject the raycast gets is
+                            }
                         }
                         else // if there is an interactible in the interactible slot
                         {
                             if(!interactionData.isSameInteractible(_interactible)) // check if its not the same
                             {
                                 interactionData.Interactible = _interactible; // override the current interactible data
-                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName); // same thing
+
+                                //merchant specific
+                                if (_hitInfo.transform.gameObject.CompareTag("Merchant")) // same thing
+                                {
+                                    uiPanel.SetTooltip("Merchant press (E) to interact");
+                                }
+
+                                if (m_PlayerScript.cameraState == PlayerScript.CameraState.shop)
+                                {
+                                    uiPanel.SetTooltip("Press (E) to exit");
+                                }
+
+                                if (_hitInfo.transform.gameObject.GetComponent<ItemScript>() != null) // same thing
+                                {
+                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.GetComponent<ItemScript>().itemName);
+                                }
+                                else
+                                {
+                                uiPanel.SetTooltip(_hitInfo.transform.gameObject.name);
+                                }
                             }
                         }
                     }
