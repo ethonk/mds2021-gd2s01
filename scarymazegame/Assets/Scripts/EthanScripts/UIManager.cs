@@ -196,7 +196,7 @@ public class UIManager : MonoBehaviour
             // UI Functionality
             if(Physics.Raycast(_ray, out _hit))
             {
-                print("hitting something bruh");
+                print(_hit.transform.gameObject.name);
                 if(_hit.transform.GetComponent<ItemScript>() != null)
                 {
                     itemDetails.gameObject.SetActive(true);
