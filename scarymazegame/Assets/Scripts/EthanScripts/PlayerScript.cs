@@ -56,6 +56,12 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+
+        // Win Check
+        if (MonsterCount >= 7)
+        {
+            SceneManager.LoadScene("GameWin", LoadSceneMode.Single);
+        }
     }
 
     public void TakeDamage(float _damage)
