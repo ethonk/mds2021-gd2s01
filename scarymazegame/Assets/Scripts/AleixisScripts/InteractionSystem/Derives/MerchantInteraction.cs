@@ -1,3 +1,16 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : MerchantInteraction.cs
+// Description : Derived script from interactible base that controls the merchant interaction
+// Author : Aliexis Alvarez
+// Mail : Aliexis.Alvarez@mediadesignschool.com
+//
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

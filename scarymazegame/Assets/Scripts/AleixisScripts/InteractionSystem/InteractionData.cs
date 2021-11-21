@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : InteractionData.cs
+// Description : holds all the get and set data functions for interactable objects
+// Author : Aliexis Alvarez
+// Mail : Aliexis.Alvarez@mediadesignschool.com
+//
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

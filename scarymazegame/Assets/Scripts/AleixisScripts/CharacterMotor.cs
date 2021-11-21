@@ -6,8 +6,8 @@
 //
 // (c) 2020 Media Design School
 //
-// File Name : MouseLook.cs
-// Description : 
+// File Name : CharacterMotor.cs
+// Description : script for controlling the character motor (movement)
 // Author : Aliexis Alvarez
 // Mail : Aliexis.Alvarez@mediadesignschool.com
 //
