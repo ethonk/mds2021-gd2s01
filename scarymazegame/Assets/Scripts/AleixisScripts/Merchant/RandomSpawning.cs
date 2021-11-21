@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : RandomSpawning.cs
+// Description : Controls the random spawning generator for Merchant
+// Author : Aliexis Alvarez
+// Mail : aliexis.alvarez@mediadesignschool.com
+//
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

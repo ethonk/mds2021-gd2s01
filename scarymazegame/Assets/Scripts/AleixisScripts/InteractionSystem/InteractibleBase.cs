@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2020 Media Design School
+//
+// File Name : InteractibleBase.cs
+// Description : the base script all interactible scripts derive from, contains all the base for interactible objects
+// Author : Aliexis Alvarez
+// Mail : Aliexis.Alvarez@mediadesignschool.com
+//
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
