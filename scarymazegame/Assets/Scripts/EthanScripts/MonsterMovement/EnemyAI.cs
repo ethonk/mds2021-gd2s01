@@ -127,6 +127,25 @@ public class EnemyAI : MonoBehaviour
             infatuated = false;
     }
 
+    public IEnumerator Debuff_Elemental(float slowPercentage, float slowTime)
+    {
+        // Apply debuff cooldown
+        if (!debuffed)
+        {
+            print("elemental!");
+            // Start cooldown
+            StartCoroutine(DebuffCooldown(debuffCooldown));
+
+            // Apply Damage
+            GetComponent<MonsterDetails>().health -= 40;
+
+            // Apply Slow
+            GetComponent<MonsterDetails>().currentSpeed *= slowPercentage;
+            yield return new WaitForSeconds(slowTime);
+            GetComponent<MonsterDetails>().currentSpeed = GetComponent<MonsterDetails>().speed;
+        }
+    }
+    
     #endregion
 
     public IEnumerator DebuffCooldown(float cooldown)

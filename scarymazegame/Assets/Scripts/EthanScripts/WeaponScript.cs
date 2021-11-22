@@ -22,10 +22,6 @@ public class WeaponScript : MonoBehaviour
     public bool canUse = true;
     public float hitCooldown;
 
-    [Header("Audio")]
-    public AudioClip equipSound;
-    public AudioClip attackSound;
-
     IEnumerator Cooldown()
     {
         canUse = false;
@@ -35,15 +31,12 @@ public class WeaponScript : MonoBehaviour
 
     public void PickedUp()
     {
-        GetComponent<AudioSource>().PlayOneShot(equipSound);
     }
 
     public void Attack()
     {
         // Start cooldown
         StartCoroutine(Cooldown());
-        
-        GetComponent<AudioSource>().PlayOneShot(attackSound);
     }
 
     void Update()

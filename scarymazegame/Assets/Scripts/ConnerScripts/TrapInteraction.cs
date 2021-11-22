@@ -57,6 +57,10 @@ public class TrapInteraction : MonoBehaviour
                 case TrapType.Infatuation:
                     enemy.GetComponent<EnemyAI>().Debuff_Infatuation(infatuationDamage, infatuationTime);
                     break;
+
+                case TrapType.Elemental:
+                    StartCoroutine(enemy.GetComponent<EnemyAI>().Debuff_Elemental(slowPercentage, slowTime));
+                    break;
             }
 
             // Destroy trap

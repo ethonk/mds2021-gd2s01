@@ -40,6 +40,9 @@ public class UIManager : MonoBehaviour
     public GameObject bind_drop;
     public GameObject bind_craft;
     public TextMeshProUGUI monsters_caught;
+    public GameObject informationUI;
+    public GameObject informationUIBind;
+    public TextMeshProUGUI objective;
 
     [Header("Values")]
     public Vector3 keybindStartPos = new Vector3(0, 5, 0);
@@ -57,6 +60,34 @@ public class UIManager : MonoBehaviour
         merchant = GameObject.Find("Merchant").GetComponent<MerchantShop>();
         merchantObj = GameObject.Find("Merchant");
         merchantCamera = merchantObj.GetComponent<GlobalInventory>().backpackSlotContainer.transform.parent.Find("MerchantCamera").GetComponent<Camera>();
+
+        // Start objective
+        StartCoroutine(Objective1());
+    }
+
+    public IEnumerator Objective1()
+    {
+        yield return new WaitForSeconds(1.0f);
+        objective.gameObject.SetActive(true);
+        objective.fontSize = 90;
+        yield return new WaitForSeconds(0.7f);
+        objective.fontSize = 120;
+        objective.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        objective.text = "";
+        objective.color = Color.white;
+        yield return new WaitForSeconds(0.5f);
+        objective.text = "CAPTURE";
+        yield return new WaitForSeconds(0.5f);
+        objective.text = "THE";
+        yield return new WaitForSeconds(0.5f);
+        objective.text = "BEASTS";
+        yield return new WaitForSeconds(0.5f);
+        objective.text = "CAPTURE THE BEASTS";
+        yield return new WaitForSeconds(1.0f);
+        objective.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        objective.gameObject.SetActive(false);
     }
 
     public void CursorToMouse() // Move the mouse and anything attached to it towards the cursor.
@@ -240,6 +271,14 @@ public class UIManager : MonoBehaviour
     
         #region Update monsters caught
         monsters_caught.text = "Monsters Caught: " + player.MonsterCount + "/7";
+        #endregion
+    
+        #region Information
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            informationUI.SetActive(!(informationUI.activeInHierarchy));
+            informationUIBind.SetActive(!(informationUIBind.activeInHierarchy));
+        }
         #endregion
     }
 }
